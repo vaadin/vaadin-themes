@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.org/vaadin/vaadin-themes.svg?branch=master)](https://travis-ci.org/vaadin/vaadin-themes)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/vaadin-core-elements?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# &lt;vaadin-themes&gt;
+# vaadin-themes
 
 <!-- hide link until demo is online.
 [Live Demo ↗](https://cdn.vaadin.com/vaadin-core-elements/master/vaadin-themes/demo/)
 -->
 
-[&lt;vaadin-themes&gt;](https://vaadin.com/elements/-/element/vaadin-themes) is a [Polymer](http://polymer-project.org) module providing themes for [Vaadin Core Elements](https://vaadin.com/elements).
+[vaadin-themes](https://vaadin.com/elements/-/element/vaadin-themes) is a set of customizable themes for the [Vaadin Core Elements](https://vaadin.com/elements).
 
 <!--
 ```
@@ -43,18 +43,9 @@ Nothing to show yet
 
 1. When in the `vaadin-themes` directory, run `polyserve --open`, browser will automatically open the component API documentation.
 
-1. You can also open demo or in-browser tests by adding **demo** or **test** to the URL, for example:
+1. You can also open demo or in-browser tests by adding **demo** to the URL, for example:
 
   - http://127.0.0.1:8080/components/vaadin-themes/demo/index.html
-  - http://127.0.0.1:8080/components/vaadin-themes/test/index.html
-
-
-## Running tests from the command line
-
-1. Install [web-component-tester](https://www.npmjs.com/package/web-component-tester): `npm install -g web-component-tester`
-
-1. When in the `vaadin-themes` directory, run `wct` or `npm test`
-
 
 ## Following the coding style
 

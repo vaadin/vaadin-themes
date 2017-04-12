@@ -7,6 +7,8 @@
 
   <title>vaadin-text-field</title>
 
+  <!-- Safari has severe rendering issues with native Shadow DOM -->
+  <script>window.ShadyDOM = { force: true };</script>
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="common.html">
   <link rel="import" href="../material/material-theme-text-field.html">
@@ -20,25 +22,27 @@
 
     <demo-navigation></demo-navigation>
 
-    <h3>Labels</h3>
+    <h3>Label and placeholder texts</h3>
     <demo-snippet>
       <template>
         <custom-style>
           <style>
             vaadin-text-field {
+              width: calc(30% - 16px);
               margin-right: 16px;
+              min-width: 150px;
               vertical-align: bottom;
             }
           </style>
         </custom-style>
 
-        <vaadin-text-field placeholder="Non-floating label"></vaadin-text-field>
+        <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
 
         <vaadin-text-field label="Label"></vaadin-text-field>
 
-        <vaadin-text-field label="Label always floating" placeholder=""></vaadin-text-field>
+        <vaadin-text-field label="Label and placeholder" placeholder="Placeholder"></vaadin-text-field>
 
-        <vaadin-text-field label="Label" placeholder="Placeholder"></vaadin-text-field>
+        <vaadin-text-field label="Label always floating" theme-class="always-float-label"></vaadin-text-field>
 
       </template>
     </demo-snippet>
@@ -48,20 +52,25 @@
       <template>
         <custom-style>
           <style>
-            vaadin-text-field {
-              width: 250px !important;
+            vaadin-text-field.email {
+              width: 250px;
             }
 
             .letter-icon {
               font-size: 24px;
               padding-right: 5px;
+              align-items: center;
+            }
+
+            .suffix {
+              font-size: 16px;
             }
           </style>
         </custom-style>
 
-        <vaadin-text-field label="Email address">
+        <vaadin-text-field class="email" label="Email address" placeholder="Firstname">
           <div class="letter-icon" slot="prefix">✉️</div>
-          <div slot="suffix">@vaadin.com</div>
+          <div class="suffix" slot="suffix">@vaadin.com</div>
         </vaadin-text-field>
 
       </template>
@@ -90,7 +99,7 @@
 
         <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
 
-        <vaadin-text-field label="Invalid" value="Numbers only" pattern="[0-9]+"></vaadin-text-field>
+        <vaadin-text-field label="Invalid" value="Numbers only" pattern="[0-9]+" invalid></vaadin-text-field>
 
       </template>
     </demo-snippet>

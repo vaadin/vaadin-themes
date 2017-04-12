@@ -12,19 +12,30 @@
 
         /* Fix Chrome’s dancing labels */
         contain: content;
+      }
 
-        /*
-        -webkit-transition needed for Safari right now, but it’s fixed in
-        Safari Technology Preview, so we can expect it to fix itself in the
-        near future (Safari 10.2 most probably).
-        */
-        -webkit-transition: background-size 0.25s;
-        transition: background-size 0.25s;
+      /* TODO change to use [part="input-field"] once available in vaadin-text-field */
+      .label-and-input-container::before,
+      .label-and-input-container::after {
+        content: "";
+        position: absolute;
+        bottom: 1px;
+        left: 0;
+        right: 0;
+        transition: all 0.25s;
+        height: 1px;
+        transform-origin: 50% 0%;
+        background-color: #000;
+        opacity: 0.42;
+      }
 
-        background-size: 0% 2px, 100% 2px;
-        background-image: linear-gradient(#3F51B5, #3F51B5), linear-gradient(rgba(0, 0, 0, 0.42) 1px, transparent 1px);
-        background-repeat: no-repeat;
-        background-position: 50% 100%;
+      /* TODO change to use [part="input-field"] once available in vaadin-text-field */
+      .label-and-input-container::after {
+        background-color: #2962FF;
+        opacity: 1;
+        height: 2px;
+        bottom: 0;
+        transform: scaleX(0);
       }
 
       [part~="input"] {
@@ -46,17 +57,50 @@
 
       [part~="input"]::-webkit-input-placeholder {
         color: rgba(0, 0, 0, 0.38);
+        transition: opacity 0.175s 0.05s;
+        opacity: 1;
+      }
+
+      [part~="input"]:-ms-input-placeholder {
+        color: rgba(0, 0, 0, 0.38);
       }
 
       [part~="input"]::-moz-placeholder {
         color: rgba(0, 0, 0, 0.38);
+        transition: opacity 0.175s 0.05s;
+        opacity: 1;
       }
 
       [part~="input"]::placeholder {
         color: rgba(0, 0, 0, 0.38);
+        transition: opacity 0.175s 0.1s;
+        opacity: 1;
       }
 
-      [part~="label"] {
+      :host([label]:not([focused]):not([invalid]):not([theme-class="always-float-label"])) [part~="input"]::-webkit-input-placeholder {
+        opacity: 0;
+        transition-delay: 0;
+      }
+
+      :host([label]:not([focused]):not([invalid]):not([theme-class="always-float-label"])) [part~="input"]::-moz-placeholder {
+        opacity: 0;
+        transition-delay: 0;
+      }
+
+      :host([label]:not([focused]):not([invalid]):not([theme-class="always-float-label"])) [part~="input"]::placeholder {
+        opacity: 0;
+        transition-delay: 0;
+      }
+
+      /* IE11 doesn’t show the placeholder when the input is focused, so it’s basically useless for this theme */
+      :host([label]) [part~="input"]:-ms-input-placeholder {
+        opacity: 0;
+      }
+
+      /* Target the label placeholder as well */
+      /* TODO remove second selector once it has the same part name */
+      [part~="label"],
+      .label-placeholder {
         display: block;
         font-family: Roboto, sans-serif;
         font-size: 16px;
@@ -68,52 +112,57 @@
         transform-origin: 0 50%;
         transform: scale(0.75);
         width: 133%;
-
-        -webkit-transition: transform 0.25s;
-        transition: transform 0.25s;
+        transition: transform 0.175s, color 0.175s;
       }
 
-      :host([focused]) {
-        background-size: 100% 2px, 100% 2px;
+      /* TODO change to use [part="input-field"] once available in vaadin-text-field */
+      :host(:hover) .label-and-input-container::before {
+        /* Use a slightly reduced value so that there’s less visible blurriness during the
+           transition in Safari. The end result is still acceptable on all browsers. */
+        transform: scaleY(1.7);
+        opacity: 0.87;
       }
 
-      :host([focused]) [part~="label"] {
-        color: #3F51B5;
+      :host([focused]) [part="label"] {
+        color: #2962FF;
       }
 
-      :host([invalid]) {
-        background-image: linear-gradient(#dd2c00, #dd2c00);
-        background-size: 100% 2px;
+      /* TODO change to use [part="input-field"] once available in vaadin-text-field */
+      :host([focused]) .label-and-input-container::after {
+        transform: none;
       }
 
-      :host([invalid]) [part~="label"] {
-        color: #dd2c00;
+      :host([invalid]) [part="label"] {
+        color: #FF1744;
+      }
+
+      /* TODO change to use [part="input-field"] once available in vaadin-text-field */
+      :host([invalid]) .label-and-input-container::after {
+        background-color: #FF1744;
+        transform: none;
       }
 
       :host([disabled]) {
         color: rgba(0, 0, 0, 0.38);
-        background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0, rgba(0, 0, 0, 0) 2px);
+        pointer-events: none;
+      }
+
+      /* TODO change to use [part="input-field"] once available in vaadin-text-field */
+      :host([disabled]) .label-and-input-container::before {
+        background-color: transparent;
+        background-image: linear-gradient(90deg, #000 0, #000 2px, transparent 2px);
         background-size: 4px 1px;
         background-repeat: repeat-x;
       }
 
-      :host([disabled]) [part~="input"]::-webkit-input-placeholder {
-        opacity: 0.5;
-      }
-
-      :host([disabled]) [part~="input"]::-moz-placeholder {
-        opacity: 0.5;
-      }
-
-      :host([disabled]) [part~="input"]::placeholder {
-        opacity: 0.5;
-      }
-
-      :host(:not([has-value]):not([placeholder])) [part~="label"] {
-        transform: scale(1) translateY(calc(16px + 50%));
+      /* Only target the actual visible, floating label */
+      :host(:not([has-value]):not([focused]):not([invalid]):not([theme-class~="always-float-label"])) [part="label"] {
+        /* IE11 doesn’t work with calc inside the translate function, so we need to have a fixed pixel value instead of 50% + 16px */
+        transform: scale(1) translateY(24px);
         width: 100%;
         pointer-events: none;
         left: auto;
+        transition-delay: 0.1s;
       }
 
     </style>

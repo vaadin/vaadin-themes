@@ -1,10 +1,10 @@
-<dom-module id="material-theme-text-field" theme-for="vaadin-text-field">
+<dom-module id="material-text-field" theme-for="vaadin-text-field">
   <template>
     <style>
       :host {
         position: relative;
         width: 160px;
-        padding-top: 16px;
+        margin-top: 16px;
         margin-bottom: 8px;
         color: rgba(0, 0, 0, 0.87);
         -webkit-font-smoothing: antialiased;
@@ -12,6 +12,14 @@
 
         /* Fix Chrome’s dancing labels */
         contain: content;
+      }
+
+      :host([label]) {
+        vertical-align: 24px;
+      }
+
+      [part="input-field"] {
+        position: relative;
       }
 
       [part="input-field"]::before,
@@ -70,7 +78,7 @@
       }
 
       [part="value"]::placeholder {
-        color: rgba(0, 0, 0, 0.38);
+        color: rgba(0, 0, 0, 0.42);
         transition: opacity 0.175s 0.1s;
         opacity: 1;
       }
@@ -103,7 +111,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: rgba(0, 0, 0, 0.38);
+        color: rgba(0, 0, 0, 0.42);
         transform-origin: 0 50%;
         transform: scale(0.75);
         width: 133%;
@@ -154,6 +162,24 @@
         pointer-events: none;
         left: auto;
         transition-delay: 0.1s;
+      }
+
+      [part="error-message"] {
+        font-size: 12px;
+        line-height: 1.1;
+        color: #FF1744;
+        margin-top: 8px;
+        animation: reveal 0.2s;
+      }
+
+      @keyframes reveal {
+        0% {
+          opacity: 0;
+        }
+      }
+
+      :host([required]) [part="label"]::after {
+        content: " *";
       }
 
     </style>

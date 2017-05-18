@@ -1,0 +1,56 @@
+<custom-style>
+  <style>
+    html {
+      --material-body-text-color: var(--light-theme-text-color, rgba(0,0,0,0.87));
+      --material-secondary-text-color: var(--light-theme-secondary-color, rgba(0,0,0,0.54));
+      --material-disabled-text-color: var(--light-theme-disabled-color, rgba(0,0,0,0.38));
+
+      --material-primary-color: var(--primary-color, #2962FF);
+
+      --material-error-color: var(--error-color, #FF1744);
+
+      --material-background-color: var(--light-theme-background-color, #fff);
+    }
+
+    * {
+      --material-primary-text-color: var(--material-primary-color);
+      --material-error-text-color: var(--material-error-color);
+    }
+
+    [theme~="dark"] {
+      --material-body-text-color: var(--dark-theme-text-color, rgba(255,255,255,1));
+      --material-secondary-text-color: var(--dark-theme-secondary-color, rgba(255,255,255,0.7));
+      --material-disabled-text-color: var(--dark-theme-disabled-color, rgba(255,255,255,0.5));
+
+      --material-primary-color: var(--light-primary-color, #448AFF);
+
+      --material-error-color: var(--error-color, #FF5252);
+
+      --material-background-color: var(--dark-theme-background-color, #303030);
+    }
+
+    [theme~="background"] {
+      background-color: var(--material-background-color);
+    }
+
+    [theme] {
+      color: var(--material-body-text-color);
+    }
+
+    [theme~="secondary-text"] {
+      color: var(--material-secondary-text-color)
+    }
+
+    [theme~="disabled-text"] {
+      color: var(--material-disabled-text-color)
+    }
+
+    [theme~="primary-text"] {
+      color: var(--material-primary-text-color)
+    }
+
+    [theme~="error-text"] {
+      color: var(--material-error-text-color)
+    }
+  </style>
+</custom-style>

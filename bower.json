@@ -22,12 +22,12 @@
     "wct.conf.js"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0-rc.1"
+    "polymer": "Polymer/polymer#^v2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",
-    "vaadin-text-field": "vaadin/vaadin-text-field#master",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "elements-demo-resources": "vaadin/elements-demo-resources#2.0-preview"
+    "vaadin-text-field": "vaadin/vaadin-text-field#^v1.0.0-alpha5",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^v2.0.0",
+    "elements-demo-resources": "vaadin/elements-demo-resources#2.0"
   }
 }

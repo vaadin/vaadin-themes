@@ -9,53 +9,51 @@
 
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
+  <link rel="import" href="../color-swatch.html">
 
   <link rel="import" href="../../material/material.html">
-  <link rel="import" href="../../material/dark.html">
 </head>
 
 <body>
 
   <div class="vertical-section-container centered">
 
-    <demo-navigation></demo-navigation>
+    <demo-navigation>
+      <h3 slot="header">Material theme</h3>
+    </demo-navigation>
 
-    <h3>Colors</h3>
+    <h1>Colors</h1>
     <p>The theme defines CSS custom properties for the colors used in the theme, which you can easily customize.</p>
+    <p>The default colors are automatically adapted for the dark variation.</p>
 
-    <style>
-    .color {
-      width: calc(6 * var(--material-base-grid));
-      height: calc(6 * var(--material-base-grid));
-      border-radius: 50%;
-      display: inline-block;
-      margin: var(--material-space-m);
-    }
-    </style>
+    <section>
+      <div theme="background space-l">
+        <h4>Background colors</h4>
+        <color-swatch property="--material-primary-color"></color-swatch>
+        <color-swatch property="--material-error-color"></color-swatch>
 
-    <section class="colors">
-
-      <h4>Light UI</h4>
-      <div theme="background space-m">
+        <h4>Text colors</h4>
         <div>--material-body-text-color</div>
         <div theme="secondary-text">--material-secondary-text-color</div>
         <div theme="disabled-text">--material-disabled-text-color</div>
         <div theme="primary-text">--material-primary-text-color</div>
         <div theme="error-text">--material-error-text-color</div>
-
-        <div class="color" style="background-color: var(--material-primary-color);"></div>
-        <div class="color" style="background-color: var(--material-error-color);"></div>
       </div>
-
-      <h4>Dark UI</h4>
-      <div theme="dark background space-m"></div>
-
-      <script>
-        // Duplicate copy for the dark variation
-        document.querySelector("[theme~='dark']").innerHTML = document.querySelector("[theme~='background']").innerHTML;
-      </script>
     </section>
 
+    <script>
+      // Duplicate copy for dark variations
+      var sections = document.querySelectorAll("section [theme~='background']");
+      for (var i = 0; i < sections.length; i++) {
+        var clone = sections[i].cloneNode(true);
+        clone.setAttribute("theme", clone.getAttribute("theme") + " dark");
+        if (sections[i].nextSibling) {
+          sections[i].parentNode.insertBefore(clone, sections[i].nextSibling);
+        } else {
+          sections[i].parentNode.appendChild(clone);
+        }
+      }
+    </script>
   </div>
 </body>
 </html>

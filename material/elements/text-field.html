@@ -3,10 +3,12 @@
     <style>
       :host {
         position: relative;
-        width: 160px;
-        margin-top: 16px;
-        margin-bottom: 8px;
-        color: rgba(0, 0, 0, 0.87);
+        width: calc(var(--material-base-grid) * 20);
+        margin-top: calc(var(--material-base-grid) * 2);
+        margin-bottom: var(--material-base-grid);
+        color: var(--material-body-text-color);
+        font-size: var(--material-font-size);
+        font-family: var(--material-font-family);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
@@ -15,7 +17,7 @@
       }
 
       :host([label]) {
-        vertical-align: 24px;
+        vertical-align: calc(var(--material-type-grid) * 6);
       }
 
       [part="input-field"] {
@@ -37,7 +39,7 @@
       }
 
       [part="input-field"]::after {
-        background-color: #2962FF;
+        background-color: var(--material-primary-color);
         opacity: 1;
         height: 2px;
         bottom: 0;
@@ -49,11 +51,11 @@
         margin: 0;
         border: 0;
         border-radius: 0;
-        padding: 8px 0 10px;
+        padding: var(--material-base-grid) 0 10px;
         width: 100%;
-        height: calc(16px + 8px + 10px);
-        font-family: Roboto, sans-serif;
-        font-size: 16px;
+        height: calc(calc(var(--material-base-grid) * 3) + 10px);
+        font-family: inherit;
+        font-size: 1em;
         color: inherit;
         background-color: transparent;
 
@@ -61,39 +63,41 @@
         box-shadow: none;
       }
 
+      /* TODO: the text opacity should be 42%, but the disabled style is 38%.
+      Would need to introduce another property for it if we want to be 100% accurate. */
       [part="value"]::-webkit-input-placeholder {
-        color: rgba(0, 0, 0, 0.38);
+        color: var(--material-disabled-text-color);
         transition: opacity 0.175s 0.05s;
         opacity: 1;
       }
 
       [part="value"]:-ms-input-placeholder {
-        color: rgba(0, 0, 0, 0.38);
+        color: var(--material-disabled-text-color);
       }
 
       [part="value"]::-moz-placeholder {
-        color: rgba(0, 0, 0, 0.38);
+        color: var(--material-disabled-text-color);
         transition: opacity 0.175s 0.05s;
         opacity: 1;
       }
 
       [part="value"]::placeholder {
-        color: rgba(0, 0, 0, 0.42);
+        color: var(--material-disabled-text-color);
         transition: opacity 0.175s 0.1s;
         opacity: 1;
       }
 
-      :host([label]:not([focused]):not([invalid]):not([theme-class="always-float-label"])) [part="value"]::-webkit-input-placeholder {
+      :host([label]:not([focused]):not([invalid]):not([theme="always-float-label"])) [part="value"]::-webkit-input-placeholder {
         opacity: 0;
         transition-delay: 0;
       }
 
-      :host([label]:not([focused]):not([invalid]):not([theme-class="always-float-label"])) [part="value"]::-moz-placeholder {
+      :host([label]:not([focused]):not([invalid]):not([theme="always-float-label"])) [part="value"]::-moz-placeholder {
         opacity: 0;
         transition-delay: 0;
       }
 
-      :host([label]:not([focused]):not([invalid]):not([theme-class="always-float-label"])) [part="value"]::placeholder {
+      :host([label]:not([focused]):not([invalid]):not([theme="always-float-label"])) [part="value"]::placeholder {
         opacity: 0;
         transition-delay: 0;
       }
@@ -105,13 +109,12 @@
 
       [part="label"] {
         display: block;
-        font-family: Roboto, sans-serif;
-        font-size: 16px;
+        font-size: 1em;
         line-height: 1;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: rgba(0, 0, 0, 0.42);
+        color: var(--material-secondary-text-color);
         transform-origin: 0 50%;
         transform: scale(0.75);
         width: 133%;
@@ -125,8 +128,9 @@
         opacity: 0.87;
       }
 
-      :host([focused]) [part="label"] {
-        color: #2962FF;
+      :host([focused]:not([invalid])) [part="label"] {
+        color: var(--material-primary-color);
+        opacity: 0.87;
       }
 
       :host([focused]) [part="input-field"]::after {
@@ -134,17 +138,20 @@
       }
 
       :host([invalid]) [part="label"] {
-        color: #FF1744;
+        color: var(--material-error-text-color);
       }
 
       :host([invalid]) [part="input-field"]::after {
-        background-color: #FF1744;
+        background-color: var(--material-error-color);
         transform: none;
       }
 
       :host([disabled]) {
-        color: rgba(0, 0, 0, 0.38);
         pointer-events: none;
+      }
+
+      :host([disabled]) [part="input-field"] {
+        color: var(--material-disabled-text-color);
       }
 
       :host([disabled]) [part="input-field"]::before {
@@ -155,7 +162,7 @@
       }
 
       /* Only target the actual visible, floating label */
-      :host(:not([has-value]):not([focused]):not([invalid]):not([theme-class~="always-float-label"])) [part="label"] {
+      :host(:not([has-value]):not([focused]):not([invalid]):not([theme~="always-float-label"])) [part="label"] {
         /* IE11 doesn’t work with calc inside the translate function, so we need to have a fixed pixel value instead of 50% + 16px */
         transform: scale(1) translateY(24px);
         width: 100%;
@@ -167,7 +174,7 @@
       [part="error-message"] {
         font-size: 12px;
         line-height: 1.1;
-        color: #FF1744;
+        color: var(--material-error-text-color);
         margin-top: 8px;
         animation: reveal 0.2s;
       }
@@ -180,6 +187,25 @@
 
       :host([required]) [part="label"]::after {
         content: " *";
+      }
+
+      /* Dark theme tweaks */
+
+      :host([theme~="dark"][focused]) [part="label"] {
+        opacity: 1;
+      }
+
+      :host([theme~="dark"]:not([disabled])) [part="input-field"]::before {
+        background-color: #fff;
+        opacity: 0.7;
+      }
+
+      :host([theme~="dark"][disabled]) [part="input-field"]::before {
+        background-image: linear-gradient(90deg, #fff 0, #fff 2px, transparent 2px);
+      }
+
+      :host([theme~="dark"]:hover) [part="input-field"]::before {
+        opacity: 1;
       }
 
     </style>

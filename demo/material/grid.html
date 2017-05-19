@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Material Theme Spacing and Sizing</title>
+  <title>Material Theme Sizing and Spacing</title>
 
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
@@ -17,33 +17,14 @@
 
   <div class="vertical-section-container centered">
 
-    <demo-navigation></demo-navigation>
+    <demo-navigation>
+      <h3 slot="header">Material theme</h3>
+    </demo-navigation>
 
-    <h3>Colors</h3>
+    <h1>Sizing &amp; spacing</h1>
     <p>The theme defines CSS custom properties for the colors used in the theme, which you can easily customize.</p>
 
-    <style>
-    .text-color {
 
-    }
-    </style>
-
-    <section class="colors">
-
-      <h4>Light UI</h4>
-      <div theme="background space-m">
-        <div>--material-body-text-color</div>
-        <div theme="secondary-text">--material-secondary-text-color</div>
-        <div theme="disabled-text">--material-disabled-text-color</div>
-      </div>
-
-      <h4>Dark UI</h4>
-      <div theme="dark background space-m">
-        <div>--material-body-text-color</div>
-        <div theme="secondary-text">--material-secondary-text-color</div>
-        <div theme="disabled-text">--material-disabled-text-color</div>
-      </div>
-    </section>
 
   </div>
 </body>

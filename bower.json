@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",
-    "vaadin-text-field": "vaadin/vaadin-text-field#^v1.0.0-alpha5",
+    "vaadin-text-field": "vaadin/vaadin-text-field#^v1.0.0-beta1",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^v2.0.0",
-    "elements-demo-resources": "vaadin/elements-demo-resources#2.0"
+    "elements-demo-resources": "vaadin/elements-demo-resources#^v2.0.0"
   }
 }

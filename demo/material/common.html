@@ -4,10 +4,39 @@
 
 <script>
   window.demos = [
-     {name: 'index', title: ''},
+     {name: 'index', title: 'Typography'},
      {name: 'colors', title: 'Colors'},
-     {name: 'grid', title: 'Spacing and Sizing'},
-     {name: 'text-field', title: "Text Field"}
+     {name: 'grid', title: 'Sizing and spacing'},
+     {name: 'button', title: 'Buttons', group: 'Components'},
+     {name: 'text-field', title: 'Text fields'}
   ];
 </script>
 <link rel="import" href="../../../elements-demo-resources/demo-navigation.html">
+
+<style>
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 1px 3px -1px rgba(0,0,0,0.1), 0 4px 10px 0 rgba(0,0,0,0.07);
+  }
+
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  section > * {
+    flex-grow: 1;
+    min-width: 300px;
+  }
+</style>

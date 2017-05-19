@@ -31,9 +31,13 @@
 
   <div class="vertical-section-container centered">
 
-    <demo-navigation></demo-navigation>
+    <demo-navigation>
+      <h3 slot="header">Material theme</h3>
+    </demo-navigation>
 
-    <h3>Label and placeholder texts</h3>
+    <h1>Text field</h1>
+
+    <h3>Label and placeholder</h3>
     <demo-snippet>
       <template>
         <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
@@ -42,15 +46,15 @@
 
         <vaadin-text-field label="Label and placeholder" placeholder="Placeholder"></vaadin-text-field>
 
-        <vaadin-text-field label="Label always floating" theme-class="always-float-label"></vaadin-text-field>
+        <vaadin-text-field label="Label always floating" theme="always-float-label"></vaadin-text-field>
 
       </template>
     </demo-snippet>
 
-    <h3>Prefix and Suffix</h3>
+    <h3>Prefix and suffix</h3>
     <demo-snippet>
       <template>
-        <vaadin-text-field class="email" label="Email address" placeholder="Firstname" theme-class="always-float-label">
+        <vaadin-text-field class="email" label="Email address" placeholder="Firstname" theme="always-float-label">
           <div class="letter-icon" slot="prefix">✉️</div>
           <div class="domain" slot="suffix">@vaadin.com</div>
         </vaadin-text-field>
@@ -92,6 +96,25 @@
         <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
 
         <vaadin-text-field label="Invalid" value="Numbers only" pattern="[0-9]+" invalid error-message="Error message"></vaadin-text-field>
+      </template>
+    </demo-snippet>
+
+    <h3>Dark theme</h3>
+    <demo-snippet>
+      <template>
+        <div theme="dark background space-m">
+          <!-- TODO: how to avoid the need to add the theme attribute here (as :host-context is no longer available)? -->
+
+          <vaadin-text-field theme="dark" label="Label" placeholder="Placeholder"></vaadin-text-field>
+
+          <vaadin-text-field theme="dark" label="Focused" value="Value" focused></vaadin-text-field>
+
+          <vaadin-text-field theme="dark" label="Invalid" value="Numbers only" pattern="[0-9]+" invalid error-message="Error message"></vaadin-text-field>
+
+          <vaadin-text-field theme="dark" label="Disabled" value="Value" disabled></vaadin-text-field>
+
+          <vaadin-text-field theme="dark" label="Read only" value="Value" readonly></vaadin-text-field>
+        </div>
       </template>
     </demo-snippet>
 

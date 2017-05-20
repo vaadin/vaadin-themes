@@ -25,9 +25,15 @@
       }
     </style>
   </custom-style>
+
+  <style>
+    [unresolved] {
+      opacity: 0;
+    }
+  </style>
 </head>
 
-<body>
+<body unresolved>
 
   <div class="vertical-section-container centered">
 
@@ -95,7 +101,7 @@
 
         <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
 
-        <vaadin-text-field label="Invalid" value="Numbers only" pattern="[0-9]+" invalid error-message="Error message"></vaadin-text-field>
+        <vaadin-text-field label="With error message" value="Invalid" pattern="[0-9]+" invalid error-message="Numbers only!"></vaadin-text-field>
       </template>
     </demo-snippet>
 
@@ -109,7 +115,7 @@
 
           <vaadin-text-field theme="dark" label="Focused" value="Value" focused></vaadin-text-field>
 
-          <vaadin-text-field theme="dark" label="Invalid" value="Numbers only" pattern="[0-9]+" invalid error-message="Error message"></vaadin-text-field>
+          <vaadin-text-field theme="dark" label="Numbers" value="Invalid" pattern="[0-9]+" invalid error-message="Numbers only!"></vaadin-text-field>
 
           <vaadin-text-field theme="dark" label="Disabled" value="Value" disabled></vaadin-text-field>
 

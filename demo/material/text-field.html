@@ -44,8 +44,8 @@
     <h1>Text field</h1>
 
     <h3>Label and placeholder</h3>
-    <demo-snippet>
-      <template>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
         <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
 
         <vaadin-text-field label="Label"></vaadin-text-field>
@@ -53,14 +53,17 @@
         <vaadin-text-field label="Label and placeholder" placeholder="Placeholder"></vaadin-text-field>
 
         <vaadin-text-field label="Label always floating" theme="always-float-label"></vaadin-text-field>
-
-      </template>
-    </demo-snippet>
+      </script>
+    </nice-demo-snippet>
 
     <h3>Prefix and suffix</h3>
-    <demo-snippet>
-      <template>
-        <vaadin-text-field class="email" label="Email address" placeholder="Firstname" theme="always-float-label">
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <vaadin-text-field
+            class="email"
+            label="Email address"
+            placeholder="Firstname"
+            theme="always-float-label">
           <div class="letter-icon" slot="prefix">✉️</div>
           <div class="domain" slot="suffix">@vaadin.com</div>
         </vaadin-text-field>
@@ -83,12 +86,12 @@
             }
           </style>
         </custom-style>
-      </template>
-    </demo-snippet>
+      </script>
+    </nice-demo-snippet>
 
     <h3>States</h3>
-    <demo-snippet>
-      <template>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
         <vaadin-text-field label="Focused" value="Value" focused></vaadin-text-field>
 
         <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
@@ -101,28 +104,41 @@
 
         <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
 
-        <vaadin-text-field label="With error message" value="Invalid" pattern="[0-9]+" invalid error-message="Numbers only!"></vaadin-text-field>
-      </template>
-    </demo-snippet>
+        <vaadin-text-field
+          label="With error message"
+          value="Invalid"
+          pattern="[0-9]+"
+          invalid error-message="Numbers only!">
+        </vaadin-text-field>
+      </script>
+    </nice-demo-snippet>
 
     <h3>Dark theme</h3>
-    <demo-snippet>
-      <template>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
         <div theme="dark background space-m">
-          <!-- TODO: how to avoid the need to add the theme attribute here (as :host-context is no longer available)? -->
+          <!-- TODO: how to avoid the need to add the theme attribute here
+          (as :host-context is no longer available)? -->
 
           <vaadin-text-field theme="dark" label="Label" placeholder="Placeholder"></vaadin-text-field>
 
           <vaadin-text-field theme="dark" label="Focused" value="Value" focused></vaadin-text-field>
 
-          <vaadin-text-field theme="dark" label="Numbers" value="Invalid" pattern="[0-9]+" invalid error-message="Numbers only!"></vaadin-text-field>
+          <vaadin-text-field
+            theme="dark"
+            label="Numbers"
+            value="Invalid"
+            pattern="[0-9]+"
+            invalid
+            error-message="Numbers only!">
+          </vaadin-text-field>
 
           <vaadin-text-field theme="dark" label="Disabled" value="Value" disabled></vaadin-text-field>
 
           <vaadin-text-field theme="dark" label="Read only" value="Value" readonly></vaadin-text-field>
         </div>
-      </template>
-    </demo-snippet>
+      </script>
+    </nice-demo-snippet>
 
   </div>
 </body>

@@ -29,6 +29,7 @@
         height: 100%;
         outline: none;
         left: 0;
+        cursor: pointer;
       }
 
       [part~="button"]::-moz-focus-inner {
@@ -45,13 +46,16 @@
         content: "";
         pointer-events: none;
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
         border-radius: inherit;
         opacity: 0;
         background-color: currentColor;
+      }
+
+      :host::before {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
         transition: opacity 0.5s;
       }
 
@@ -82,16 +86,16 @@
       }
 
       :host([theme="primary"]) {
-        color: var(--material-primary-text-color);
+        color: var(--material-primary-text-color) !important;
       }
 
       :host([raised]) {
-        background-color: #FFF;
-        box-shadow: 0 2px 2px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.04);
+        background-color: var(--material-background-color);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.04);
       }
 
       :host([raised][theme="primary"]:not([disabled])) {
-        color: var(--material-primary-contrast-color);
+        color: var(--material-primary-contrast-color) !important;
         background-color: var(--material-primary-color);
       }
 
@@ -101,19 +105,19 @@
       }
 
       :host([raised][active]) {
-        box-shadow: 0 3px 16px 1px rgba(0,0,0,0.13), 0 1px 3px 1px rgba(0,0,0,0.08);
+        box-shadow: 0 3px 16px 1px rgba(0, 0, 0, 0.13), 0 1px 3px 1px rgba(0, 0, 0, 0.08);
       }
 
       :host([disabled]) {
-        color: rgba(0,0,0,0.3);
+        color: var(--material-disabled-text-color) !important;
       }
 
-      :host([disabled][theme="primary"]) {
-        color: rgba(0,0,0,0.5);
+      :host([disabled][theme="primary"]) [part="button"] {
+        opacity: 0.5;
       }
 
       :host([disabled][raised][theme="primary"]) {
-        background-color: #F5F5F5;
+        background-color: var(--material-disabled-color);
       }
     </style>
   </template>

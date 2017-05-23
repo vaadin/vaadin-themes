@@ -29,7 +29,6 @@
         min-width: calc(var(--material-base-grid) * 11);
         outline: none;
         left: 0;
-        cursor: pointer;
       }
 
       [part~="button"]::-moz-focus-inner {
@@ -119,6 +118,10 @@
 
       :host([disabled][raised][theme="primary"]) {
         background-color: var(--material-disabled-color);
+      }
+
+      :host(:not([disabled])) [part="button"] {
+        cursor: pointer;
       }
     </style>
   </template>

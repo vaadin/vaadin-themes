@@ -34,8 +34,8 @@
         transition: all 0.25s;
         height: 1px;
         transform-origin: 50% 0%;
-        background-color: #000;
-        opacity: 0.42;
+        background-color: var(---material-text-field-input-line-background-color, #000);
+        opacity: var(---material-text-field-input-line-opacity, 0.42);
       }
 
       [part="input-field"]::after {
@@ -125,12 +125,12 @@
         /* Use a slightly reduced value so that there’s less visible blurriness during the
            transition in Safari. The end result is still acceptable on all browsers. */
         transform: scaleY(1.7);
-        opacity: 0.87;
+        opacity: var(---material-text-field-input-line-hover-opacity, 0.87);
       }
 
       :host([focused]:not([invalid])) [part="label"] {
         color: var(--material-primary-color);
-        opacity: 0.87;
+        opacity: var(---material-text-field-focused-label-opacity, 0.87);
       }
 
       :host([focused]) [part="input-field"]::after {
@@ -156,12 +156,12 @@
 
       :host([disabled]) [part="input-field"]::before {
         background-color: transparent;
-        background-image: linear-gradient(90deg, #000 0, #000 2px, transparent 2px);
+        background-image: linear-gradient(90deg, var(---material-text-field-input-line-background-color, #000) 0, var(---material-text-field-input-line-background-color, #000) 2px, transparent 2px);
         background-size: 4px 1px;
         background-repeat: repeat-x;
       }
 
-      /* Only target the actual visible, floating label */
+      /* Only target the visible floating label */
       :host(:not([has-value]):not([focused]):not([invalid]):not([theme~="always-float-label"])) [part="label"] {
         /* IE11 doesn’t work with calc inside the translate function, so we need to have a fixed pixel value instead of 50% + 16px */
         transform: scale(1) translateY(24px);
@@ -172,10 +172,10 @@
       }
 
       [part="error-message"] {
-        font-size: 12px;
+        font-size: 0.7em;
         line-height: 1.1;
         color: var(--material-error-text-color);
-        margin-top: 8px;
+        margin-top: var(--material-base-grid);
         animation: reveal 0.2s;
       }
 
@@ -188,26 +188,6 @@
       :host([required]) [part="label"]::after {
         content: " *";
       }
-
-      /* Dark theme tweaks */
-
-      :host([theme~="dark"][focused]) [part="label"] {
-        opacity: 1;
-      }
-
-      :host([theme~="dark"]:not([disabled])) [part="input-field"]::before {
-        background-color: #fff;
-        opacity: 0.7;
-      }
-
-      :host([theme~="dark"][disabled]) [part="input-field"]::before {
-        background-image: linear-gradient(90deg, #fff 0, #fff 2px, transparent 2px);
-      }
-
-      :host([theme~="dark"]:hover) [part="input-field"]::before {
-        opacity: 1;
-      }
-
     </style>
   </template>
 </dom-module>

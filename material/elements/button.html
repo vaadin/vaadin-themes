@@ -71,7 +71,7 @@
       }
 
       :host([active])::after {
-        transform: translate(-50%, -50%) scale(0);
+        transform: translate(-50%, -50%) scale(0.0000001); /* animation works weirdly with scale(0) */
         opacity: 0.1;
         transition: 0s;
       }

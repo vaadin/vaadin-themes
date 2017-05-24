@@ -1,0 +1,128 @@
+<dom-module id="material-button" theme-for="vaadin-button">
+  <template>
+    <style>
+      :host {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border-radius: calc(var(--material-base-grid) / 4);
+        color: rgba(0, 0, 0, 0.87);
+        font-family: var(--material-font-family);
+        text-transform: uppercase;
+        font-size: var(--material-font-size);
+        font-weight: 500;
+        overflow: hidden;
+        transition: background-color 0.3s, box-shadow 0.2s;
+        margin: 0 8px;
+      }
+
+      [part="button"] {
+        border: 0;
+        margin: 0;
+        padding: 0 8px;
+        background-color: transparent;
+        color: inherit;
+        font: inherit;
+        text-transform: inherit;
+        min-height: calc(var(--material-base-grid) * 4.5);
+        min-width: calc(var(--material-base-grid) * 11);
+        outline: none;
+        left: 0;
+      }
+
+      [part~="button"]::-moz-focus-inner {
+        border: 0;
+      }
+
+      :host([focus-ring])::before {
+        opacity: 0.15;
+        transition-duration: 0.2s;
+      }
+
+      :host::before,
+      :host::after {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        border-radius: inherit;
+        opacity: 0;
+        background-color: currentColor;
+      }
+
+      :host::before {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: opacity 0.5s;
+      }
+
+      :host::after {
+        border-radius: 50%;
+        width: calc(var(--material-base-grid) * 40);
+        height: calc(var(--material-base-grid) * 40);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.9s;
+      }
+
+      :host([active])::before {
+        opacity: 0.1;
+        transition: opacity 0.4s;
+      }
+
+      :host([active])::after {
+        transform: translate(-50%, -50%) scale(0.0000001); /* animation works weirdly with scale(0) */
+        opacity: 0.1;
+        transition: 0s;
+      }
+
+      :host(:hover:not([active]))::after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
+
+      :host([theme="primary"]) {
+        color: var(--material-primary-text-color) !important;
+      }
+
+      :host([raised]) {
+        background-color: var(--material-background-color);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.04);
+        padding: 0 8px;
+      }
+
+      :host([raised][theme="primary"]:not([disabled])) {
+        color: var(--material-primary-contrast-color) !important;
+        background-color: var(--material-primary-color);
+      }
+
+      :host([theme="primary"][active])::before,
+      :host([theme="primary"][active])::after {
+        opacity: 0.2;
+      }
+
+      :host([raised][active]) {
+        box-shadow: 0 3px 16px 1px rgba(0, 0, 0, 0.13), 0 1px 3px 1px rgba(0, 0, 0, 0.08);
+      }
+
+      :host([disabled]) {
+        color: var(--material-disabled-text-color) !important;
+      }
+
+      :host([disabled][theme="primary"]) [part="button"] {
+        opacity: 0.5;
+      }
+
+      :host([disabled][raised][theme="primary"]) {
+        background-color: var(--material-disabled-color);
+      }
+
+      :host(:not([disabled])) [part="button"] {
+        cursor: pointer;
+      }
+    </style>
+  </template>
+</dom-module>

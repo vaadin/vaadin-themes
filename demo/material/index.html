@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Material Theme Typography</title>
+
+  <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="common.html">
+
+  <link rel="import" href="../../material/material.html">
+
+
+  <style>
+    [unresolved] {
+      opacity: 0;
+    }
+  </style>
+  
+  <style>
+    .sizes > div {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .sizes > div > div:nth-child(3n-2) {
+      width: 40%;
+      margin-right: 5%;
+    }
+
+    .sizes > div > div:nth-child(3n-1) {
+      margin: 0.5em 5% 0.5em 0;
+      width: 25%;
+    }
+
+    .sizes > div > div:nth-child(3n) {
+      margin: 0.5em 0;
+      width: 20%;
+    }
+  </style>
+</head>
+
+<body unresolved>
+
+  <div class="vertical-section-container centered">
+
+    <demo-navigation>
+      <h3 slot="header">Material theme</h3>
+    </demo-navigation>
+
+    <h1>Typography</h1>
+
+    <h3>Font sizes</h3>
+    <p>The theme defines different font sizes you can use. You can apply the sizes either with CSS custom properties or with HTML attributes.</p>
+    <section class="sizes">
+      <div theme="background space-l">
+        <div theme="xxxl-text">Font size XXXL</div>
+        <div theme="secondary-text s-text">--material-font-size-xxxl</div>
+        <div theme="secondary-text s-text">theme="xxxl-text"</div>
+
+        <div theme="xxl-text">Font size XXL</div>
+        <div theme="secondary-text s-text">--material-font-size-xxl</div>
+        <div theme="secondary-text s-text">theme="xxl-text"</div>
+
+        <div theme="xl-text">Font size XL</div>
+        <div theme="secondary-text s-text">--material-font-size-xl</div>
+        <div theme="secondary-text s-text">theme="xl-text"</div>
+
+        <div theme="l-text">Font size L</div>
+        <div theme="secondary-text s-text">--material-font-size-l</div>
+        <div theme="secondary-text s-text">theme="l-text"</div>
+
+        <div theme="m-text">Font size M</div>
+        <div theme="secondary-text s-text">--material-font-size-m</div>
+        <div theme="secondary-text s-text">theme="m-text"</div>
+
+        <div theme="s-text">Font size S</div>
+        <div theme="secondary-text s-text">--material-font-size-s</div>
+        <div theme="secondary-text s-text">theme="s-text"</div>
+
+        <div theme="xs-text">Font size XS</div>
+        <div theme="secondary-text s-text">--material-font-size-xs</div>
+        <div theme="secondary-text s-text">theme="xs-text"</div>
+      </div>
+    </section>
+
+    <h3>Text emphasis</h3>
+    <p>The theme defines different font weights you can use. You can apply the weights either with CSS custom properties or with HTML attributes.</p>
+    <section class="sizes">
+      <div theme="background space-l">
+        <div theme="strong-text">Strong text</div>
+        <div theme="secondary-text s-text">--material-font-weight-strong</div>
+        <div theme="secondary-text s-text">theme="strong-text"</div>
+
+        <div theme="light-text">Light text</div>
+        <div theme="secondary-text s-text">--material-font-weight-light</div>
+        <div theme="secondary-text s-text">theme="xxl-light"</div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

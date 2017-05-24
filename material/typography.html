@@ -1,0 +1,81 @@
+<custom-style>
+  <style>
+    html {
+      --material-font-family: 'Roboto', 'Noto', sans-serif;
+      --material-font-size: 16px;
+
+      /* TODO: should probably use Material design naming instead */
+      --material-font-scale-up: 1.25;
+      --material-font-scale-down: 1.14;
+
+      --material-font-size-xxxl: calc(var(--material-font-size) * var(--material-font-scale-up) * var(--material-font-scale-up) * var(--material-font-scale-up) * var(--material-font-scale-up));
+      --material-font-size-xxl: calc(var(--material-font-size) * var(--material-font-scale-up) * var(--material-font-scale-up) * var(--material-font-scale-up));
+      --material-font-size-xl: calc(var(--material-font-size) * var(--material-font-scale-up) * var(--material-font-scale-up));
+      --material-font-size-l: calc(var(--material-font-size) * var(--material-font-scale-up));
+      --material-font-size-m: var(--material-font-size);
+      --material-font-size-s: calc(var(--material-font-size) / var(--material-font-scale-down));
+      --material-font-size-xs: calc(var(--material-font-size) / var(--material-font-scale-down) / var(--material-font-scale-down));
+
+      --material-font-weight-strong: 500;
+      --material-font-weight-light: 300;
+    }
+
+    [theme] {
+      font-family: var(--material-font-family);
+      font-size: var(--material-font-size);
+      -webkit-text-size-adjust: none;
+    }
+
+    [theme~="xxxl-text"],
+    [theme] h1 {
+      font-size: var(--material-font-size-xxxl);
+    }
+
+    [theme~="xxl-text"],
+    [theme] h2 {
+      font-size: var(--material-font-size-xxl);
+    }
+
+    [theme~="xl-text"],
+    [theme] h3 {
+      font-size: var(--material-font-size-xl);
+    }
+
+    [theme~="l-text"],
+    [theme] h4 {
+      font-size: var(--material-font-size-l);
+    }
+
+    [theme~="m-text"],
+    [theme] h5 {
+      font-size: var(--material-font-size-m);
+    }
+
+    [theme~="s-text"],
+    [theme] h6 {
+      font-size: var(--material-font-size-s);
+    }
+
+    [theme~="xs-text"] {
+      font-size: var(--material-font-size-xs);
+    }
+
+    [theme~="strong-text"] {
+      font-weight: var(--material-font-weight-strong);
+    }
+
+    [theme~="light-text"] {
+      font-weight: var(--material-font-weight-light);
+    }
+
+    /* Remove margin from the first header element inside a padded container */
+    [theme*="space"] > h1:first-child,
+    [theme*="space"] > h2:first-child,
+    [theme*="space"] > h3:first-child,
+    [theme*="space"] > h4:first-child,
+    [theme*="space"] > h5:first-child,
+    [theme*="space"] > h6:first-child {
+      margin-top: 0;
+    }
+  </style>
+</custom-style>

@@ -30,8 +30,8 @@
         line-height: normal;
         text-transform: inherit;
         outline: none;
-        width: auto;
-        height: auto;
+        min-width: inherit;
+        min-height: inherit;
       }
 
       [part="button"]::-moz-focus-inner {
@@ -98,8 +98,8 @@
 
       /* Raised style */
 
-      :host([theme~="raised"]) {
-        padding: 0 var(--material-base-grid);
+      :host([theme~="raised"]) [part="button"]{
+        padding: 0 calc(var(--material-base-grid) * 2);
       }
 
       :host([theme~="raised"]:not([disabled])) {
@@ -141,7 +141,7 @@
 
       :host([theme~="dense"]) {
         font-size: calc(var(--material-font-size) * 0.8125);
-        min-width: calc(var(--material-base-grid) * 10);
+        min-width: calc(var(--material-base-grid) * 8);
         min-height: calc(var(--material-base-grid) * 4);
       }
 

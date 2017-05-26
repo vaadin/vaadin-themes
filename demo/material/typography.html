@@ -79,7 +79,9 @@
       <nice-demo-snippet code-only>
         <script type="text/html" slot="source">
           <custom-style>
-            <style include="material-typography"></style>
+            <style include="material-typography">
+              /* The <style> tag needs to be non-empty for IE11 */
+            </style>
           </custom-style>
         </script>
       </nice-demo-snippet>
@@ -106,7 +108,9 @@
     <nice-demo-snippet code-only>
       <script type="text/html" slot="source">
         <custom-style>
-          <style include="material-responsive-typography"></style>
+          <style include="material-responsive-typography">
+            /* The <style> tag needs to be non-empty for IE11 */
+          </style>
         </custom-style>
       </script>
     </nice-demo-snippet>

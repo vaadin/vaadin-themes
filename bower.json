@@ -25,13 +25,14 @@
     "polymer": "Polymer/polymer#^v2.0.0"
   },
   "devDependencies": {
-    "web-component-tester": "^5.0.0",
+    "web-component-tester": "^6.0.0",
     "vaadin-text-field": "vaadin/vaadin-text-field#^1.0.0-beta1",
     "vaadin-button": "vaadin/vaadin-button#^1.0.0-beta1",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "elements-demo-resources": "vaadin/elements-demo-resources#new-menu-and-styles"
   },
   "resolutions": {
-    "iron-meta": "1 - 2"
+    "iron-meta": "1 - 2",
+    "iron-flex-layout": "1 - 2"
   }
 }

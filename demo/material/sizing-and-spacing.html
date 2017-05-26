@@ -82,7 +82,9 @@
       <nice-demo-snippet code-only>
         <script type="text/html" slot="source">
           <custom-style>
-            <style include="material-sizing-and-spacing"></style>
+            <style include="material-sizing-and-spacing">
+              /* The <style> tag needs to be non-empty for IE11 */
+            </style>
           </custom-style>
         </script>
       </nice-demo-snippet>

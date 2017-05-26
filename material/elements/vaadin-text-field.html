@@ -4,7 +4,7 @@
       :host {
         position: relative;
         width: calc(var(--material-base-grid) * 20);
-        margin-top: calc(var(--material-base-grid) * 2);
+        padding-top: calc(var(--material-base-grid) * 2);
         margin-bottom: var(--material-base-grid);
         color: var(--material-body-text-color);
         font-size: var(--material-font-size);
@@ -16,12 +16,30 @@
         contain: content;
       }
 
+      /* Strange gymnastics to make fields vertically align nicely in most cases
+         (no label, with label, without prefix, with prefix, etc.) */
+
       :host([label]) {
         vertical-align: calc(var(--material-type-grid) * 6);
       }
 
+      [part="label"]:empty {
+        display: block;
+      }
+
+      [part="label"]:empty::before {
+        content: " ";
+        position: absolute;
+      }
+
+      :host(:not([label])) {
+        vertical-align: calc(var(--material-type-grid) * 6 - 3px);
+      }
+
       [part="input-field"] {
         position: relative;
+        height: calc(var(--material-base-grid) * 4);
+        padding-bottom: 2px;
       }
 
       [part="input-field"]::before,
@@ -51,9 +69,9 @@
         margin: 0;
         border: 0;
         border-radius: 0;
-        padding: var(--material-base-grid) 0 10px;
+        padding: var(--material-base-grid) 0;
         width: 100%;
-        height: calc(calc(var(--material-base-grid) * 3) + 10px);
+        height: 100%;
         font-family: inherit;
         font-size: 1em;
         color: inherit;
@@ -115,13 +133,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
         color: var(--material-secondary-text-color);
-        transform-origin: 0 50%;
+        transform-origin: 0 75%;
         transform: scale(0.75);
         width: 133%;
         transition: transform 0.175s, color 0.175s;
       }
 
-      :host(:hover) [part="input-field"]::before {
+      :host(:not([focused]):not([invalid]):hover) [part="input-field"]::before,
+      :host([focused]) [part="input-field"]::before {
         /* Use a slightly reduced value so that there’s less visible blurriness during the
            transition in Safari. The end result is still acceptable on all browsers. */
         transform: scaleY(1.7);
@@ -164,6 +183,7 @@
       /* Only target the visible floating label */
       :host(:not([has-value]):not([focused]):not([invalid]):not([theme~="always-float-label"])) [part="label"] {
         /* IE11 doesn’t work with calc inside the translate function, so we need to have a fixed pixel value instead of 50% + 16px */
+        /* TODO: this makes it not adjust to the global base grid size */
         transform: scale(1) translateY(24px);
         width: 100%;
         pointer-events: none;
@@ -187,6 +207,33 @@
 
       :host([required]) [part="label"]::after {
         content: " *";
+      }
+
+      /* Dense style */
+
+      :host([theme~="dense"]) {
+        padding-top: var(--material-base-grid);
+      }
+
+      :host([theme~="dense"]) [part="input-field"] {
+        height: calc(var(--material-base-grid) * 3);
+      }
+
+      :host([theme~="dense"]) [part="value"] {
+        font-size: 0.8125em;
+      }
+
+      :host([theme~="dense"]) [part="label"] {
+        font-size: 0.8125em;
+        transform: scale(0.92);
+      }
+
+      :host([theme~="dense"]:not([has-value]):not([focused]):not([invalid]):not([theme~="always-float-label"])) [part="label"] {
+        transform: translateY(20px);
+      }
+
+      :host([theme~="dense"]) [part="error-message"] {
+        margin-top: calc(var(--material-base-grid) / 2);
       }
     </style>
   </template>

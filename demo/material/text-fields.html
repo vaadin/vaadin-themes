@@ -7,16 +7,14 @@
 
   <title>Material Theme Text Field</title>
 
-  <!-- Safari has severe rendering issues with native Shadow DOM
-       https://bugs.webkit.org/show_bug.cgi?id=170762 -->
-  <!-- <script>window.ShadyDOM = { force: true };</script> -->
-
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
 
-  <link rel="import" href="../../material/material.html">
-  <link rel="import" href="../../material/elements/text-field.html">
+  <link rel="import" href="../../material/elements/vaadin-text-field.html">
+  <link rel="import" href="../../material/elements/vaadin-button.html">
   <link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
+  <link rel="import" href="../../../vaadin-button/vaadin-button.html">
+
 
   <custom-style>
     <style>
@@ -38,12 +36,12 @@
   <div class="vertical-section-container centered">
 
     <demo-navigation>
-      <h3 slot="header">Material theme</h3>
+      <span slot="header">Material</span>
     </demo-navigation>
 
-    <h1>Text field</h1>
+    <h1>Text fields</h1>
 
-    <h3>Label and placeholder</h3>
+    <h3 demo-section>Label and placeholder</h3>
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
@@ -56,40 +54,36 @@
       </script>
     </nice-demo-snippet>
 
-    <h3>Prefix and suffix</h3>
+    <h3 demo-section>Prefix and suffix</h3>
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <vaadin-text-field
-            class="email"
-            label="Email address"
-            placeholder="Firstname"
-            theme="always-float-label">
-          <div class="letter-icon" slot="prefix">✉️</div>
-          <div class="domain" slot="suffix">@vaadin.com</div>
+        <vaadin-text-field placeholder="Search">
+          <iron-icon slot="prefix" icon="vaadin:search"></iron-icon>
         </vaadin-text-field>
 
-        <!-- A bit of styling for the prefix and suffix elements -->
+        <vaadin-text-field label="Length"
+                           theme="always-float-label"
+                           placeholder="123"
+                           pattern="[0-9]{0,3}"
+                           prevent-invalid-input
+                           style="width: 6ch;">
+          <span slot="suffix">cm</span>
+        </vaadin-text-field>
+
         <custom-style>
           <style>
-            vaadin-text-field.email {
-              width: 250px;
-            }
-
-            .letter-icon {
-              font-size: 24px;
-              padding-right: 5px;
-              align-items: center;
-            }
-
-            .domain {
-              font-size: 16px;
+            iron-icon[slot] {
+              --iron-icon-width: 1em;
+              --iron-icon-height: 1em;
+              padding: var(--material-type-grid);
+              margin-right: var(--material-type-grid);
             }
           </style>
         </custom-style>
       </script>
     </nice-demo-snippet>
 
-    <h3>States</h3>
+    <h3 demo-section>States</h3>
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <vaadin-text-field label="Focused" value="Value" focused></vaadin-text-field>
@@ -113,29 +107,32 @@
       </script>
     </nice-demo-snippet>
 
-    <h3>Dark theme</h3>
+    <h3 demo-section>Dense layout</h3>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <vaadin-text-field theme="dense" label="Label" required error-message="Error message"></vaadin-text-field>
+      </script>
+    </nice-demo-snippet>
+
+    <h3 demo-section>Dark theme</h3>
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <div theme="dark background space-m">
-          <!-- TODO: how to avoid the need to add the theme attribute here
-          (as :host-context is no longer available)? -->
 
-          <vaadin-text-field theme="dark" label="Label" placeholder="Placeholder"></vaadin-text-field>
+          <vaadin-text-field label="Label" placeholder="Placeholder"></vaadin-text-field>
 
-          <vaadin-text-field theme="dark" label="Focused" value="Value" focused></vaadin-text-field>
+          <vaadin-text-field label="Focused" value="Value" focused></vaadin-text-field>
 
           <vaadin-text-field
-            theme="dark"
-            label="Numbers"
+            label="With error message"
             value="Invalid"
             pattern="[0-9]+"
             invalid
             error-message="Numbers only!">
           </vaadin-text-field>
 
-          <vaadin-text-field theme="dark" label="Disabled" value="Value" disabled></vaadin-text-field>
+          <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
 
-          <vaadin-text-field theme="dark" label="Read only" value="Value" readonly></vaadin-text-field>
         </div>
       </script>
     </nice-demo-snippet>

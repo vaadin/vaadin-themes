@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Material Theme Typography</title>
+
+  <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="common.html">
+
+  <style>
+    [unresolved] {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body unresolved>
+
+  <div class="vertical-section-container centered">
+
+    <demo-navigation>
+      <span slot="header">Material</span>
+    </demo-navigation>
+
+    <h1>Typography</h1>
+    <p theme="l-text">The theme defines font styles you can use in your app to achieve a consistent typographic style.</p>
+
+    <div class="note">
+      <p>If you wish to use the Roboto font, you need to import that yourself. You can include the following snippet in your app to easily import it:</p>
+      <nice-demo-snippet code-only>
+        <script type="text/html" slot="source">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous">
+        </script>
+      </nice-demo-snippet>
+    </div>
+
+    <h2 demo-section>Modular scale</h2>
+    <p>The font sizes follow a <a href="https://alistapart.com/article/more-meaningful-typography">modular scale</a>, which is controlled by the following custom properties:</p>
+    <dl>
+      <dt theme="strong-text">--material-font-scale-up</dt>
+      <dd theme="secondary-text">The scaling factor used for font sizes above M.</dd>
+      <dt theme="strong-text">--material-font-scale-down</dt>
+      <dd theme="secondary-text">The scaling factor used for font sizes below M.</dd>
+    </dl>
+
+    <h2 demo-section>Sizes</h2>
+    <p>To apply a certain font size, you can use the following CSS custom properties, which are available once you add the main <code>material.html</code> HTML import to your app.</p>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <div style="font-size: var(--material-font-size-xxxl)">Font size XXXL</div>
+        <div style="font-size: var(--material-font-size-xxl)">Font size XXL</div>
+        <div style="font-size: var(--material-font-size-xl)">Font size XL</div>
+        <div style="font-size: var(--material-font-size-l)">Font size L</div>
+        <div style="font-size: var(--material-font-size-m)">Font size M</div>
+        <div style="font-size: var(--material-font-size-s)">Font size S</div>
+        <div style="font-size: var(--material-font-size-xs)">Font size XS</div>
+      </script>
+    </nice-demo-snippet>
+
+    <h2 demo-section>Emphasis</h2>
+    <p>The theme defines different font weights you can use. You can apply the weights either with CSS custom properties or with HTML attributes.</p>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <div style="font-weight: var(--material-font-weight-strong)">Strong text</div>
+        <div style="font-weight: var(--material-font-weight-light)">Light text</div>
+      </script>
+    </nice-demo-snippet>
+
+    <div class="note">
+      <p>You can combine the emphasis styles with the sizes.</p>
+    </div>
+
+    <h2 demo-section>HTML attributes</h2>
+    <p>In addition to the CSS Custom Properties, you can use HTML attributes to easily apply the different font styles in your app.</p>
+
+    <div class="note warn">
+      <p>In order to use the HTML attributes, you need to include an additional style module. This style module also adds global body font styles and H1–H6 font styles.</p>
+      <nice-demo-snippet code-only>
+        <script type="text/html" slot="source">
+          <custom-style>
+            <style include="material-typography"></style>
+          </custom-style>
+        </script>
+      </nice-demo-snippet>
+    </div>
+
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <div theme="xxxl-text">Font size XXXL</div>
+        <div theme="xxl-text">Font size XXL</div>
+        <div theme="xl-text">Font size XL</div>
+        <div theme="l-text">Font size L</div>
+        <div theme="m-text">Font size M</div>
+        <div theme="s-text">Font size S</div>
+        <div theme="xs-text">Font size XS</div>
+
+        <div theme="strong-text">Strong text</div>
+        <div theme="light-text">Light text</div>
+      </script>
+    </nice-demo-snippet>
+
+    <h2 demo-section>Responsive typography</h2>
+    <p>If you include an additional style module, you can make the modular scale responsive to the viewport size (smaller scale on smaller viewports). Include the following snippet in the global scope:</p>
+
+    <div class="note">
+      <nice-demo-snippet code-only>
+        <script type="text/html" slot="source">
+          <custom-style>
+            <style include="material-responsive-typography"></style>
+          </custom-style>
+        </script>
+      </nice-demo-snippet>
+    </div>
+
+  </div>
+</body>
+</html>

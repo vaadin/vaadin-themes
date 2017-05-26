@@ -7,17 +7,14 @@
 
   <title>Material Theme Colors</title>
 
+  <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="common.html">
+
   <style>
     [unresolved] {
       opacity: 0;
     }
   </style>
-
-  <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="common.html">
-  <link rel="import" href="../color-swatch.html">
-
-  <link rel="import" href="../../material/material.html">
 </head>
 
 <body unresolved>
@@ -25,29 +22,57 @@
   <div class="vertical-section-container centered">
 
     <demo-navigation>
-      <h3 slot="header">Material theme</h3>
+      <span slot="header">Material</span>
     </demo-navigation>
 
     <h1>Colors</h1>
-    <p>The theme defines CSS custom properties for the colors used in the theme, which you can easily customize.</p>
-    <p>The default colors are automatically adapted for the dark variation.</p>
 
-    <section>
-      <div theme="background space-l">
-        <h4>Background colors</h4>
-        <color-swatch property="--material-primary-color"></color-swatch>
-        <color-swatch property="--material-error-color"></color-swatch>
+    <style>
+    nice-demo-snippet.colors div:not([theme]):first-child,
+    nice-demo-snippet.colors div:not([theme]):first-child + div {
+      padding: 1em;
+      display: inline-block;
+      margin-bottom: 1em;
+    }
+    </style>
 
-        <h4>Text colors</h4>
-        <div>--material-body-text-color</div>
-        <div theme="secondary-text">--material-secondary-text-color</div>
-        <div theme="disabled-text">--material-disabled-text-color</div>
-        <div theme="primary-text">--material-primary-text-color</div>
-        <div theme="error-text">--material-error-text-color</div>
-      </div>
-    </section>
+    <h2 demo-section>Theme colors</h2>
+    <p>To apply a certain color, you can use the following CSS custom properties, which are available once you add the main <code>material.html</code> HTML import to your app.</p>
 
-    <script>
+    <nice-demo-snippet class="colors">
+      <script type="text/html" slot="source">
+        <div style="background-color: var(--material-primary-color); color: var(--material-primary-contrast-color);">--material-primary-color</div>
+        <div style="background-color: var(--material-error-color); color: var(--material-primary-contrast-color);">--material-error-color</div>
+
+        <div style="color: var(--material-primary-text-color);">--material-primary-text-color</div>
+        <div style="color: var(--material-error-text-color);">--material-error-text-color</div>
+        <div style="color: var(--material-body-text-color);">--material-body-text-color</div>
+        <div style="color: var(--material-secondary-text-color);">--material-secondary-text-color</div>
+        <div style="color: var(--material-disabled-text-color);">--material-disabled-text-color</div>
+      </script>
+    </nice-demo-snippet>
+
+    <h2 demo-section>Dark theme</h2>
+    <p>The colors adapt to automatically when you use the <code>theme="dark"</code> attribute.</p>
+
+    <div class="note warn">TODO: document how to make it work in IE11</div>
+
+    <nice-demo-snippet class="colors">
+      <script type="text/html" slot="source">
+        <div theme="dark background space-m">
+          <div style="background-color: var(--material-primary-color); color: var(--material-primary-contrast-color);">--material-primary-color</div>
+          <div style="background-color: var(--material-error-color); color: var(--material-primary-contrast-color);">--material-error-color</div>
+
+          <div style="color: var(--material-primary-text-color);">--material-primary-text-color</div>
+          <div style="color: var(--material-error-text-color);">--material-error-text-color</div>
+          <div style="color: var(--material-body-text-color);">--material-body-text-color</div>
+          <div style="color: var(--material-secondary-text-color);">--material-secondary-text-color</div>
+          <div style="color: var(--material-disabled-text-color);">--material-disabled-text-color</div>
+        </div>
+      </script>
+    </nice-demo-snippet>
+
+    <!-- <script>
       // Duplicate copy for dark variations
       var sections = document.querySelectorAll("section [theme~='background']");
       for (var i = 0; i < sections.length; i++) {
@@ -59,7 +84,20 @@
           sections[i].parentNode.appendChild(clone);
         }
       }
-    </script>
+    </script> -->
+
+
+    <!-- <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <color-swatch property="--material-primary-color"></color-swatch>
+        <color-swatch property="--material-error-color"></color-swatch>
+        <div style="background-color: var(--material);">--material-body-text-color</div>
+        <div style="background-color: var(--material);" theme="secondary-text">--material-secondary-text-color</div>
+        <div style="background-color: var(--material);" theme="disabled-text">--material-disabled-text-color</div>
+        <div style="background-color: var(--material);" theme="primary-text">--material-primary-text-color</div>
+        <div style="background-color: var(--material);" theme="error-text">--material-error-text-color</div>
+      </script>
+    </nice-demo-snippet> -->
   </div>
 </body>
 </html>

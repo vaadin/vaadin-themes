@@ -32,13 +32,13 @@
       <p>If you wish to use the Roboto font, you need to import that yourself. You can include the following snippet in your app to easily import it:</p>
       <nice-demo-snippet code-only>
         <script type="text/html" slot="source">
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous">
         </script>
       </nice-demo-snippet>
     </div>
 
     <h2 demo-section>Modular scale</h2>
-    <p>The font sizes follow a <a href="https://alistapart.com/article/more-meaningful-typography">modular scale</a>, which is controlled by the following custom properties:</p>
+    <p>The font sizes follow a <a href="https://alistapart.com/article/more-meaningful-typography">modular scale</a>, which is controlled by the following custom properties.</p>
     <dl>
       <dt theme="strong-text">--material-font-scale-up</dt>
       <dd theme="secondary-text">The scaling factor used for font sizes above M.</dd>
@@ -47,7 +47,7 @@
     </dl>
 
     <h2 demo-section>Sizes</h2>
-    <p>To apply a certain font size, you can use the following CSS custom properties, which are available once you add the main <code>material.html</code> HTML import to your app.</p>
+    <p>To apply a certain font size, you can use the following CSS custom properties, which are available once you import the main <code>material.html</code> file to your app.</p>
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <div style="font-size: var(--material-font-size-xxxl)">Font size XXXL</div>
@@ -61,7 +61,8 @@
     </nice-demo-snippet>
 
     <h2 demo-section>Emphasis</h2>
-    <p>The theme defines different font weights you can use. You can apply the weights either with CSS custom properties or with HTML attributes.</p>
+    <p>To apply a different font weight to emphasize or de-emphasize some text, use the following CSS custom properties.</p>
+
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <div style="font-weight: var(--material-font-weight-strong)">Strong text</div>
@@ -69,9 +70,6 @@
       </script>
     </nice-demo-snippet>
 
-    <div class="note">
-      <p>You can combine the emphasis styles with the sizes.</p>
-    </div>
 
     <h2 demo-section>HTML attributes</h2>
     <p>In addition to the CSS Custom Properties, you can use HTML attributes to easily apply the different font styles in your app.</p>
@@ -105,15 +103,13 @@
     <h2 demo-section>Responsive typography</h2>
     <p>If you include an additional style module, you can make the modular scale responsive to the viewport size (smaller scale on smaller viewports). Include the following snippet in the global scope:</p>
 
-    <div class="note">
-      <nice-demo-snippet code-only>
-        <script type="text/html" slot="source">
-          <custom-style>
-            <style include="material-responsive-typography"></style>
-          </custom-style>
-        </script>
-      </nice-demo-snippet>
-    </div>
+    <nice-demo-snippet code-only>
+      <script type="text/html" slot="source">
+        <custom-style>
+          <style include="material-responsive-typography"></style>
+        </custom-style>
+      </script>
+    </nice-demo-snippet>
 
   </div>
 </body>

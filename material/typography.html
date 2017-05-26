@@ -33,6 +33,15 @@
         -webkit-text-size-adjust: 100%;
       }
 
+      /* Needed to support IE11. The selector can’t be combined with the above because it doesn’t work in Firefox */
+      /* TODO: would be great to have this automatically generated */
+      :host {
+        font-family: var(--material-font-family);
+        font-size: var(--material-font-size);
+        line-height: var(--material-line-height);
+        -webkit-text-size-adjust: 100%;
+      }
+
       [theme~="xxxl-text"],
       h1 {
         font-size: var(--material-font-size-xxxl);

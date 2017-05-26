@@ -136,7 +136,14 @@
         transform-origin: 0 75%;
         transform: scale(0.75);
         width: 133%;
-        transition: transform 0.175s, color 0.175s;
+        transition: transform 0.175s, color 0.175s, width 0.175s;
+        transition-timing-function: ease, ease, step-end;
+      }
+
+      /* TODO: using unsupported selector to fix IE11 (even thought the label element is scaled down,
+         the 133% width still takes the same space as an unscaled element */
+      .container {
+        overflow: hidden;
       }
 
       :host(:not([focused]):not([invalid]):hover) [part="input-field"]::before,
@@ -185,6 +192,7 @@
         /* IE11 doesn’t work with calc inside the translate function, so we need to have a fixed pixel value instead of 50% + 16px */
         /* TODO: this makes it not adjust to the global base grid size */
         transform: scale(1) translateY(24px);
+        transition-timing-function: ease, ease, step-start;
         width: 100%;
         pointer-events: none;
         left: auto;

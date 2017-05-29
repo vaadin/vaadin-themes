@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Material Theme Sizing and Spacing</title>
+
+  <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="common.html">
+
+  <style>
+    [unresolved] {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body unresolved>
+
+  <div class="vertical-section-container centered">
+
+    <demo-navigation>
+      <span slot="header">Material</span>
+    </demo-navigation>
+
+    <h1>Sizing and spacing</h1>
+
+    <p theme="l-text">The theme defines a set of CSS custom properties to provide consistent sizing and spacing in your app.</p>
+
+    <h2 demo-section>Spacing</h2>
+
+    <custom-style>
+      <style>
+        .spacing span {
+          display: inline-block;
+          width: 1.2em;
+          height: 1.2em;
+          line-height: 1.2;
+          text-align: center;
+          background-color: rgba(0,0,0,0.2);
+        }
+
+        .spacing.css span {
+          position: absolute;
+          left: 3em;
+          margin-top: 0.2em;
+        }
+
+        .spacing.html span {
+          margin-bottom: 8px;
+        }
+
+        .spacing.html span::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 1.2em;
+          height: 1.2em;
+          background: #fff;
+          opacity: 0.8;
+        }
+      </style>
+    </custom-style>
+
+    <nice-demo-snippet class="spacing css">
+      <script type="text/html" slot="source">
+        <div>XL <span style="width: var(--material-space-xl)"></span></div>
+        <div>L <span style="width: var(--material-space-l)"></span></div>
+        <div>M <span style="width: var(--material-space-m)"></span></div>
+        <div>S <span style="width: var(--material-space-s)"></span></div>
+      </script>
+    </nice-demo-snippet>
+
+
+    <h2 demo-section>HTML attributes</h2>
+    <p>In addition to the CSS Custom Properties, you can use HTML attributes to easily apply the different spacings in your app.</p>
+
+    <div class="note warn">
+      <p>In order to use the HTML attributes, you need to include an additional style module.</p>
+      <nice-demo-snippet code-only>
+        <script type="text/html" slot="source">
+          <custom-style>
+            <style include="material-sizing-and-spacing">
+              /* The <style> tag needs to be non-empty for IE11 */
+            </style>
+          </custom-style>
+        </script>
+      </nice-demo-snippet>
+    </div>
+
+    <h4>Space around (padding)</h4>
+    <nice-demo-snippet class="spacing html">
+      <script type="text/html" slot="source">
+        <span theme="space-xl">XL</span>
+        <span theme="space-l">L</span>
+        <span theme="space-m">M</span>
+        <span theme="space-s">S</span>
+      </script>
+    </nice-demo-snippet>
+
+
+
+  </div>
+</body>
+</html>

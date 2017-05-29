@@ -1,43 +1,26 @@
 <!-- Common imports for all examples -->
-<link rel="import" href="../../../iron-demo-helpers/demo-snippet.html">
 <link rel="import" href="../../../elements-demo-resources/nice-demo-snippet.html">
 <link rel="import" href="../../../elements-demo-resources/common.html">
 
 <script>
   window.demos = [
-     {name: 'index', title: 'Typography'},
+     {name: 'index', title: 'Getting started'},
+     {name: 'ie11-edge14-support', title: 'Supporting IE11 and Edge 14'},
+     {name: 'typography', title: 'Typography'},
      {name: 'colors', title: 'Colors'},
-     {name: 'grid', title: 'Sizing and spacing'},
-     {name: 'button', title: 'Buttons', group: 'Components'},
-     {name: 'text-field', title: 'Text fields'}
+     {name: 'sizing-and-spacing', title: 'Sizing and spacing'},
+     {name: 'buttons', title: 'Buttons', group: 'Components'},
+     {name: 'text-fields', title: 'Text fields'}
   ];
 </script>
 <link rel="import" href="../../../elements-demo-resources/demo-navigation.html">
 
-<style>
-  section {
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 3px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 1px 3px -1px rgba(0,0,0,0.1), 0 4px 10px 0 rgba(0,0,0,0.07);
-  }
+<!-- Import theme custom properties and common style modules -->
+<link rel="import" href="../../material/material.html">
 
-  section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
-    pointer-events: none;
-    border-radius: inherit;
-  }
-
-  section > * {
-    flex-grow: 1;
-    min-width: 300px;
-  }
-</style>
+<!-- Include theme to global scope -->
+<custom-style>
+  <style include="material-colors material-typography material-responsive-typography material-sizing-and-spacing">
+    /* The <style> tag needs to be non-empty for IE11 */
+  </style>
+</custom-style>

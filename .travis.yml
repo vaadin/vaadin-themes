@@ -10,14 +10,3 @@ cache:
 addons:
   firefox: latest
   google-chrome: latest
-
-install:
-  - npm install
-  - npm install -g bower
-  - bower install
-
-before_script:
-  - gulp lint
-
-script:
-  - ([ "$TRAVIS_EVENT_TYPE" = "pull_request" ] || gemini test test/visual)

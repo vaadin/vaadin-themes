@@ -6,6 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>vaadin-checkbox valo theme prototype</title>
+  <script>
+    // Enable :active styles on iOS
+    document.addEventListener("touchstart", function(){});
+  </script>
   <style>
     vaadin-checkbox {
       display: inline-block;
@@ -15,6 +19,7 @@
     label {
       display: inline-flex;
       align-items: baseline;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* This makes the :active style work in IE11 */

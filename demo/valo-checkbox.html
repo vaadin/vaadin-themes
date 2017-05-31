@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="description" content="vaadin-checkbox valo theme prototype">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>vaadin-checkbox valo theme prototype</title>
+  <style>
+    vaadin-checkbox {
+      display: inline-block;
+      -webkit-user-select: none;
+    }
+
+    label {
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    /* This makes the :active style work in IE11 */
+    .label {
+      pointer-events: none;
+      transition: transform 0.3s;
+      will-change: transform;
+    }
+
+    /* Not sure if this is necessary: should there ever be anything clickable inside the label? */
+    .label > * {
+      pointer-events: auto;
+    }
+
+    .label:not(:empty) {
+      margin: 0.1875em 0.375em;
+    }
+
+    input {
+      opacity: 0;
+      position: absolute;
+    }
+
+    .checkbox {
+      display: inline-block;
+      width: calc(1em + 2px);
+      height: calc(1em + 2px);
+      margin: 0 0.1875em;
+      top: 0.1875em;
+      transition: transform 0.5s;
+      will-change: transform;
+      position: relative;
+      border-radius: 4px;
+      background-color: hsla(214, 65%, 30%, 0.2);
+      transition: transform 0.15s, background-color 0.15s;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* Used for activation "halo" */
+    .checkbox::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: inherit;
+      background-color: hsl(214, 90%, 52%);
+      transform: scale(1.5);
+      opacity: 0;
+      transition: transform 0.1s, opacity 0.8s;
+      will-change: transform, opacity;
+    }
+
+    /* Used for the checkmark */
+    .checkbox::after {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 0 solid #FFF;
+      border-width: 0.1875em 0 0 0.1875em;
+      box-sizing: border-box;
+      transform-origin: 0 0;
+      position: absolute;
+      top: 70%;
+      left: 45%;
+      transform: scale(0.55, 0.55) rotate(-135deg);
+      opacity: 0;
+      transition: width 0.1s, height 0.4s;
+    }
+
+    /* The :checked pseudo class for the indeterminate state is used here only for testing purposes */
+    vaadin-checkbox[indeterminate] input:checked + .checkbox,
+    input:checked + .checkbox {
+      background-color: hsl(214, 90%, 52%);
+    }
+
+    input:checked + .checkbox::after {
+      opacity: 1;
+      width: 55%;
+      height: 95%;
+    }
+
+    input:active + .checkbox {
+      transform: scale(1.1);
+      transition-duration: 0.05s;
+    }
+
+    input:not(:checked):active + .checkbox::before {
+      transition-duration: 0.01s, 0.01s;
+      transform: scale(0);
+      opacity: 0.4;
+    }
+
+    /* Should be "focus-ring" (keyboard focus only) */
+
+    /*input:focus + .checkbox {
+      box-shadow: 0 0 0 3px hsla(214, 90%, 52%, 0.3);
+    }*/
+
+    /* The :checked pseudo class is used here only for testing purposes */
+    vaadin-checkbox[indeterminate] input:checked+.checkbox::after {
+      transform: none;
+      opacity: 1;
+      top: 45%;
+      left: 20%;
+      width: 60%;
+      height: 10%;
+      border: 0;
+      background-color: #fff;
+      transition: opacity 0.4s;
+    }
+
+    vaadin-checkbox[disabled] {
+      pointer-events: none;
+    }
+
+    vaadin-checkbox[disabled] .checkbox {
+      background-color: hsla(214, 70%, 30%, 0.1);
+    }
+
+    vaadin-checkbox[disabled] .checkbox::after {
+      border-color: hsla(214, 55%, 30%, 0.4);
+    }
+
+    /* Page styles */
+
+    body {
+      background-color: #FFF;
+      color: hsla(214, 30%, 30%, 0.9);
+      font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Ubuntu, Helvetica, Arial, sans-serif;
+    }
+
+    p {
+      font-weight: 600;
+      color: hsla(214, 45%, 30%, 0.6);
+      font-size: 0.75em;
+      margin-top: 2em;
+    }
+
+    .label b {
+      font-weight: 500;
+    }
+
+    .label span {
+      color: hsla(214, 40%, 30%, 0.7);
+      font-size: 0.875em;
+    }
+
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+  <p>Without label</p>
+
+  <vaadin-checkbox>
+    <label>
+      <input type="checkbox" checked>
+      <span class="checkbox"></span>
+      <span class="label"></span>
+    </label>
+  </vaadin-checkbox>
+
+  <vaadin-checkbox>
+    <label>
+      <input type="checkbox">
+      <span class="checkbox"></span>
+      <span class="label"></span>
+    </label>
+  </vaadin-checkbox>
+
+  <p>Disabled</p>
+
+  <vaadin-checkbox disabled>
+    <label>
+      <input type="checkbox" checked disabled>
+      <span class="checkbox"></span>
+      <span class="label"></span>
+    </label>
+  </vaadin-checkbox>
+
+  <vaadin-checkbox disabled>
+    <label>
+      <input type="checkbox" disabled>
+      <span class="checkbox"></span>
+      <span class="label"></span>
+    </label>
+  </vaadin-checkbox>
+
+  <vaadin-checkbox disabled>
+    <label>
+      <input type="checkbox" checked disabled>
+      <span class="checkbox"></span>
+      <span class="label"></span>
+    </label>
+  </vaadin-checkbox>
+
+  <p>With label</p>
+
+  <vaadin-checkbox>
+    <label>
+      <input type="checkbox" checked>
+      <span class="checkbox"></span>
+      <span class="label"><b>Label</b></span>
+    </label>
+  </vaadin-checkbox>
+
+  <vaadin-checkbox>
+    <label>
+      <input type="checkbox">
+      <span class="checkbox"></span>
+      <span class="label"><b>Label</b></span>
+    </label>
+  </vaadin-checkbox>
+
+  <p>With label, two lines</p>
+
+  <vaadin-checkbox>
+    <label>
+      <input type="checkbox" checked>
+      <span class="checkbox"></span>
+      <span class="label"><b>Label</b><br><span>Description</span></span>
+    </label>
+  </vaadin-checkbox>
+
+  <vaadin-checkbox>
+    <label>
+      <input type="checkbox">
+      <span class="checkbox"></span>
+      <span class="label"><b>Label</b><br><span>Description</span></span>
+    </label>
+  </vaadin-checkbox>
+
+  <p>Indeterminate</p>
+
+  <vaadin-checkbox indeterminate>
+    <label>
+      <input type="checkbox" checked>
+      <span class="checkbox"></span>
+      <span class="label"></span>
+    </label>
+  </vaadin-checkbox>
+
+</body>
+
+</html>

@@ -56,19 +56,24 @@
       transition: transform 0.15s, background-color 0.15s;
       pointer-events: none;
       will-change: transform;
+      line-height: 1.2;
+    }
+
+    /* IE11 only */
+    *::-ms-backdrop, .checkbox {
+      line-height: 1;
     }
 
     /* Used for activation "halo" */
     .checkbox::before {
       /* Needed to align the checkbox nicely on the baseline */
-      content: "\e00A0";
+      content: "x";
+      color: transparent;
       display: inline-block;
       width: 100%;
       height: 100%;
-      top: 0;
-      left: 0;
       border-radius: inherit;
-      background-color: hsl(214, 90%, 52%);
+      background-color: inherit;
       transform: scale(1.5);
       opacity: 0;
       transition: transform 0.1s, opacity 0.8s;
@@ -86,8 +91,8 @@
       box-sizing: border-box;
       transform-origin: 0 0;
       position: absolute;
-      top: 70%;
-      left: 45%;
+      top: 0.8125em;
+      left: 0.5em;
       transform: scale(0.55, 0.55) rotate(-135deg);
       opacity: 0;
       transition: width 0.1s, height 0.4s;
@@ -101,8 +106,8 @@
 
     input:checked + .checkbox::after {
       opacity: 1;
-      width: 55%;
-      height: 95%;
+      width: 0.625em;
+      height: 1.0625em;
     }
 
     input:active + .checkbox {
@@ -117,7 +122,6 @@
     }
 
     /* Should be "focus-ring" (keyboard focus only) */
-
     /*input:focus + .checkbox {
       box-shadow: 0 0 0 3px hsla(214, 90%, 52%, 0.3);
     }*/

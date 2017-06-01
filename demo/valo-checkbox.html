@@ -185,6 +185,7 @@
       display: inline-block;
       position: relative;
       border-radius: 4px;
+      margin: 8px;
     }
 
     vaadin-text-field input {
@@ -201,15 +202,21 @@
       outline: none;
       transition: all 0.5s;
       margin: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     vaadin-text-field input::placeholder {
       color: hsla(214, 55%, 30%, 0.4);
     }
 
-    vaadin-text-field input:hover {
-      background-color: hsla(214, 75%, 30%, 0.05);
-      background-color: hsla(214, 65%, 30%, 0.2);
+    @media (hover: hover) {
+      vaadin-text-field input:hover {
+        background-color: hsla(214, 65%, 30%, 0.2);
+      }
+    }
+
+    vaadin-text-field input:active {
+      background-color: hsla(214, 60%, 30%, 0.3);
     }
 
     vaadin-text-field input:not(:active):focus {
@@ -275,6 +282,11 @@
 
 
 <body>
+
+  <vaadin-text-field>
+    <input type="text" placeholder="Placeholder" value="Value">
+    <span></span>
+  </vaadin-text-field>
 
   <vaadin-text-field>
     <input type="text" placeholder="Placeholder" value="Value">

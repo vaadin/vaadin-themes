@@ -1,0 +1,46 @@
+<dom-module id="valo-button" theme-for="vaadin-button">
+  <template>
+    <style>
+    :host {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: var(--valo-button-border-radius, var(--valo-border-radius));
+      color: var(--valo-primary-text-color);
+      font-family: var(--valo-font-family);
+      font-size: var(--valo-font-size);
+      font-weight: 600;
+      overflow: hidden;
+      transition: background-color 0.3s, box-shadow 0.2s;
+      background-color: var(--valo-white);
+      border: 1px solid var(--valo-black-20pct);
+      background-clip: padding-box;
+      margin: calc(var(--material-base-grid) / 2) var(--material-base-grid);
+      min-width: calc(var(--material-base-grid) * 11);
+      min-height: var(--valo-size-m);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    [part="button"] {
+      border: 0;
+      margin: 0;
+      padding: 0 var(--valo-space-m);
+      background-color: transparent;
+      color: inherit;
+      font: inherit;
+      line-height: normal;
+      text-transform: inherit;
+      outline: none;
+      min-width: inherit;
+      min-height: inherit;
+    }
+
+    [part="button"]::-moz-focus-inner {
+      border: 0;
+    }
+    </style>
+  </template>
+</dom-module>

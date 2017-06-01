@@ -6,8 +6,8 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
-        border-radius: calc(var(--material-base-grid) / 4);
-        color: var(--material-body-font-color);
+        border-radius: 3px;
+        color: var(--material-body-text-color);
         font-family: var(--material-font-family);
         text-transform: uppercase;
         font-size: calc(var(--material-font-size) * 0.875);
@@ -18,6 +18,8 @@
         min-width: calc(var(--material-base-grid) * 11);
         min-height: calc(var(--material-base-grid) * 4.5);
         -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       [part="button"] {

@@ -1,0 +1,146 @@
+<dom-module id="valo-checkbox" theme-for="vaadin-checkbox">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        -webkit-user-select: none;
+        color: var(--valo-body-text-color);
+      }
+
+      [part="wrapper"] {
+        display: inline-flex;
+        align-items: baseline;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+      }
+
+      /* This makes the :active style work in IE11 */
+      [part="label"] {
+        pointer-events: none;
+        transition: transform 0.3s;
+        will-change: transform;
+      }
+
+      /* Not sure if this is necessary: should there ever be anything clickable inside the label? */
+      [part="label"] > * {
+        pointer-events: auto;
+      }
+
+      [part="label"]:not(:empty) {
+        margin: 0.1875em 0.375em;
+      }
+
+      [part="native-checkbox"] {
+        opacity: 0;
+        position: absolute;
+      }
+
+      [part="checkbox"] {
+        display: inline-block;
+        width: var(--valo-checkbox-size, calc(1em + 2px));
+        height: var(--valo-checkbox-size, calc(1em + 2px));
+        margin: 0.1875em;
+        transition: transform 0.5s;
+        will-change: transform;
+        position: relative;
+        border-radius: 4px;
+        background-color: var(--valo-checkbox-background-color, var(--valo-black-20pct));
+        transition: transform 0.15s, background-color 0.15s;
+        pointer-events: none;
+        will-change: transform;
+        line-height: 1.2;
+      }
+
+      /* IE11 only */
+      *::-ms-backdrop, [part="checkbox"] {
+        line-height: 1;
+      }
+
+      /* Used for activation "halo" */
+      [part="checkbox"]::before {
+        /* Needed to align the checkbox nicely on the baseline */
+        content: "x";
+        color: transparent;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background-color: inherit;
+        transform: scale(1.5);
+        opacity: 0;
+        transition: transform 0.1s, opacity 0.8s;
+        will-change: transform, opacity;
+      }
+
+      /* Used for the checkmark */
+      [part="checkbox"]::after {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border: 0 solid var(--valo-primary-contrast-color);
+        border-width: 0.1875em 0 0 0.1875em;
+        box-sizing: border-box;
+        transform-origin: 0 0;
+        position: absolute;
+        top: 0.8125em;
+        left: 0.5em;
+        transform: scale(0.55, 0.55) rotate(-135deg);
+        opacity: 0;
+        transition: width 0.1s, height 0.4s;
+      }
+      /* The :checked pseudo class for the indeterminate state is used here only for testing purposes */
+      /* TODO should we replace :checked with a host attribute? */
+      :host([indeterminate]) [part="native-checkbox"]:checked + [part="checkbox"],
+      [part="native-checkbox"]:checked + [part="checkbox"] {
+        background-color: var(--valo-primary-color);
+      }
+
+      [part="native-checkbox"]:checked + [part="checkbox"]::after {
+        opacity: 1;
+        width: 0.625em;
+        height: 1.0625em;
+      }
+
+      [part="native-checkbox"]:active + [part="checkbox"] {
+        transform: scale(1.1);
+        transition-duration: 0.05s;
+      }
+
+      [part="native-checkbox"]:not(:checked):active + [part="checkbox"]::before {
+        transition-duration: 0.01s, 0.01s;
+        transform: scale(0);
+        opacity: 0.4;
+      }
+
+      :host([focus-ring]) [part="checkbox"] {
+        box-shadow: 0 0 0 3px var(--valo-primary-color-50pct);
+      }
+
+      /* The :checked pseudo class is used here only for testing purposes */
+      :host([indeterminate]) [part="native-checkbox"]:checked + [part="checkbox"]::after {
+        transform: none;
+        opacity: 1;
+        top: 45%;
+        left: 20%;
+        width: 60%;
+        height: 10%;
+        border: 0;
+        background-color: #fff;
+        transition: opacity 0.4s;
+      }
+
+      :host([disabled]) {
+        pointer-events: none;
+      }
+
+      :host([disabled]) [part="native-checkbox"] + [part="checkbox"] {
+        background-color: var(--valo-checkbox-disabled-background-color, var(--valo-black-10pct));
+      }
+
+      :host([disabled]) [part="checkbox"]::after {
+        border-color: var(--valo-checkbox-disabled-checkmark-color, var(--valo-black-40pct));
+      }
+    </style>
+  </template>
+</dom-module>

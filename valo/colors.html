@@ -1,0 +1,192 @@
+<custom-style>
+  <style>
+    html {
+      --valo-white-5pct:  rgba(255, 255, 255, 0.05);
+      --valo-white-10pct: rgba(255, 255, 255, 0.1);
+      --valo-white-20pct: rgba(255, 255, 255, 0.2);
+      --valo-white-30pct: rgba(255, 255, 255, 0.3);
+      --valo-white-40pct: rgba(255, 255, 255, 0.4);
+      --valo-white-50pct: rgba(255, 255, 255, 0.5);
+      --valo-white-60pct: rgba(255, 255, 255, 0.6);
+      --valo-white-70pct: rgba(255, 255, 255, 0.7);
+      --valo-white-80pct: rgba(255, 255, 255, 0.8);
+      --valo-white-90pct: rgba(255, 255, 255, 0.9);
+      --valo-white:       #FFF;
+
+      --valo-black-5pct:  hsla(214, 75%, 30%, 0.05);
+      --valo-black-10pct: hsla(214, 70%, 30%, 0.1);
+      --valo-black-20pct: hsla(214, 65%, 30%, 0.2);
+      --valo-black-30pct: hsla(214, 60%, 30%, 0.3);
+      --valo-black-40pct: hsla(214, 55%, 30%, 0.4);
+      --valo-black-50pct: hsla(214, 50%, 30%, 0.5);
+      --valo-black-60pct: hsla(214, 45%, 30%, 0.6);
+      --valo-black-70pct: hsla(214, 40%, 30%, 0.7);
+      --valo-black-80pct: hsla(214, 35%, 30%, 0.8);
+      --valo-black-90pct: hsla(214, 30%, 30%, 0.9);
+      --valo-black:       hsla(214, 30%, 30%, 1);
+
+
+      --valo-body-text-color:      var(--valo-black-90pct);
+      --valo-secondary-text-color: var(--valo-black-70pct);
+      --valo-tertiary-text-color:  var(--valo-black-50pct);
+      --valo-disabled-text-color:  var(--valo-black-30pct);
+      --valo-header-text-color:    var(--valo-black);
+
+      --valo-primary-color:          #1676f4;
+      --valo-primary-color-50pct:    rgba(22, 118, 244, 0.5);
+      --valo-primary-contrast-color: #fff;
+      --valo-primary-text-color:     var(--valo-primary-color);
+
+      --valo-error-color:       #FF473A;
+      --valo-error-color-50pct: rgba(255, 66, 56, 0.5);
+      --valo-error-text-color:  var(--valo-error-color);
+
+      --valo-background-color: var(--valo-white);
+    }
+
+    [theme~="dark"] {
+      --valo-white-5pct:  hsla(214, 75%, 90%, 0.05);
+      --valo-white-10pct: hsla(214, 70%, 90%, 0.1);
+      --valo-white-20pct: hsla(214, 65%, 90%, 0.2);
+      --valo-white-30pct: hsla(214, 60%, 90%, 0.3);
+      --valo-white-40pct: hsla(214, 55%, 90%, 0.4);
+      --valo-white-50pct: hsla(214, 50%, 90%, 0.5);
+      --valo-white-60pct: hsla(214, 45%, 90%, 0.6);
+      --valo-white-70pct: hsla(214, 40%, 92%, 0.7);
+      --valo-white-80pct: hsla(214, 35%, 94%, 0.8);
+      --valo-white-90pct: hsla(214, 30%, 96%, 0.9);
+      --valo-white:       hsla(214, 30%, 98%, 1);
+
+      --valo-black-5pct:  hsla(214, 60%,  7%, 0.05);
+      --valo-black-10pct: hsla(214, 55%, 12%, 0.1);
+      --valo-black-20pct: hsla(214, 50%, 15%, 0.2);
+      --valo-black-30pct: hsla(214, 45%, 15%, 0.3);
+      --valo-black-40pct: hsla(214, 40%, 15%, 0.4);
+      --valo-black-50pct: hsla(214, 40%, 15%, 0.5);
+      --valo-black-60pct: hsla(214, 35%, 15%, 0.6);
+      --valo-black-70pct: hsla(214, 30%, 15%, 0.7);
+      --valo-black-80pct: hsla(214, 30%, 15%, 0.8);
+      --valo-black-90pct: hsla(214, 30%, 15%, 0.9);
+      --valo-black:       hsla(214, 30%, 15%, 1);
+
+      --valo-body-text-color:      var(--valo-white-80pct);
+      --valo-secondary-text-color: var(--valo-white-60pct);
+      --valo-tertiary-text-color:  var(--valo-white-40pct);
+      --valo-disabled-text-color:  var(--valo-white-30pct);
+      --valo-header-text-color:    var(--valo-white);
+
+      --valo-primary-color:          #4d9aff;
+      --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
+      --valo-primary-contrast-color: #fff;
+      --valo-primary-text-color:     var(--valo-primary-color);
+
+      --valo-error-color:       #f65b50;
+      --valo-error-color-50pct: rgba(246,91,80,.5);
+      --valo-error-text-color:  var(--valo-error-color);
+
+      --valo-background-color: var(--valo-black);
+
+      --valo-checkbox-background-color: var(--valo-white-20pct);
+      --valo-checkbox-disabled-background-color: var(--valo-white-10pct);
+      --valo-checkbox-disabled-checkmark-color: var(--valo-white-30pct);
+
+      --valo-text-field-background-color: var(--valo-white-10pct);
+      --valo-text-field-hover-background-color: var(--valo-white-20pct);
+      --valo-text-field-active-background-color: var(--valo-white-30pct);
+      --valo-text-field-focused-background-color: var(--valo-black-90pct);
+      --valo-text-field-focused-border-color: var(--valo-white-20pct);
+
+      color: var(--valo-body-text-color);
+      background-color: var(--valo-background-color);
+    }
+  </style>
+</custom-style>
+
+<dom-module id="valo-colors">
+  <template>
+    <style>
+      body {
+        color: var(--valo-body-text-color);
+        background-color: var(--valo-background-color);
+      }
+
+      [theme~="secondary-text"] {
+        color: var(--valo-secondary-text-color)
+      }
+
+      [theme~="disabled-text"] {
+        color: var(--valo-disabled-text-color)
+      }
+
+      [theme~="primary-text"] {
+        color: var(--valo-primary-text-color)
+      }
+
+      [theme~="error-text"] {
+        color: var(--valo-error-text-color)
+      }
+
+      [theme] h1,
+      [theme] h2,
+      [theme] h3,
+      [theme] h4,
+      [theme] h5,
+      [theme] h6 {
+        color: inherit;
+      }
+    </style>
+  </template>
+</dom-module>
+
+<!-- TODO: only needed for IE. This is a copy-paste of the [theme~=dark] selector above, and it should be automatically generated by a build script -->
+<dom-module id="valo-dark">
+  <template>
+    <style>
+      :host {
+        --valo-white-5pct:  hsla(214, 75%, 90%, 0.05);
+        --valo-white-10pct: hsla(214, 70%, 90%, 0.1);
+        --valo-white-20pct: hsla(214, 65%, 90%, 0.2);
+        --valo-white-30pct: hsla(214, 60%, 90%, 0.3);
+        --valo-white-40pct: hsla(214, 55%, 90%, 0.4);
+        --valo-white-50pct: hsla(214, 50%, 90%, 0.5);
+        --valo-white-60pct: hsla(214, 45%, 90%, 0.6);
+        --valo-white-70pct: hsla(214, 40%, 92%, 0.7);
+        --valo-white-80pct: hsla(214, 35%, 94%, 0.8);
+        --valo-white-90pct: hsla(214, 30%, 96%, 0.9);
+        --valo-white:       hsla(214, 30%, 98%, 1);
+
+        --valo-black-5pct:  hsla(214, 60%,  7%, 0.05);
+        --valo-black-10pct: hsla(214, 55%, 12%, 0.1);
+        --valo-black-20pct: hsla(214, 50%, 15%, 0.2);
+        --valo-black-30pct: hsla(214, 45%, 15%, 0.3);
+        --valo-black-40pct: hsla(214, 40%, 15%, 0.4);
+        --valo-black-50pct: hsla(214, 40%, 15%, 0.5);
+        --valo-black-60pct: hsla(214, 35%, 15%, 0.6);
+        --valo-black-70pct: hsla(214, 30%, 15%, 0.7);
+        --valo-black-80pct: hsla(214, 30%, 15%, 0.8);
+        --valo-black-90pct: hsla(214, 30%, 15%, 0.9);
+        --valo-black:       hsla(214, 30%, 15%, 1);
+
+        --valo-primary-color:          #4d9aff;
+        --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
+        --valo-primary-contrast-color: #fff;
+        --valo-primary-text-color:     var(--valo-primary-color);
+
+        --valo-body-text-color:      var(--valo-white-80pct);
+        --valo-secondary-text-color: var(--valo-white-60pct);
+        --valo-tertiary-text-color:  var(--valo-white-40pct);
+        --valo-disabled-text-color:  var(--valo-white-30pct);
+        --valo-header-text-color:    var(--valo-white);
+
+        --valo-background-color: var(--valo-black);
+
+        --valo-checkbox-background-color: var(--valo-white-20pct);
+        --valo-checkbox-disabled-background-color: var(--valo-white-10pct);
+        --valo-checkbox-disabled-checkmark-color: var(--valo-white-30pct);
+
+        color: var(--valo-body-text-color);
+        background-color: var(--valo-background-color);
+      }
+    </style>
+  </template>
+</dom-module>

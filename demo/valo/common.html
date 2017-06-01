@@ -1,0 +1,27 @@
+<!-- Common imports for all examples -->
+<link rel="import" href="../../../elements-demo-resources/nice-demo-snippet.html">
+<link rel="import" href="../../../elements-demo-resources/common.html">
+
+<script>
+  window.demos = [
+     {name: 'index', title: 'Getting started'},
+     {name: 'ie11-edge14-support', title: 'Supporting IE11 and Edge 14'},
+     {name: 'typography', title: 'Typography'},
+     {name: 'colors', title: 'Colors'},
+     {name: 'sizing-and-spacing', title: 'Sizing and spacing'},
+     {name: 'buttons', title: 'Buttons', group: 'Components'},
+     {name: 'checkboxes', title: 'Checkboxes'},
+     {name: 'text-fields', title: 'Text fields'}
+  ];
+</script>
+<link rel="import" href="../../../elements-demo-resources/demo-navigation.html">
+
+<!-- Import theme custom properties and common style modules -->
+<link rel="import" href="../../valo/valo.html">
+
+<!-- Include theme to global scope -->
+<custom-style>
+  <style include="valo-colors valo-typography valo-responsive-typography valo-sizing-and-spacing">
+    /* The <style> tag needs to be non-empty for IE11 */
+  </style>
+</custom-style>

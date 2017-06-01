@@ -38,7 +38,7 @@
       margin: 0.1875em 0.375em;
     }
 
-    input {
+    vaadin-checkbox input {
       opacity: 0;
       position: absolute;
     }
@@ -100,22 +100,22 @@
 
     /* The :checked pseudo class for the indeterminate state is used here only for testing purposes */
     vaadin-checkbox[indeterminate] input:checked + .checkbox,
-    input:checked + .checkbox {
+    vaadin-checkbox input:checked + .checkbox {
       background-color: hsl(214, 90%, 52%);
     }
 
-    input:checked + .checkbox::after {
+    vaadin-checkbox input:checked + .checkbox::after {
       opacity: 1;
       width: 0.625em;
       height: 1.0625em;
     }
 
-    input:active + .checkbox {
+    vaadin-checkbox input:active + .checkbox {
       transform: scale(1.1);
       transition-duration: 0.05s;
     }
 
-    input:not(:checked):active + .checkbox::before {
+    vaadin-checkbox input:not(:checked):active + .checkbox::before {
       transition-duration: 0.01s, 0.01s;
       transform: scale(0);
       opacity: 0.4;
@@ -143,7 +143,7 @@
       pointer-events: none;
     }
 
-    vaadin-checkbox[disabled] .checkbox {
+    vaadin-checkbox[disabled] input + .checkbox {
       background-color: hsla(214, 70%, 30%, 0.1);
     }
 
@@ -157,6 +157,7 @@
       background-color: #FFF;
       color: hsla(214, 30%, 30%, 0.9);
       font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Ubuntu, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     p {
@@ -173,6 +174,74 @@
     .label span {
       color: hsla(214, 40%, 30%, 0.7);
       font-size: 0.875em;
+    }
+
+
+
+
+    /* text-field proto */
+
+    vaadin-text-field {
+      display: inline-block;
+      position: relative;
+      border-radius: 4px;
+    }
+
+    vaadin-text-field input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border-radius: inherit;
+      background-color: hsla(214, 70%, 30%, 0.1);
+      font: inherit;
+      color: inherit;
+      border: 0;
+      font-weight: 500;
+      padding: 8px 10px;
+      line-height: 1.25;
+      outline: none;
+      transition: all 0.5s;
+      margin: 0;
+    }
+
+    vaadin-text-field input::placeholder {
+      color: hsla(214, 55%, 30%, 0.4);
+    }
+
+    vaadin-text-field input:hover {
+      background-color: hsla(214, 75%, 30%, 0.05);
+      background-color: hsla(214, 65%, 30%, 0.2);
+    }
+
+    vaadin-text-field input:not(:active):focus {
+      background-color: #fff;
+      box-shadow: 0 0 0 1px hsla(214, 65%, 30%, 0.2),
+                  0 1px 4px 0 hsla(214, 60%, 30%, 0.3);
+    }
+
+    vaadin-text-field input:active,
+    vaadin-text-field input:hover {
+      transition-duration: 0.3s 0.6s;
+    }
+
+    vaadin-text-field span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background-color: #FFF;
+      opacity: 0;
+      transition: transform 0.2s, opacity 1s;
+      transform-origin: 0 0;
+      will-change: transform;
+    }
+
+    vaadin-text-field input:active + span {
+      opacity: 0.5;
+      transform: scaleX(0);
+      transition-duration: 0s, 0s;
     }
 
   </style>
@@ -206,6 +275,11 @@
 
 
 <body>
+
+  <vaadin-text-field>
+    <input type="text" placeholder="Placeholder" value="Value">
+    <span></span>
+  </vaadin-text-field>
 
   <p>Without label</p>
 

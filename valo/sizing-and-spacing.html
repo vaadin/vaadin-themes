@@ -1,0 +1,37 @@
+<custom-style>
+  <style>
+    * {
+      --valo-base-grid: 8px;
+
+      --valo-space-xs: calc(var(--valo-base-grid) / 2);
+      --valo-space-s: var(--valo-base-grid);
+      --valo-space-m: calc(var(--valo-base-grid) * 2);
+      --valo-space-l: calc(var(--valo-base-grid) * 4);
+      --valo-space-xl: calc(var(--valo-base-grid) * 8);
+
+      --valo-size-m: 36px;
+    }
+  </style>
+</custom-style>
+
+<dom-module id="valo-sizing-and-spacing">
+  <template>
+    <style>
+      [theme~="space-s"] {
+        padding: var(--valo-space-s);
+      }
+
+      [theme~="space-m"] {
+        padding: var(--valo-space-m);
+      }
+
+      [theme~="space-l"] {
+        padding: var(--valo-space-l);
+      }
+
+      [theme~="space-xl"] {
+        padding: var(--valo-space-xl);
+      }
+    </style>
+  </template>
+</dom-module>

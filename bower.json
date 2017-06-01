@@ -28,12 +28,9 @@
     "web-component-tester": "^6.0.0",
     "vaadin-text-field": "vaadin/vaadin-text-field#^1.0.0-beta1",
     "vaadin-button": "vaadin/vaadin-button#^1.0.0-beta1",
+    "vaadin-checkbox": "vaadin/vaadin-checkbox#^1.0.0-alpha1",
     "vaadin-date-picker": "vaadin/vaadin-date-picker#^2.0.0-alpha2",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "elements-demo-resources": "vaadin/elements-demo-resources#new-menu-and-styles"
-  },
-  "resolutions": {
-    "iron-meta": "1 - 2",
-    "iron-flex-layout": "1 - 2"
   }
 }

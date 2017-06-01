@@ -1,0 +1,90 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<script src="../../TinyColor/tinycolor.js"></script>
+
+<dom-module id="valo-configurator">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <input type="color" value="{{primaryColor}}">
+
+    <div class="light">
+      <h3>Black</h3>
+      <div class="blacks">
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black); color: var(--valo-white)">100%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-90pct); color: var(--valo-white)">90%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-80pct); color: var(--valo-white)">80%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-70pct); color: var(--valo-white)">70%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-60pct); color: var(--valo-white)">60%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-50pct); color: var(--valo-white)">50%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-40pct); color: var(--valo-white)">40%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-30pct); color: var(--valo-white)">30%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-20pct); color: var(--valo-white)">20%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-10pct); color: var(--valo-white)">10%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-black-5pct); color: var(--valo-white)">5%</div></div>
+      </div>
+
+      <h3>White</h3>
+      <div class="whites">
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white); color: var(--valo-black-90pct)">100%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-90pct); color: var(--valo-black-90pct)">90%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-80pct); color: var(--valo-black-90pct)">80%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-70pct); color: var(--valo-black-90pct)">70%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-60pct); color: var(--valo-black-90pct)">60%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-50pct); color: var(--valo-black-90pct)">50%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-40pct); color: var(--valo-black-90pct)">40%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-30pct); color: var(--valo-black-90pct)">30%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-20pct); color: var(--valo-black-90pct)">20%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-10pct); color: var(--valo-black-90pct)">10%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-white-5pct); color: var(--valo-black-90pct)">5%</div></div>
+      </div>
+    </div>
+
+    <div class="dark"></div>
+  </template>
+  <script>
+    class ValoConfigurator extends Polymer.Element {
+      static get is() {
+        return 'valo-configurator';
+      }
+
+      static get properties() {
+        return {
+          primaryColor: {
+            type: String,
+            observer: "_primaryColorChanged"
+          }
+        }
+      }
+
+      ready() {
+        super.ready();
+        // Convert to HEX so that native color picker understands it
+        this.primaryColor = tinycolor(this.primaryColor).toHexString();
+
+        // Duplicate for dark theme
+        this.root.querySelector(".dark").innerHTML = this.root.querySelector(".light").innerHTML;
+      }
+
+      _primaryColorChanged(color) {
+        if (color.substring(0,1) == "#") {
+          this._updateColors();
+        }
+      }
+
+      _updateColors() {
+        const primaryColor = tinycolor(this.primaryColor);
+
+        // Light theme
+        // Blacks
+        for (var i = 10; i <= 100; i = i + 10) {
+          console.log(i)
+        }
+      }
+    }
+
+    customElements.define(ValoConfigurator.is, ValoConfigurator);
+  </script>
+</dom-module>

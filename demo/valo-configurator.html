@@ -66,6 +66,9 @@
 
         // Duplicate for dark theme
         this.root.querySelector(".dark").innerHTML = this.root.querySelector(".light").innerHTML;
+
+        // Create a new global stylesheet
+        this.styles = document.createElement("style");
       }
 
       _primaryColorChanged(color) {
@@ -80,7 +83,7 @@
         // Light theme
         // Blacks
         for (var i = 10; i <= 100; i = i + 10) {
-          console.log(i)
+
         }
       }
     }

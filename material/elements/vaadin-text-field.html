@@ -142,8 +142,15 @@
 
       /* TODO: using unsupported selector to fix IE11 (even thought the label element is scaled down,
          the 133% width still takes the same space as an unscaled element */
-      .container {
+      ::-ms-backdrop, .container {
         overflow: hidden;
+      }
+
+      /* Same fix for MS Edge ^^   */
+      @supports (-ms-ime-align:auto) {
+        .container {
+          overflow: hidden;
+        }
       }
 
       :host(:not([focused]):not([invalid]):hover) [part="input-field"]::before,

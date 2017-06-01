@@ -1,0 +1,252 @@
+<link rel="import" href="vaadin-button.html">
+<link rel="import" href="vaadin-text-field.html">
+
+<dom-module id="material-date-picker" theme-for="vaadin-date-picker">
+  <template>
+    <style>
+       :host {
+        width: calc(var(--material-base-grid) * 20);
+        max-width: 100%;
+      }
+
+      [part="text-field"] {
+        font-size: var(--material-font-size-m);
+        max-width: 100%;
+        color: var(--material-body-text-color);
+        margin-bottom: 0;
+      }
+
+      [part="clear-button"],
+      [part="toggle-button"] {
+        cursor: pointer;
+        color: var(--material-secondary-text-color);
+        font-size: var(--material-font-icon-size);
+        line-height: calc(var(--material-base-grid) * 3);
+        width: calc(var(--material-base-grid) * 3);
+        text-align: center;
+        margin-left: var(--material-space-xs);
+        margin-bottom: 2px;
+      }
+
+      [part="clear-button"]:hover,
+      [part="toggle-button"]:hover {
+        color: var(--material-body-text-color);
+      }
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="material-date-picker-month-calendar" theme-for="vaadin-month-calendar">
+  <template>
+    <style include="vaadin-month-calendar-default-theme">
+      [part="date"] {
+        position: relative;
+        height: calc(var(--material-base-grid) * 5);
+        font-size: 0.9375em;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      [part="date"][focused]:not([disabled])::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: -1;
+        content: '';
+        height: calc(var(--material-base-grid) * 5 - 2px);
+        width: calc(var(--material-base-grid) * 5 - 2px);
+        border-radius: 100%;
+        opacity: 0.5;
+        background: var(--material-primary-color);
+      }
+
+      :host([focused]) [part="date"][focused]:not([disabled])::after {
+        opacity: 1;
+      }
+
+      [part="date"][today] {
+        color: var(--material-primary-text-color);
+      }
+
+      [part="date"][selected] {
+        font-weight: bold;
+      }
+
+      :host([focused]) [part="date"][focused]:not([disabled]) {
+        background: transparent;
+      }
+
+      [part="date"][focused]:not([disabled]) {
+        color: var(--material-primary-contrast-color);
+        background: transparent;
+        box-sizing: border-box;
+      }
+
+      [part="date"][selected] {
+        font-weight: 600;
+      }
+
+      [part="weekday"] {
+        color: var(--material-disabled-text-color);
+        font-size: var(--material-font-size-xs);
+
+        /* TODO: set these in default theme? */
+        text-transform: capitalize;
+        font-weight: 400;
+        padding: 0;
+      }
+
+      [part="week-number"] {
+        height: calc(var(--material-base-grid) * 5);
+        font-size: var(--material-font-size-xs);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--material-disabled-text-color);
+
+        /* TODO: set these in default theme? */
+        font-weight: 400;
+      }
+
+      [part="weekday"]:empty,
+      [part="week-numbers"] {
+        width: 2em;
+      }
+
+      [part="month-header"] {
+        font-size: var(--material-font-size-m);
+        font-weight: var(--material-font-weight-strong);
+        margin-bottom: var(--material-space-s);
+
+        /* TODO: set these in default theme? */
+        padding: 0;
+      }
+    </style>
+  </template>
+</dom-module>
+<dom-module id="material-date-picker-overlay" theme-for="vaadin-date-picker-overlay">
+  <template>
+    <style include="vaadin-date-picker-overlay-default-theme">
+       :host {
+        border-radius: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        background: var(---material-date-picker-dark-background-color, var(--material-background-color));
+      }
+
+      :host(:not([fullscreen])) {
+        box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                    0 3px 14px 2px rgba(0, 0, 0, 0.12),
+                    0 5px 5px -3px rgba(0, 0, 0, 0.4);
+
+        /* tweak the margin-top set by iron-dropdown. */
+        transform: translateY(-2px);
+      }
+
+      [part="years"] {
+        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        z-index: 1;
+      }
+
+      [part="years"]::before {
+        border-left-color: var(---material-date-picker-dark-background-color, var(--material-background-color));
+      }
+
+      [part="years"]::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(.25turn, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 4px);
+      }
+
+      [part="months"] {
+        --vaadin-infinite-scroller-item-height: 310px;
+      }
+
+      [part="toolbar"] {
+        padding: var(--material-space-s);
+        color: var(--material-body-text-color);
+        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        border-top: 1px solid var(--material-divider-color);
+      }
+
+      [part="overlay-header"] {
+        color: var(--material-body-text-color);
+        font-size: var(--material-font-size-m);
+        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        border-bottom: 2px solid var(--material-primary-color);
+      }
+
+      [part="clear-button"],
+      [part="toggle-button"] {
+        color: var(--material-secondary-text-color);
+        line-height: calc(var(--material-base-grid) * 3);
+        width: calc(var(--material-base-grid) * 3);
+        height: calc(var(--material-base-grid) * 3);
+        text-align: center;
+        margin-left: var(--material-space-xs);
+        margin-bottom: 4px;
+      }
+
+      [part="clear-button"]:hover,
+      [part="toggle-button"]:hover {
+        color: var(--material-body-text-color);
+      }
+
+      [part="overlay-header"]:not([desktop]) {
+        padding-bottom: 16px;
+      }
+
+       :host([years-visible]) [part="years"]::after {
+        top: calc(20px + 16px);
+        height: calc(100% - 20px - 16px);
+      }
+
+      [part="years-toggle-button"]::before {
+        display: inline;
+        vertical-align: middle;
+      }
+
+      [part="years-toggle-button"] {
+        position: absolute;
+        height: 20px;
+        line-height: 20px;
+        z-index: 1;
+        top: calc(100% + 2px);
+        right: 0;
+        padding: 8px;
+        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+        border-bottom-left-radius: var(--material-border-radius);
+      }
+
+      [part="year-number"] {
+        font-size: var(--material-font-size-s);
+      }
+
+      [part="year-number"] {
+        color: var(--material-secondary-text-color);
+      }
+
+      [part="year-separator"] {
+        color: var(--material-disabled-text-color);
+      }
+
+      [part="month"][disabled] {
+        opacity: 0.3;
+      }
+
+      [part="today-button"],
+      [part="cancel-button"] {
+        margin: 0;
+      }
+    </style>
+  </template>
+</dom-module>

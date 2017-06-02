@@ -30,42 +30,60 @@
 
     <h1>Checkboxes</h1>
 
+    <style>
+      /* For demo purposes */
+      nice-demo-snippet div {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+
     <h3 demo-section>Light theme</h3>
 
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <vaadin-checkbox checked>Check me out</vaadin-checkbox>
+        <vaadin-checkbox checked>Check me</vaadin-checkbox>
 
-        <br>
+        <vaadin-checkbox indeterminate>Indeterminate</vaadin-checkbox>
 
         <vaadin-checkbox>
+          <div>Caption</div>
+          <div theme="secondary-text s-text">Description</div>
+        </vaadin-checkbox>
+
+        <vaadin-checkbox checked disabled>Disabled</vaadin-checkbox>
+
+        <vaadin-checkbox disabled>
           <div theme="strong-text">Caption</div>
           <div theme="secondary-text s-text">Description</div>
         </vaadin-checkbox>
 
-        <br>
-
-        <vaadin-checkbox checked disabled>Disabled</vaadin-checkbox>
-      </script>
+      <vaadin-checkbox indeterminate disabled>Indeterminate</vaadin-checkbox>
+    </script>
     </nice-demo-snippet>
 
     <h3 demo-section>Dark theme</h3>
 
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <div theme="dark space-l">
-          <vaadin-checkbox checked>Check me out</vaadin-checkbox>
+        <div theme="dark space-m">
+          <vaadin-checkbox checked>Check me</vaadin-checkbox>
 
-          <br>
+          <vaadin-checkbox indeterminate>Indeterminate</vaadin-checkbox>
 
           <vaadin-checkbox>
             <div theme="strong-text">Caption</div>
             <div theme="secondary-text s-text">Description</div>
           </vaadin-checkbox>
 
-          <br>
-
           <vaadin-checkbox checked disabled>Disabled</vaadin-checkbox>
+
+          <vaadin-checkbox disabled>
+            <div theme="strong-text">Caption</div>
+            <div theme="secondary-text s-text">Description</div>
+          </vaadin-checkbox>
+
+        <vaadin-checkbox indeterminate disabled>Indeterminate</vaadin-checkbox>
         </div>
       </script>
     </nice-demo-snippet>

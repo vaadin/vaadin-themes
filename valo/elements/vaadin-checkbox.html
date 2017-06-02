@@ -8,7 +8,7 @@
       }
 
       [part="wrapper"] {
-        display: inline-flex;
+        display: flex;
         align-items: baseline;
         -webkit-tap-highlight-color: transparent;
         outline: none;
@@ -89,25 +89,28 @@
         opacity: 0;
         transition: width 0.1s, height 0.4s;
       }
-      /* The :checked pseudo class for the indeterminate state is used here only for testing purposes */
-      /* TODO should we replace :checked with a host attribute? */
-      :host([indeterminate]) [part="native-checkbox"]:checked + [part="checkbox"],
-      [part="native-checkbox"]:checked + [part="checkbox"] {
+
+      :host([indeterminate]) [part="checkbox"],
+      :host([checked]) [part="checkbox"] {
         background-color: var(--valo-primary-color);
       }
 
-      [part="native-checkbox"]:checked + [part="checkbox"]::after {
+      :host([checked]) [part="checkbox"]::after {
         opacity: 1;
         width: 0.625em;
         height: 1.0625em;
       }
 
-      [part="native-checkbox"]:active + [part="checkbox"] {
+      :host(:not([checked]):not([indeterminate]):not([disabled]):hover) [part="checkbox"] {
+        background-color: var(--valo-checkbox-hover-background-color, var(--valo-black-30pct));
+      }
+
+      :host(:active) [part="checkbox"] {
         transform: scale(1.1);
         transition-duration: 0.05s;
       }
 
-      [part="native-checkbox"]:not(:checked):active + [part="checkbox"]::before {
+      :host(:not([checked]):active) [part="checkbox"]::before {
         transition-duration: 0.01s, 0.01s;
         transform: scale(0);
         opacity: 0.4;
@@ -117,8 +120,7 @@
         box-shadow: 0 0 0 3px var(--valo-primary-color-50pct);
       }
 
-      /* The :checked pseudo class is used here only for testing purposes */
-      :host([indeterminate]) [part="native-checkbox"]:checked + [part="checkbox"]::after {
+      :host([indeterminate]) [part="checkbox"]::after {
         transform: none;
         opacity: 1;
         top: 45%;
@@ -126,20 +128,29 @@
         width: 60%;
         height: 10%;
         border: 0;
-        background-color: #fff;
+        background-color: var(--valo-primary-contrast-color);
         transition: opacity 0.4s;
       }
 
       :host([disabled]) {
         pointer-events: none;
+        color: var(--valo-disabled-text-color);
       }
 
-      :host([disabled]) [part="native-checkbox"] + [part="checkbox"] {
+      :host([disabled]) ::slotted(*) {
+        color: inherit !important;
+      }
+
+      :host([disabled]) [part="checkbox"] {
         background-color: var(--valo-checkbox-disabled-background-color, var(--valo-black-10pct));
       }
 
       :host([disabled]) [part="checkbox"]::after {
         border-color: var(--valo-checkbox-disabled-checkmark-color, var(--valo-black-40pct));
+      }
+
+      :host([indeterminate][disabled]) [part="checkbox"]::after {
+        background-color: var(--valo-checkbox-disabled-checkmark-color, var(--valo-black-40pct));
       }
     </style>
   </template>

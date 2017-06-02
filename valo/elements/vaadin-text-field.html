@@ -5,7 +5,7 @@
         color: var(--valo-body-text-color);
         font-size: var(--valo-font-size);
         font-family: var(--valo-font-family);
-        width: var(--valo-text-field-default-width, calc(var(--valo-base-grid) * 24));
+        width: var(--valo-text-field-default-width, calc(var(--valo-size-m) * 5));
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-tap-highlight-color: transparent;
@@ -17,15 +17,26 @@
         font-size: var(--valo-caption-font-size);
         margin-left: calc(var(--valo-text-field-border-radius, var(--valo-border-radius)) / 3);
         margin-bottom: var(--valo-space-xs);
-        margin-top: var(--valo-space-m);
         transition: color 0.3s;
+        line-height: 1.333;
       }
 
-      :host([focused]) [part="label"] {
+      :host([label]) {
+        margin-top: var(--valo-space-m);
+        vertical-align: 2em;
+      }
+
+      :host([focused]:not([readonly]):not(:active)) [part="label"] {
         color: var(--valo-primary-color);
       }
 
-      /*:host()*/
+      /* Used for required and invalid indicators */
+      [part="label"]::after {
+        content: "•";
+        transition: all 0.3s;
+        margin-left: 0.2em;
+        opacity: 0;
+      }
 
       [part="value"] {
         -webkit-appearance: none;
@@ -80,24 +91,23 @@
       }
 
       @media (hover: hover) {
-        :host(:hover:not([readonly])) [part="input-field"] {
+        :host(:hover:not([readonly]):not([invalid])) [part="input-field"] {
           background-color: var(--valo-text-field-hover-background-color, var(--valo-black-20pct));
         }
       }
 
       :host(:active:not([readonly])) [part="input-field"] {
         background-color: var(--valo-text-field-active-background-color, var(--valo-black-30pct));
+        transform: scale(0.98);
       }
 
       :host([focused]:not(:active):not([readonly])) [part="input-field"] {
         background-color: var(--valo-text-field-focused-background-color, var(--valo-white));
-        box-shadow: 0 0 0 1px var(--valo-text-field-focused-border-color, var(--valo-black-20pct)),
-                    0 1px 4px 0 var(--valo-black-20pct);
+        box-shadow: inset 0 0 0 1px var(--valo-text-field-focused-border-color, var(--valo-black-20pct));
       }
 
-      :host(:active) [part="input-field"],
-      :host(:hover) [part="input-field"] {
-        transition-duration: 0.3s, 0.6s;
+      :host(:active) [part="input-field"] {
+        transition-duration: 0.2s;
       }
 
       /* Activation effect */
@@ -124,6 +134,8 @@
         transition-duration: 0s, 0s;
       }
 
+      /* Disabled style */
+
       :host([disabled]) {
         pointer-events: none;
       }
@@ -148,14 +160,44 @@
         opacity: 0;
       }
 
+      :host([disabled]) [part="input-field"] {
+        background-color: var(--valo-text-field-disabled-background-color, var(--valo-black-20pct));
+      }
+
+      /* Required field style */
+
+      :host([required]:not([has-value]):not([invalid])) [part="label"]::after {
+        color: var(--valo-primary-color);
+        opacity: 1;
+      }
+
+      /* Invalid styles and error message */
+
+      :host([invalid]) [part="label"]::after {
+        color: var(--valo-error-color);
+        opacity: 1;
+      }
+
+      :host([invalid]:not(:active)) [part="input-field"] {
+        background-color: var(--valo-error-color-10pct);
+      }
+
       [part="error-message"] {
         margin-top: var(--valo-space-xs);
         margin-left: calc(var(--valo-text-field-border-radius, var(--valo-border-radius)) / 3);
         font-size: var(--valo-font-size-s);
         color: var(--valo-error-text-color);
+        animation: reveal 0.2s;
+      }
+
+      @keyframes reveal {
+        0% {
+          opacity: 0;
+        }
       }
 
       /* Small theme */
+
       :host([theme~="small"]) {
         --valo-font-size: 14px;
       }

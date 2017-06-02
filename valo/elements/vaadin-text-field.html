@@ -17,7 +17,7 @@
         font-size: var(--valo-caption-font-size);
         margin-left: calc(var(--valo-text-field-border-radius, var(--valo-border-radius)) / 3);
         margin-bottom: var(--valo-space-xs);
-        transition: color 0.3s;
+        transition: color 0.4s;
         line-height: 1.333;
       }
 
@@ -26,8 +26,9 @@
         vertical-align: 2em;
       }
 
-      :host([focused]:not([readonly]):not(:active)) [part="label"] {
+      :host([focused]:not([readonly])) [part="label"] {
         color: var(--valo-primary-color);
+        text-shadow: 0 0 6px var(--valo-primary-color-20pct);
       }
 
       /* Used for required and invalid indicators */
@@ -88,25 +89,32 @@
         transition: all 0.5s;
         font-weight: var(--valo-caption-font-weight);
         position: relative;
+        will-change: transform;
       }
 
       @media (hover: hover) {
-        :host(:hover:not([readonly]):not([invalid])) [part="input-field"] {
+        :host(:hover:not([readonly]):not([invalid]):not([focused])) [part="input-field"] {
           background-color: var(--valo-text-field-hover-background-color, var(--valo-black-20pct));
         }
       }
 
-      :host(:active:not([readonly])) [part="input-field"] {
-        background-color: var(--valo-text-field-active-background-color, var(--valo-black-30pct));
-        transform: scale(0.98);
-      }
-
-      :host([focused]:not(:active):not([readonly])) [part="input-field"] {
+      :host([focused]:not([readonly])) [part="input-field"] {
         background-color: var(--valo-text-field-focused-background-color, var(--valo-white));
         box-shadow: inset 0 0 0 1px var(--valo-text-field-focused-border-color, var(--valo-black-20pct));
       }
 
-      :host(:active) [part="input-field"] {
+      /* Trigger when not focusing using the keyboard */
+      :host([focused]:not([focus-ring]):not([readonly])) [part="input-field"] {
+        animation: focus-input-field 0.5s forwards;
+      }
+
+      @keyframes focus-input-field {
+        0% {
+          transform: scale(0.98);
+        }
+      }
+
+      :host([focus-ring]) [part="input-field"] {
         transition-duration: 0.2s;
       }
 
@@ -122,16 +130,17 @@
         border-radius: inherit;
         pointer-events: none;
         background-color: var(--valo-text-field-focused-background-color, var(--valo-white));
-        opacity: 0;
-        transition: transform 0.2s, opacity 1s;
+        opacity: 0.5;
+        transform: scaleX(0);
+        transition: transform 0s, opacity 0s;
         transform-origin: 0 0;
         will-change: transform;
       }
 
-      :host(:not([readonly]):active) [part="input-field"]::after {
-        opacity: 0.5;
-        transform: scaleX(0);
-        transition-duration: 0s, 0s;
+      :host([focused]:not([focus-ring]):not([readonly])) [part="input-field"]::after {
+        opacity: 0;
+        transform: scaleX(1);
+        transition: transform 0.2s, opacity 1s;
       }
 
       /* Disabled style */
@@ -178,8 +187,8 @@
         opacity: 1;
       }
 
-      :host([invalid]:not(:active)) [part="input-field"] {
-        background-color: var(--valo-error-color-10pct);
+      :host([invalid]) [part="input-field"] {
+        box-shadow: inset 0 0 0 1px var(--valo-error-color-50pct);
       }
 
       [part="error-message"] {

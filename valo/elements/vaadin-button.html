@@ -107,6 +107,21 @@
       opacity: 0.15;
     }
 
+    :host([theme~="icon"]) ::slotted(iron-icon) {
+      vertical-align: top;
+    }
+
+    :host([theme~="icon"]) [part="button"] {
+      padding: 0;
+    }
+
+    /* Small style */
+
+    :host([theme~="small"]) {
+      min-height: calc(var(--valo-size-s) - 2px);
+      min-width: calc(var(--valo-size-s) * 2 - 2px);
+    }
+
     /* Icon style */
 
     :host([theme~="icon"]) {
@@ -120,12 +135,10 @@
       --iron-icon-height: 100%;
     }
 
-    :host([theme~="icon"]) ::slotted(iron-icon) {
-      vertical-align: top;
-    }
-
-    :host([theme~="icon"]) [part="button"] {
-      padding: 0;
+    :host([theme~="small"][theme~="icon"]) {
+      height: var(--valo-size-s);
+      width: var(--valo-size-s);
+      
     }
 
     /* Keyboard focus */

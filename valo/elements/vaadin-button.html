@@ -5,23 +5,22 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-sizing: border-box;
-      border-radius: var(--valo-button-border-radius, var(--valo-border-radius));
       color: var(--valo-primary-text-color);
       font-family: var(--valo-font-family);
       font-size: var(--valo-font-size);
-      font-weight: 600;
-      overflow: hidden;
-      transition: background-color 0.3s, box-shadow 0.2s;
-      background-color: var(--valo-white);
-      border: 1px solid var(--valo-black-20pct);
-      background-clip: padding-box;
-      margin: calc(var(--material-base-grid) / 2) var(--material-base-grid);
-      min-width: calc(var(--material-base-grid) * 11);
-      min-height: var(--valo-size-m);
+      font-weight: 500;
+      background-color: var(--valo-button-background-color, var(--valo-white-60pct));
+      border: 1px solid var(--valo-button-border-color, var(--valo-black-10pct));
+      min-width: calc(var(--valo-size-m) * 2 - 2px);
+      min-height: calc(var(--valo-size-m) - 2px);
+      border-radius: var(--valo-button-border-radius, var(--valo-border-radius));
+      margin: var(--valo-space-xs);
       -webkit-tap-highlight-color: transparent;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      transition: all 0.3s;
+      will-change: transform;
+      position: relative;
     }
 
     [part="button"] {
@@ -36,11 +35,117 @@
       outline: none;
       min-width: inherit;
       min-height: inherit;
+      text-shadow: inherit;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
 
     [part="button"]::-moz-focus-inner {
       border: 0;
     }
+
+    @media (hover: hover) {
+      :host(:hover:not([theme~="tertiary"]):not([theme~="primary"]):not([active])) {
+        border-color:var(--valo-button-hover-border-color, var(--valo-black-20pct));
+      }
+    }
+
+    /* Activation effect */
+
+    :host(:not([theme~="tertiary"]))::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      left: -1px;
+      opacity: 0;
+      transition: opacity 1.4s, transform 0s;
+      border-radius: inherit;
+      box-shadow: 0 0 2px 4px var(--valo-primary-color),
+                  inset 0 0 2px 1px var(--valo-primary-color);
+      will-change: transform, opacity;
+    }
+
+    :host([active]) {
+      transition-duration: 0.1s;
+      transform: scale(0.98);
+      border-color: var(--valo-primary-color-50pct);
+    }
+
+    :host([active]:not([theme~="tertiary"]))::before {
+      opacity: 0.1;
+      transition-duration: 0.05s, 0s;
+      transform: scale(0);
+    }
+
+    /* Tertiary style */
+
+    :host([theme~="tertiary"]) {
+      background-color: var(--valo-tertiary-button-background-color, transparent);
+      border-color: transparent;
+      transition-duration: 1s;
+    }
+
+    :host([theme~="tertiary"][active]) {
+      text-shadow: 0 0 24px var(--valo-primary-color);
+      transition-duration: 0.05s;
+    }
+
+    /* Primary style */
+
+    :host([theme~="primary"]) {
+      background-color: var(--valo-primary-color);
+      color: var(--valo-primary-contrast-color);
+      border-color: transparent;
+      font-weight: var(--valo-primary-button-font-weight, 600);
+      min-width: calc(var(--valo-size-m) * 2.5);
+    }
+
+    :host([theme~="primary"][active])::before {
+      opacity: 0.15;
+    }
+
+    /* Icon style */
+
+    :host([theme~="icon"]) {
+      min-width: 0;
+      min-height: 0;
+      width: var(--valo-size-m);
+      height: var(--valo-size-m);
+      padding: var(--valo-space-s);
+      box-sizing: border-box;
+      --iron-icon-width: 100%;
+      --iron-icon-height: 100%;
+    }
+
+    :host([theme~="icon"]) ::slotted(iron-icon) {
+      vertical-align: top;
+    }
+
+    :host([theme~="icon"]) [part="button"] {
+      padding: 0;
+    }
+
+    /* Keyboard focus */
+    :host([focus-ring]) {
+      box-shadow: 0 0 2px 0 var(--valo-primary-color-50pct);
+      border-color: var(--valo-primary-color-50pct);
+    }
+
+    /* Disabled */
+
+    :host([disabled]) {
+      pointer-events: none;
+      color: var(--valo-disabled-text-color);
+      border: 0;
+    }
+
+    :host([disabled]:not([theme~="tertiary"])) {
+      background-color: var(--valo-button-disabled-background-color, var(--valo-black-20pct));
+    }
+
     </style>
   </template>
 </dom-module>

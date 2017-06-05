@@ -34,7 +34,6 @@
 
       --valo-primary-color:          #1676f4;
       --valo-primary-color-50pct:    rgba(22, 118, 244, 0.5);
-      --valo-primary-color-20pct:    rgba(104,163,240,.2);
       --valo-primary-contrast-color: #FFF;
       --valo-primary-text-color:     var(--valo-primary-color);
 
@@ -78,7 +77,6 @@
 
       --valo-primary-color:          #4d9aff;
       --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
-      --valo-primary-color-20pct:    rgba(133,178,237,.2);
       --valo-primary-contrast-color: #FFF;
       --valo-primary-text-color:     var(--valo-primary-color);
 
@@ -87,6 +85,9 @@
       --valo-error-text-color:  var(--valo-error-color);
 
       --valo-background-color: var(--valo-black);
+
+      /* TODO: Should we extract these to be loaded together with the corresponding element?
+               We are sending unnecessary styles in certain cases like this. */
 
       --valo-checkbox-background-color: var(--valo-white-20pct);
       --valo-checkbox-hover-background-color: var(--valo-white-30pct);
@@ -98,6 +99,11 @@
       --valo-text-field-focused-background-color: var(--valo-black-90pct);
       --valo-text-field-focused-border-color: var(--valo-white-20pct);
       --valo-text-field-disabled-background-color: var(--valo-white-20pct);
+
+      --valo-button-background-color: var(--valo-black-60pct);
+      --valo-button-border-color: var(--valo-white-10pct);
+      --valo-button-hover-border-color: var(--valo-white-20pct);
+      --valo-button-disabled-background-color: var(--valo-white-20pct);
 
       color: var(--valo-body-text-color);
       background-color: var(--valo-background-color);
@@ -129,13 +135,14 @@
         color: var(--valo-error-text-color)
       }
 
-      [theme] h1,
-      [theme] h2,
-      [theme] h3,
-      [theme] h4,
-      [theme] h5,
-      [theme] h6 {
-        color: inherit;
+      /* TODO header sizes, margins etc */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--valo-header-text-color);
       }
     </style>
   </template>
@@ -170,22 +177,41 @@
         --valo-black-90pct: hsla(214, 30%, 15%, 0.9);
         --valo-black:       hsla(214, 30%, 15%, 1);
 
-        --valo-primary-color:          #4d9aff;
-        --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
-        --valo-primary-contrast-color: #fff;
-        --valo-primary-text-color:     var(--valo-primary-color);
-
         --valo-body-text-color:      var(--valo-white-80pct);
         --valo-secondary-text-color: var(--valo-white-60pct);
         --valo-tertiary-text-color:  var(--valo-white-40pct);
         --valo-disabled-text-color:  var(--valo-white-30pct);
         --valo-header-text-color:    var(--valo-white);
 
+        --valo-primary-color:          #4d9aff;
+        --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
+        --valo-primary-contrast-color: #FFF;
+        --valo-primary-text-color:     var(--valo-primary-color);
+
+        --valo-error-color:       #f65b50;
+        --valo-error-color-50pct: rgba(246,91,80,.5);
+        --valo-error-text-color:  var(--valo-error-color);
+
         --valo-background-color: var(--valo-black);
 
+        /* TODO: Should we extract these to be loaded together with the corresponding element?
+                 We are sending unnecessary styles in certain cases like this. */
+
         --valo-checkbox-background-color: var(--valo-white-20pct);
+        --valo-checkbox-hover-background-color: var(--valo-white-30pct);
         --valo-checkbox-disabled-background-color: var(--valo-white-10pct);
         --valo-checkbox-disabled-checkmark-color: var(--valo-white-30pct);
+
+        --valo-text-field-background-color: var(--valo-white-10pct);
+        --valo-text-field-hover-background-color: var(--valo-white-20pct);
+        --valo-text-field-focused-background-color: var(--valo-black-90pct);
+        --valo-text-field-focused-border-color: var(--valo-white-20pct);
+        --valo-text-field-disabled-background-color: var(--valo-white-20pct);
+
+        --valo-button-background-color: var(--valo-black-60pct);
+        --valo-button-border-color: var(--valo-white-10pct);
+        --valo-button-hover-border-color: var(--valo-white-20pct);
+        --valo-button-disabled-background-color: var(--valo-white-20pct);
 
         color: var(--valo-body-text-color);
         background-color: var(--valo-background-color);

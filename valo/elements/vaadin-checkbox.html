@@ -66,7 +66,8 @@
         height: 100%;
         border-radius: inherit;
         background-color: inherit;
-        transform: scale(1.5);
+        box-shadow: 0 0 2px 0 var(--valo-primary-color);
+        transform: scale(1.4);
         opacity: 0;
         transition: transform 0.1s, opacity 0.8s;
         will-change: transform, opacity;
@@ -105,19 +106,19 @@
         background-color: var(--valo-checkbox-hover-background-color, var(--valo-black-30pct));
       }
 
-      :host(:active) [part="checkbox"] {
+      :host([active]) [part="checkbox"] {
         transform: scale(1.1);
         transition-duration: 0.05s;
       }
 
-      :host(:not([checked]):active) [part="checkbox"]::before {
+      :host([active]:not([checked])) [part="checkbox"]::before {
         transition-duration: 0.01s, 0.01s;
         transform: scale(0);
         opacity: 0.4;
       }
 
       :host([focus-ring]) [part="checkbox"] {
-        box-shadow: 0 0 0 3px var(--valo-primary-color-50pct);
+        box-shadow: 0 0 2px 2px var(--valo-primary-color-50pct);
       }
 
       :host([indeterminate]) [part="checkbox"]::after {

@@ -33,7 +33,7 @@
       /* Used for required and invalid indicators */
       [part="label"]::after {
         content: "•";
-        transition: all 0.3s;
+        transition: all 0.2s;
         margin-left: 0.2em;
         opacity: 0;
       }
@@ -174,36 +174,33 @@
 
       /* Required field style */
 
-      :host([required]:not([has-value]):not([invalid])) [part="label"]::after {
-        color: var(--valo-primary-color);
+      :host([required]:not([has-value])) [part="label"]::after {
         opacity: 1;
       }
 
       /* Invalid styles and error message */
 
-      :host([invalid]) [part="label"]::after {
+      :host([invalid]) [part="label"] {
         color: var(--valo-error-color);
-        opacity: 1;
       }
 
       :host([invalid]) [part="input-field"] {
-        box-shadow: inset 0 0 0 1px var(--valo-error-color-50pct),
-                    inset 0 0 3px 0 var(--valo-error-color-50pct),
-                    0 0 4px -1px var(--valo-error-color-50pct);
+        background-color: rgba(255,70,57,.1);
       }
 
       [part="error-message"] {
         margin-top: var(--valo-space-xs);
         margin-left: calc(var(--valo-text-field-border-radius, var(--valo-border-radius)) / 3);
         font-size: var(--valo-font-size-s);
-        color: var(--valo-error-text-color);
-        animation: reveal 0.2s;
+        color: var(--valo-secondary-text-color);
+        transition: all 0.4s linear;
+        max-height: 5em;
       }
 
-      @keyframes reveal {
-        0% {
-          opacity: 0;
-        }
+      [part="error-message"][hidden] {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
       }
 
       /* Small theme */

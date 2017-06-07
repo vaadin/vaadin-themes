@@ -81,39 +81,25 @@
       }
 
       [part="input-field"] {
-        border-radius: calc(var(--valo-text-field-border-radius, var(--valo-border-radius)) - 1px);
+        border-radius: var(--valo-text-field-border-radius, var(--valo-border-radius));
         background-color: var(--valo-text-field-background-color, var(--valo-black-5pct));
         padding: 0 calc(var(--valo-space-s) + var(--valo-text-field-border-radius, var(--valo-border-radius)) / 3);
         transition: all 0.5s;
         font-weight: var(--valo-caption-font-weight);
         position: relative;
         will-change: transform;
-        height: calc(var(--valo-size-m) - 1px);
-        box-shadow: 0 0 0 1px var(--valo-text-field-background-color, var(--valo-black-5pct));
-        margin: 1px;
+        height: var(--valo-size-m);
       }
 
       @media (hover: hover) {
         :host(:hover:not([readonly]):not([invalid]):not([focused])) [part="input-field"] {
           background-color: var(--valo-text-field-hover-background-color, var(--valo-black-10pct));
-          box-shadow: 0 0 0 1px var(--valo-text-field-hover-background-color, var(--valo-black-10pct));
         }
       }
 
       :host([focused]:not([readonly])) [part="input-field"] {
         background-color: var(--valo-text-field-focused-background-color, var(--valo-white));
         box-shadow: 0 0 0 1px var(--valo-text-field-focused-border-color, var(--valo-black-20pct));
-      }
-
-      /* Trigger when not focusing using the keyboard */
-      :host([focused]:not([focus-ring]):not([readonly])) [part="input-field"] {
-        animation: focus-input-field 0.5s forwards;
-      }
-
-      @keyframes focus-input-field {
-        0% {
-          transform: scale(0.99);
-        }
       }
 
       :host([focus-ring]) [part="input-field"] {
@@ -139,6 +125,7 @@
         will-change: transform;
       }
 
+      /* Trigger when not focusing using the keyboard */
       :host([focused]:not([focus-ring]):not([readonly])) [part="input-field"]::after {
         opacity: 0;
         transform: scaleX(1);

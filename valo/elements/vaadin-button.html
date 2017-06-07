@@ -10,9 +10,8 @@
       font-size: var(--valo-font-size);
       font-weight: 500;
       background-color: var(--valo-button-background-color, var(--valo-white-60pct));
-      border: 1px solid var(--valo-button-border-color, var(--valo-black-10pct));
-      min-width: calc(var(--valo-size-m) * 2 - 2px);
-      min-height: calc(var(--valo-size-m) - 2px);
+      min-width: var(--valo-size-m) * 2;
+      min-height: var(--valo-size-m);
       border-radius: var(--valo-button-border-radius, var(--valo-border-radius));
       margin: var(--valo-space-xs);
       -webkit-tap-highlight-color: transparent;
@@ -21,6 +20,8 @@
       transition: all 0.3s;
       will-change: transform;
       position: relative;
+      box-shadow: 0 0 0 1px var(--valo-button-border-color, var(--valo-black-5pct)),
+                  0 1px 2px 0 var(--valo-black-20pct);
     }
 
     [part="button"] {
@@ -48,24 +49,25 @@
     @media (hover: hover) {
       :host(:hover:not([theme~="tertiary"]):not([theme~="primary"]):not([active])) {
         border-color:var(--valo-button-hover-border-color, var(--valo-black-20pct));
+        background-color: var(--valo-button-hover-background-color, var(--valo-white));
       }
     }
 
     /* Activation effect */
 
-    :host(:not([theme~="tertiary"]))::before {
+    :host::before {
       content: "";
       position: absolute;
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
-      left: -1px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       opacity: 0;
-      transition: opacity 1.4s, transform 0s;
+      transition: opacity 1.4s, transform 0.1s;
       border-radius: inherit;
-      box-shadow: 0 0 2px 4px var(--valo-primary-color),
-                  inset 0 0 2px 1px var(--valo-primary-color);
+      background-color: currentColor;
       will-change: transform, opacity;
+      filter: blur(8px);
     }
 
     :host([active]) {
@@ -74,7 +76,7 @@
       border-color: var(--valo-primary-color-50pct);
     }
 
-    :host([active]:not([theme~="tertiary"]))::before {
+    :host([active])::before {
       opacity: 0.1;
       transition-duration: 0.05s, 0s;
       transform: scale(0);
@@ -83,14 +85,8 @@
     /* Tertiary style */
 
     :host([theme~="tertiary"]) {
-      background-color: var(--valo-tertiary-button-background-color, transparent);
-      border-color: transparent;
-      transition-duration: 1s;
-    }
-
-    :host([theme~="tertiary"][active]) {
-      text-shadow: 0 0 24px var(--valo-primary-color);
-      transition-duration: 0.05s;
+      background-color: transparent;
+      box-shadow: none;
     }
 
     /* Primary style */
@@ -98,21 +94,13 @@
     :host([theme~="primary"]) {
       background-color: var(--valo-primary-color);
       color: var(--valo-primary-contrast-color);
-      border-color: transparent;
+      box-shadow: 0 1px 2px 0 var(--valo-black-30pct);
       font-weight: var(--valo-primary-button-font-weight, 600);
       min-width: calc(var(--valo-size-m) * 2.5);
     }
 
     :host([theme~="primary"][active])::before {
       opacity: 0.15;
-    }
-
-    :host([theme~="icon"]) ::slotted(iron-icon) {
-      vertical-align: top;
-    }
-
-    :host([theme~="icon"]) [part="button"] {
-      padding: 0;
     }
 
     /* Small style */
@@ -135,16 +123,17 @@
       --iron-icon-height: 100%;
     }
 
+    :host([theme~="icon"]) ::slotted(iron-icon) {
+      vertical-align: top;
+    }
+
+    :host([theme~="icon"]) [part="button"] {
+      padding: 0;
+    }
+
     :host([theme~="small"][theme~="icon"]) {
       height: var(--valo-size-s);
       width: var(--valo-size-s);
-      
-    }
-
-    /* Keyboard focus */
-    :host([focus-ring]) {
-      box-shadow: 0 0 2px 0 var(--valo-primary-color-50pct);
-      border-color: var(--valo-primary-color-50pct);
     }
 
     /* Disabled */
@@ -152,11 +141,17 @@
     :host([disabled]) {
       pointer-events: none;
       color: var(--valo-disabled-text-color);
-      border: 0;
+      box-shadow: none;
     }
 
     :host([disabled]:not([theme~="tertiary"])) {
       background-color: var(--valo-button-disabled-background-color, var(--valo-black-20pct));
+    }
+
+    /* Keyboard focus */
+
+    :host([focus-ring]) {
+      box-shadow: 0 0 0 2px var(--valo-primary-color-50pct);
     }
 
     </style>

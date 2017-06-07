@@ -45,7 +45,7 @@
         position: relative;
         border-radius: 4px;
         background-color: var(--valo-checkbox-background-color, var(--valo-black-20pct));
-        transition: transform 0.15s, background-color 0.15s;
+        transition: transform 0.2s cubic-bezier(.12,.32,.54,2), background-color 0.15s;
         pointer-events: none;
         will-change: transform;
         line-height: 1.2;
@@ -66,7 +66,6 @@
         height: 100%;
         border-radius: inherit;
         background-color: inherit;
-        box-shadow: 0 0 2px 0 var(--valo-primary-color);
         transform: scale(1.4);
         opacity: 0;
         transition: transform 0.1s, opacity 0.8s;
@@ -86,7 +85,7 @@
         position: absolute;
         top: 0.8125em;
         left: 0.5em;
-        transform: scale(0.55, 0.55) rotate(-135deg);
+        transform: scale(0.55) rotate(-135deg);
         opacity: 0;
         transition: width 0.1s, height 0.4s;
       }
@@ -107,8 +106,12 @@
       }
 
       :host([active]) [part="checkbox"] {
-        transform: scale(1.1);
+        transform: scale(0.9);
         transition-duration: 0.05s;
+      }
+
+      :host([active][checked]) [part="checkbox"] {
+        transform: scale(1.1);
       }
 
       :host([active]:not([checked])) [part="checkbox"]::before {
@@ -118,7 +121,7 @@
       }
 
       :host([focus-ring]) [part="checkbox"] {
-        box-shadow: 0 0 2px 2px var(--valo-primary-color-50pct);
+        box-shadow: 0 0 0 2px var(--valo-primary-color-50pct);
       }
 
       :host([indeterminate]) [part="checkbox"]::after {

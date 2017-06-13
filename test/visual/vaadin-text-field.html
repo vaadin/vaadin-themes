@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-  <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="import-theme.js"></script>
-  <link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
+<script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
 
-</head>
+<link rel="import" href="../../material/material.html">
+<link rel="import" href="../../material/elements/vaadin-text-field.html">
+<link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
+
 
 <body>
-
   <custom-style>
     <style>
       fieldset {
@@ -25,29 +22,50 @@
   <form>
     <fieldset id="default-tests">
       <p>
-      default: <vaadin-text-field></vaadin-text-field>
+        default:
+        <vaadin-text-field></vaadin-text-field>
+      </p>
       <p>
-      value: <vaadin-text-field value="Go Vaadin"></vaadin-text-field>
+        value:
+        <vaadin-text-field value="Go Vaadin"></vaadin-text-field>
+      </p>
       <p>
-      disabled: <vaadin-text-field disabled></vaadin-text-field>
+        disabled:
+        <vaadin-text-field disabled></vaadin-text-field>
+      </p>
       <p>
-      placeholder: <vaadin-text-field placeholder="Run Vaadin"></vaadin-text-field>
+        placeholder:
+        <vaadin-text-field placeholder="Run Vaadin"></vaadin-text-field>
+      </p>
       <p>
-      invalid: <vaadin-text-field required invalid></vaadin-text-field>
+        focused:
+        <vaadin-text-field focused></vaadin-text-field>
+      </p>
       <p>
-      label: <vaadin-text-field label="Foo"></vaadin-text-field>
+        invalid:
+        <vaadin-text-field required invalid></vaadin-text-field>
+      </p>
       <p>
-      label and value: <vaadin-text-field label="Foo" value="Bar"></vaadin-text-field>
+        label:
+        <vaadin-text-field label="Foo"></vaadin-text-field>
+      </p>
       <p>
-      prefix and suffix:
+        label and value:
+        <vaadin-text-field label="Foo" value="Bar"></vaadin-text-field>
+      </p>
+      <p>
+        prefix and suffix:
         <vaadin-text-field label="Foo" value="Bar">
           <span slot="prefix">prefix</span>
           <span slot="suffix">suffix</span>
         </vaadin-text-field>
+      </p>
       <p>
-      long: <vaadin-text-field label="Foo" value="Bar" style="width: 300px;"></vaadin-text-field>
+        long:
+        <vaadin-text-field label="Foo" value="Bar" style="width: 300px;"></vaadin-text-field>
+      </p>
       <p>
-      short with prefix and suffix:
+        short with prefix and suffix:
         <vaadin-text-field label="Foo" value="Bar" style="width: 100px;">
           <span slot="prefix">prefix</span>
           <span slot="suffix">suffix</span>

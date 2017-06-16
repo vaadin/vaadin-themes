@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+<script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
 
-<link rel="import" href="../../material/material.html">
-<link rel="import" href="../../material/elements/vaadin-text-field.html">
-<link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
+<link rel="import" href="../../../material/material.html">
+<link rel="import" href="../../../material/elements/vaadin-text-field.html">
+<link rel="import" href="../../../../vaadin-text-field/vaadin-text-field.html">
 
 
 <body>
@@ -15,6 +15,10 @@
         font-size: 16px;
         width: 550px;
         border: solid 1px grey;
+      }
+
+      p {
+        margin: 0;
       }
     </style>
   </custom-style>
@@ -61,17 +65,20 @@
         </vaadin-text-field>
       </p>
       <p>
-        long:
-        <vaadin-text-field label="Foo" value="Bar" style="width: 300px;"></vaadin-text-field>
-      </p>
-      <p>
         short with prefix and suffix:
         <vaadin-text-field label="Foo" value="Bar" style="width: 100px;">
           <span slot="prefix">prefix</span>
           <span slot="suffix">suffix</span>
         </vaadin-text-field>
+      </p>
     </fieldset>
   </form>
+
+    <script>
+    document.addEventListener('WebComponentsReady', function () {
+      document.querySelector('body').setAttribute('ready', true);
+    });
+  </script>
 
 
 </body>

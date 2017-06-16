@@ -1,26 +1,13 @@
-gemini.suite('vaadin-themes', function(rootSuite) {
-  // Hack needed for
-  // - Edge (https://github.com/vaadin/vaadin-text-field/issues/10)
-  // - Making sure that animations have finished
-  // - FF has async focused the input.
-  function wait(actions, find) {
-    actions.wait(5000);
-  }
+describe('material theme', function() {
+  ['vaadin-date-picker', 'vaadin-text-field'].forEach(element => {
+    it(element, function() {
+       browser.url(`http://localhost:4567/vaadin-themes/test/visual/material/${element}.html`);
 
-  const themes = ['material'];
-  const elements = ['vaadin-text-field']
+        browser.waitUntil(function () {
+        return browser.getAttribute('body', 'ready') === 'true';
+        }, 20000, 'expected page to be ready in 20s');
 
-  themes.forEach(function(theme) {
-    gemini.suite(theme, function(themeSuite) {
-      elements.forEach(function(element) {
-        gemini.suite(element, function(elementSuite) {
-          elementSuite
-            .setUrl(element + '.html#' + theme)
-            .setCaptureElements('#default-tests')
-            .capture('screenshots', {}, wait);
-        });
-      });
+        expect(browser.checkViewport()[0].isWithinMisMatchTolerance).to.be.true;
     });
   });
-
 });

@@ -4,10 +4,13 @@
       --material-base-grid: 8px;
       --material-type-grid: 4px;
 
+      --material-space-xs: calc(var(--material-base-grid) / 2);
       --material-space-s: var(--material-base-grid);
       --material-space-m: calc(2 * var(--material-base-grid));
       --material-space-l: calc(4 * var(--material-base-grid));
       --material-space-xl: calc(8 * var(--material-base-grid));
+
+      --material-border-radius: calc(var(--material-base-grid) / 4);
     }
   </style>
 </custom-style>
@@ -15,6 +18,10 @@
 <dom-module id="material-sizing-and-spacing">
   <template>
     <style>
+      [theme~="space-xs"] {
+        padding: var(--material-space-xs);
+      }
+
       [theme~="space-s"] {
         padding: var(--material-space-s);
       }

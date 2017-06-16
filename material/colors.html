@@ -1,3 +1,5 @@
+<link rel="import" href="../../polymer/lib/elements/custom-style.html">
+
 <custom-style>
   <style>
     html {
@@ -13,6 +15,9 @@
       --material-error-text-color: var(--material-error-color);
 
       --material-background-color: var(--light-theme-background-color, #fff);
+      --material-secondary-background-color: var(--light-theme-secondary-background-color, #F5F5F5);
+
+      --material-divider-color: rgba(0,0,0,0.12);
     }
 
     [theme~="dark"] {
@@ -27,6 +32,7 @@
       --material-error-text-color: var(--material-error-color);
 
       --material-background-color: var(--dark-theme-background-color, #303030);
+      --material-secondary-background-color: var(--dark-theme-secondary-background-color, #3b3b3b);
 
       /* Text field tweaks (undocumented internal properties) */
       ---material-text-field-input-line-background-color: #FFF;
@@ -36,6 +42,10 @@
 
       /* Button tweaks */
       ---material-button-raised-background-color: rgba(255,255,255,0.08);
+
+      /* Date picker tweaks */
+      ---material-date-picker-dark-background-color: var(--material-secondary-background-color);
+      ---material-date-picker-dark-secondary-background-color: var(--material-background-color);
     }
   </style>
 </custom-style>

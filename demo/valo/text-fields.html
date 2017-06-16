@@ -15,6 +15,8 @@
   <link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
   <link rel="import" href="../../../vaadin-button/vaadin-button.html">
 
+  <link rel="import" href="../../valo/icons/valo-iconset-svg.html">
+
   <style>
     [unresolved] {
       opacity: 0;
@@ -32,19 +34,32 @@
 
     <h1>Text fields</h1>
 
-    <h3 demo-section>Light theme</h3>
+
+    <h3 demo-section>Label, placeholder and value</h3>
+
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
-
         <vaadin-text-field label="Label" placeholder="Placeholder"></vaadin-text-field>
-
         <vaadin-text-field label="Label" value="Value"></vaadin-text-field>
+      </script>
+    </nice-demo-snippet>
 
+
+    <h3 demo-section>States</h3>
+
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <vaadin-text-field label="Enabled" value="Value"></vaadin-text-field>
         <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
-
         <vaadin-text-field label="Read only" value="Value" readonly></vaadin-text-field>
+      </script>
+    </nice-demo-snippet>
 
+
+    <h3 demo-section>Validation</h3>
+
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
         <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
 
         <vaadin-text-field
@@ -56,44 +71,37 @@
       </script>
     </nice-demo-snippet>
 
-    <h3 demo-section>Dark theme</h3>
+
+    <h3 demo-section>Sizes</h3>
+
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <div theme="dark space-m">
-          <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
-
-          <vaadin-text-field label="Label" placeholder="Placeholder"></vaadin-text-field>
-
-          <vaadin-text-field label="Label" value="Value"></vaadin-text-field>
-
-          <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
-
-          <vaadin-text-field label="Read only" value="Value" readonly></vaadin-text-field>
-
-          <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
-
-          <vaadin-text-field
-            label="With error message"
-            value="Invalid"
-            pattern="[0-9]+"
-            invalid error-message="Numbers only!">
-          </vaadin-text-field>
-        </div>
+        <vaadin-text-field theme="small" label="Small" placeholder="Placeholder"></vaadin-text-field>
       </script>
     </nice-demo-snippet>
 
-    <h3 demo-section>Small</h3>
+
+    <h3 demo-section>Icons</h3>
+
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <vaadin-text-field theme="small" label="Label" placeholder="Placeholder"></vaadin-text-field>
+        <vaadin-text-field label="Prefix icon" placeholder="Search">
+          <iron-icon icon="valo:magnifier" slot="prefix"></iron-icon>
+        </vaadin-text-field>
+
+        <vaadin-text-field label="Suffix icon" placeholder="Email" value="name@example.com" style="width: 15em;">
+          <iron-icon icon="valo:checkmark" slot="suffix" style="color: var(--valo-success-color);"></iron-icon>
+        </vaadin-text-field>
       </script>
     </nice-demo-snippet>
 
-    <h3 demo-section>CSS Properties</h3>
 
-    <dl>
-      <dt theme="strong-text">--vaadin-text-field-default-width</dt>
-      <dd theme="secondary-text">The default width of a vaadin-text-field element</dd>
+    <h2 demo-section>Custom properties</h2>
+
+    <dl class="custom-properties">
+      <dt>--valo-text-field-default-width: <code>calc(var(--valo-size-m) * 5)</code></dt>
+      <dt>--valo-text-field-border-radius: <code>var(--valo-border-radius)</code></dt>
+      <dt>--valo-required-field-indicator: <code>"•"</code></dt>
     </dl>
 
   </div>

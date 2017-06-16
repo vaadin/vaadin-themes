@@ -27,6 +27,95 @@
 
     <h1>Valo theme</h1>
 
+
+    <h2 demo-section>Install</h2>
+    <p>To start using the theme, you need to install at least one Vaadin Core Element (such as <a href="https://github.com/vaadin/vaadin-text-field">vaadin-text-field</a>) and the <a href="https://github.com/vaadin/vaadin-themes">vaadin-themes</a> package.</p>
+    <p>If you install the <a href="https://github.com/vaadin/vaadin-core-elements">vaadin-core-elements</a> bundle you get all the necessary dependencies.</p>
+
+    <h5>Install bundle</h5>
+    <nice-demo-snippet code-only>
+      <script type="text/html" slot="source">
+        bower install --save vaadin-core-elements#master
+      </script>
+    </nice-demo-snippet>
+    <div class="note warn">
+      <p>Until there’s a stable release for vaadin-themes, you need to install the master branch of vaadin-core-elements.</p>
+    </div>
+
+    <h5>Install individual elements</h5>
+    <nice-demo-snippet code-only>
+      <script type="text/html" slot="source">
+        bower install --save vaadin-text-field
+        bower install --save vaadin-themes
+      </script>
+    </nice-demo-snippet>
+
+
+    <h2 demo-section>Include the theme in your app</h2>
+
+    <p>After installing, import the main theme file in your app, and any element specific theme files you need. Here, we are importing the theme for vaadin-text-field:</p>
+    <div class="note">
+      <p>You need to import the theme for an element before the actual element itself.</p>
+    </div>
+
+    <nice-demo-snippet code-only>
+      <script type="text/html" slot="source">
+        <link rel="import" href="path/to/bower_components/vaadin-themes/valo/valo.html">
+        <link rel="import" href="path/to/bower_components/vaadin-themes/valo/elements/vaadin-text-field.html">
+        <!-- Import the actual element after its theme -->
+        <link rel="import" href="path/to/bower_components/vaadin-text-field/vaadin-text-field.html">
+      </script>
+    </nice-demo-snippet>
+
+    <h2>Next steps</h2>
+    <p>That’s it. Next, you can start customizing the theme for your needs. Be sure to read the browser support instructions below as well.</p>
+
+    <hr>
+
+    <h2 demo-section>Browser support</h2>
+
+    <p>If you need to support browsers that do not have <a href="http://caniuse.com/#feat=css-variables">native support for CSS Custom Properties</a> (IE11 and EdgeHTML14 in particular), there are some limitations to how the theming features can be used. These limitations are outlined below.</p>
+
+    <h3>CSS custom properties</h3>
+
+    <h4>Using with <code>var</code></h4>
+    <p>CSS custom properties can’t be used in inline styles, or in regular <code>&lt;style&gt;</code> elements. Instead, use the custom properties inside a Polymer element’s template <code>&lt;style&gt;</code> for scoped styles, and wrap your <code>&lt;style&gt;</code> elements with the <code>&lt;custom-style&gt;</code> element for global styles.</p>
+
+    <h5>Using in a Polymer element:</h5>
+    <nice-demo-snippet code-only>
+      <script type="text/html" slot="source">
+        <dom-module id="my-component">
+          <template>
+            <style>
+              :host {
+                width: var(--valo-size-xl);
+              }
+            </style>
+            ...
+          </template>
+        </dom-module>
+      </script>
+    </nice-demo-snippet>
+
+    <h5>Using in global scope:</h5>
+    <nice-demo-snippet code-only>
+      <script type="text/html" slot="source">
+        <!-- Remember to import custom-style, which is included in the Polymer package -->
+        <link rel="import" href="../path/to/polymer/lib/elements/custom-style.html">
+
+        <custom-style>
+          <style>
+            span {
+              width: var(--valo-size-xl);
+            }
+          </style>
+        </custom-style>
+      </script>
+    </nice-demo-snippet>
+
+    <!-- TODO -->
+    <!-- <h4>Defining and overriding custom property values</h4> -->
+
   </div>
 </body>
 </html>

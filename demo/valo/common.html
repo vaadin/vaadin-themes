@@ -5,7 +5,6 @@
 <script>
   window.demos = [
      {name: 'index', title: 'Getting started'},
-     {name: 'ie11-edge14-support', title: 'Supporting IE11 and Edge 14'},
      {name: 'typography', title: 'Typography'},
      {name: 'colors', title: 'Colors'},
      {name: 'sizing-and-spacing', title: 'Sizing and spacing'},
@@ -21,7 +20,129 @@
 
 <!-- Include theme to global scope -->
 <custom-style>
-  <style include="valo-colors valo-typography valo-responsive-typography valo-sizing-and-spacing">
+  <style include="valo-colors valo-typography">
     /* The <style> tag needs to be non-empty for IE11 */
   </style>
 </custom-style>
+
+<custom-style>
+  <style>
+    demo-navigation [slot="header"] {
+      display: flex;
+      align-items: center;
+    }
+
+    #theme-select {
+      font-size: var(--valo-font-size-m);
+      margin-left: 1em;
+      display: inline-block;
+      vertical-align: baseline;
+      flex: 1;
+      text-align: right;
+    }
+
+    #theme-select select {
+      border: 0;
+      background: transparent;
+      font: inherit;
+      color: inherit;
+      pointer-events: auto;
+    }
+
+    hr {
+      height: 0;
+      border: 0;
+      border-top: 2px solid var(--valo-contrast-10pct);
+      margin: var(--valo-space-xl) 0;
+    }
+
+    dl.custom-properties {
+      font-size: var(--valo-font-size-s);
+      border-left: 4px solid var(--valo-black-10pct);
+      background-color: var(--valo-black-5pct);
+      padding: 1em 2em;
+    }
+
+    dl.custom-properties dt {
+      font-weight: 600;
+      font-family: Menlo, Consolas, monospace;
+    }
+
+    dl.custom-properties dd {
+      color: var(--valo-secondary-text-color);
+    }
+
+    dl.custom-properties dt code {
+      font-weight: 400;
+    }
+
+    dl.custom-properties dt .color-swatch {
+      display: inline-block;
+      width: 0.75em;
+      height: 0.75em;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px var(--valo-black-20pct);
+      margin-right: 0.2em;
+    }
+
+    code {
+      background-color: var(--valo-black-5pct);
+      font-family: Menlo, Consolas, monospace;
+      font-size: 0.95em;
+      border-radius: 3px;
+      padding: 0 0.2em;
+    }
+
+    nice-demo-snippet {
+      border-radius: var(--valo-border-radius);
+      --nice-demo-snippet-code-font-family: Menlo, Consolas, monospace;
+      --nice-demo-snippet-code-background-color: var(--valo-black-5pct);
+      --nice-demo-snippet-border-color: var(--valo-black-10pct);
+    }
+
+    nice-demo-snippet > [theme="dark"] {
+      margin: -1em;
+      padding: 1em;
+    }
+
+    nice-demo-snippet h5:first-child {
+      margin-top: 0;
+    }
+
+    demo-navigation {
+      --demo-navigation-sidebar-background-color: var(--valo-black-5pct);
+    }
+  </style>
+</custom-style>
+
+<script>
+  window.addEventListener("WebComponentsReady", function() {
+
+    // Insert light/dark theme selector
+    var themeSelect = document.createElement("div");
+    themeSelect.id = "theme-select";
+    themeSelect.innerHTML = "<select tooltip='Choose theme variant'><option>Light</option><option>Dark</option></select>";
+    document.querySelector("demo-navigation").firstElementChild.appendChild(themeSelect);
+
+    var demos = Array.prototype.slice.call(document.querySelectorAll("nice-demo-snippet"));
+
+    themeSelect.addEventListener("change", function(e) {
+      demos.forEach(function(demo) {
+        demo.querySelector("div").setAttribute("theme", e.target.value.toLowerCase());
+      });
+    });
+
+
+    // Insert default custom property values into definition lists
+    Array.prototype.forEach.call(document.querySelectorAll("dl.custom-properties dt"), function(dt) {
+      var value = ShadyCSS.getComputedStyleValue(dt, dt.textContent.trim());
+      if (value) {
+        dt.innerHTML += ": ";
+        if (dt.classList.contains("color") || dt.parentNode.classList.contains("color")) {
+          dt.innerHTML += "<span class='color-swatch' style='background-color: " + value + "'></span>";
+        }
+        dt.innerHTML += "<code>" + value + "</code>";
+      }
+    });
+  });
+</script>

@@ -25,25 +25,42 @@
       --valo-black-90pct: hsla(214, 30%, 30%, 0.9);
       --valo-black:       hsla(214, 30%, 30%, 1);
 
+      --valo-contrast-5pct:  var(--valo-black-5pct);
+      --valo-contrast-10pct: var(--valo-black-10pct);
+      --valo-contrast-20pct: var(--valo-black-20pct);
+      --valo-contrast-30pct: var(--valo-black-30pct);
+      --valo-contrast-40pct: var(--valo-black-40pct);
+      --valo-contrast-50pct: var(--valo-black-50pct);
+      --valo-contrast-60pct: var(--valo-black-60pct);
+      --valo-contrast-70pct: var(--valo-black-70pct);
+      --valo-contrast-80pct: var(--valo-black-80pct);
+      --valo-contrast-90pct: var(--valo-black-90pct);
+      --valo-contrast:       var(--valo-black);
 
-      --valo-body-text-color:      var(--valo-black-90pct);
-      --valo-secondary-text-color: var(--valo-black-70pct);
-      --valo-tertiary-text-color:  var(--valo-black-50pct);
-      --valo-disabled-text-color:  var(--valo-black-30pct);
-      --valo-header-text-color:    var(--valo-black);
+      --valo-body-text-color:      var(--valo-contrast-90pct);
+      --valo-secondary-text-color: var(--valo-contrast-70pct);
+      --valo-tertiary-text-color:  var(--valo-contrast-50pct);
+      --valo-disabled-text-color:  var(--valo-contrast-30pct);
 
       --valo-primary-color:          #1676f4;
       --valo-primary-color-50pct:    rgba(22, 118, 244, 0.5);
       --valo-primary-color-10pct:    rgba(22, 118, 244, 0.1);
-      --valo-primary-contrast-color: #FFF;
       --valo-primary-text-color:     var(--valo-primary-color);
+      --valo-primary-contrast-color: #FFF;
 
       --valo-error-color:       #FF473A;
       --valo-error-color-50pct: rgba(255, 66, 56, 0.5);
       --valo-error-color-10pct: rgba(255, 66, 56, 0.1);
       --valo-error-text-color:  var(--valo-error-color);
+      --valo-error-contrast-color: var(--valo-primary-contrast-color);
 
-      --valo-background-color: var(--valo-white);
+      --valo-success-color: #1BCA66;
+      --valo-success-color-50pct: rgba(27,201,102,.5);
+      --valo-success-color-10pct: rgba(27,201,102,.1);
+      --valo-success-text-color: var(--valo-success-color);
+      --valo-success-contrast-color: var(--valo-primary-contrast-color);
+
+      --valo-base-color: #FFF;
     }
 
     [theme~="dark"] {
@@ -71,47 +88,42 @@
       --valo-black-90pct: hsla(214, 30%, 15%, 0.9);
       --valo-black:       hsla(214, 30%, 15%, 1);
 
-      --valo-body-text-color:      var(--valo-white-80pct);
-      --valo-secondary-text-color: var(--valo-white-60pct);
-      --valo-tertiary-text-color:  var(--valo-white-40pct);
-      --valo-disabled-text-color:  var(--valo-white-30pct);
-      --valo-header-text-color:    var(--valo-white);
+      --valo-contrast-5pct:  var(--valo-white-5pct);
+      --valo-contrast-10pct: var(--valo-white-10pct);
+      --valo-contrast-20pct: var(--valo-white-20pct);
+      --valo-contrast-30pct: var(--valo-white-30pct);
+      --valo-contrast-40pct: var(--valo-white-40pct);
+      --valo-contrast-50pct: var(--valo-white-50pct);
+      --valo-contrast-60pct: var(--valo-white-60pct);
+      --valo-contrast-70pct: var(--valo-white-70pct);
+      --valo-contrast-80pct: var(--valo-white-80pct);
+      --valo-contrast-90pct: var(--valo-white-90pct);
+      --valo-contrast:       var(--valo-white);
+
+      --valo-body-text-color:      var(--valo-contrast-90pct);
+      --valo-secondary-text-color: var(--valo-contrast-70pct);
+      --valo-tertiary-text-color:  var(--valo-contrast-50pct);
+      --valo-disabled-text-color:  var(--valo-contrast-30pct);
 
       --valo-primary-color:          #4d9aff;
       --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
       --valo-primary-color-10pct:    rgba(77, 154, 255, 0.1);
-      --valo-primary-contrast-color: #FFF;
       --valo-primary-text-color:     var(--valo-primary-color);
+      --valo-primary-contrast-color: #FFF;
 
       --valo-error-color:       #f65b50;
       --valo-error-color-50pct: rgba(246,91,80,.5);
       --valo-error-color-10pct: rgba(246,91,80,.1);
       --valo-error-text-color:  var(--valo-error-color);
 
-      --valo-background-color: var(--valo-black);
+      /* Use the original black color. The newly defined black colors are used to shade this color */
+      --valo-base-color: hsla(214, 30%, 30%, 1);
 
-      /* TODO: Should we extract these to be loaded together with the corresponding element?
-               We are sending unnecessary styles in certain cases like this. */
-
-      --valo-checkbox-background-color: var(--valo-white-20pct);
-      --valo-checkbox-hover-background-color: var(--valo-white-30pct);
-      --valo-checkbox-disabled-background-color: var(--valo-white-10pct);
-      --valo-checkbox-disabled-checkmark-color: var(--valo-white-30pct);
-
-      --valo-text-field-background-color: var(--valo-white-5pct);
-      --valo-text-field-hover-background-color: var(--valo-white-10pct);
-      --valo-text-field-focused-background-color: var(--valo-black);
-      --valo-text-field-focused-border-color: var(--valo-white-20pct);
-      --valo-text-field-disabled-background-color: var(--valo-white-10pct);
-
-      --valo-button-background-color: var(--valo-black-60pct);
-      --valo-button-border-color: var(--valo-white-20pct);
-      --valo-button-hover-border-color: var(--valo-white-20pct);
-      --valo-button-hover-background-color: var(--valo-black-90pct);
-      --valo-button-disabled-background-color: var(--valo-white-20pct);
+      /* This is a special case, where the contrast colors don’t look nice, so we need an extra property for it */
+      --valo-button-background-color: var(--valo-white-5pct);
 
       color: var(--valo-body-text-color);
-      background-color: var(--valo-background-color);
+      background-color: var(--valo-base-color);
     }
   </style>
 </custom-style>
@@ -121,39 +133,13 @@
     <style>
       body {
         color: var(--valo-body-text-color);
-        background-color: var(--valo-background-color);
-      }
-
-      [theme~="secondary-text"] {
-        color: var(--valo-secondary-text-color)
-      }
-
-      [theme~="disabled-text"] {
-        color: var(--valo-disabled-text-color)
-      }
-
-      [theme~="primary-text"] {
-        color: var(--valo-primary-text-color)
-      }
-
-      [theme~="error-text"] {
-        color: var(--valo-error-text-color)
-      }
-
-      /* TODO header sizes, margins etc */
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        color: var(--valo-header-text-color);
+        background-color: var(--valo-base-color);
       }
     </style>
   </template>
 </dom-module>
 
-<!-- TODO: only needed for IE. This is a copy-paste of the [theme~=dark] selector above, and it should be automatically generated by a build script -->
+<!-- TODO: only needed for IE11/Edge14. This is a copy-paste of the [theme~=dark] selector above, and it should be automatically generated by a build script -->
 <dom-module id="valo-dark">
   <template>
     <style>
@@ -182,46 +168,42 @@
         --valo-black-90pct: hsla(214, 30%, 15%, 0.9);
         --valo-black:       hsla(214, 30%, 15%, 1);
 
-        --valo-body-text-color:      var(--valo-white-80pct);
-        --valo-secondary-text-color: var(--valo-white-60pct);
-        --valo-tertiary-text-color:  var(--valo-white-40pct);
-        --valo-disabled-text-color:  var(--valo-white-30pct);
-        --valo-header-text-color:    var(--valo-white);
+        --valo-contrast-5pct:  var(--valo-white-5pct);
+        --valo-contrast-10pct: var(--valo-white-10pct);
+        --valo-contrast-20pct: var(--valo-white-20pct);
+        --valo-contrast-30pct: var(--valo-white-30pct);
+        --valo-contrast-40pct: var(--valo-white-40pct);
+        --valo-contrast-50pct: var(--valo-white-50pct);
+        --valo-contrast-60pct: var(--valo-white-60pct);
+        --valo-contrast-70pct: var(--valo-white-70pct);
+        --valo-contrast-80pct: var(--valo-white-80pct);
+        --valo-contrast-90pct: var(--valo-white-90pct);
+        --valo-contrast:       var(--valo-white);
+
+        --valo-body-text-color:      var(--valo-contrast-90pct);
+        --valo-secondary-text-color: var(--valo-contrast-70pct);
+        --valo-tertiary-text-color:  var(--valo-contrast-50pct);
+        --valo-disabled-text-color:  var(--valo-contrast-30pct);
 
         --valo-primary-color:          #4d9aff;
         --valo-primary-color-50pct:    rgba(77, 154, 255, 0.5);
         --valo-primary-color-10pct:    rgba(77, 154, 255, 0.1);
-        --valo-primary-contrast-color: #FFF;
         --valo-primary-text-color:     var(--valo-primary-color);
+        --valo-primary-contrast-color: #FFF;
 
         --valo-error-color:       #f65b50;
         --valo-error-color-50pct: rgba(246,91,80,.5);
         --valo-error-color-10pct: rgba(246,91,80,.1);
         --valo-error-text-color:  var(--valo-error-color);
 
-        --valo-background-color: var(--valo-black);
+        /* Use the original black color. The newly defined black colors are used to shade this color */
+        --valo-base-color: hsla(214, 30%, 30%, 1);
 
-        /* TODO: Should we extract these to be loaded together with the corresponding element?
-                 We are sending unnecessary styles in certain cases like this. */
-
-        --valo-checkbox-background-color: var(--valo-white-20pct);
-        --valo-checkbox-hover-background-color: var(--valo-white-30pct);
-        --valo-checkbox-disabled-background-color: var(--valo-white-10pct);
-        --valo-checkbox-disabled-checkmark-color: var(--valo-white-30pct);
-
-        --valo-text-field-background-color: var(--valo-white-10pct);
-        --valo-text-field-hover-background-color: var(--valo-white-20pct);
-        --valo-text-field-focused-background-color: var(--valo-black-90pct);
-        --valo-text-field-focused-border-color: var(--valo-white-20pct);
-        --valo-text-field-disabled-background-color: var(--valo-white-20pct);
-
-        --valo-button-background-color: var(--valo-black-60pct);
-        --valo-button-border-color: var(--valo-white-10pct);
-        --valo-button-hover-border-color: var(--valo-white-20pct);
-        --valo-button-disabled-background-color: var(--valo-white-20pct);
+        /* This is a special case, where the contrast colors don’t look nice, so we need an extra property for it */
+        --valo-button-background-color: var(--valo-white-5pct);
 
         color: var(--valo-body-text-color);
-        background-color: var(--valo-background-color);
+        background-color: var(--valo-base-color);
       }
     </style>
   </template>

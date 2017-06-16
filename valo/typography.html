@@ -2,25 +2,18 @@
   <style>
     html {
       --valo-font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      --valo-font-size: 1em;
+
+      --valo-font-size-xxxl: 36px;
+      --valo-font-size-xxl: 28px;
+      --valo-font-size-xl: 22px;
+      --valo-font-size-l: 18px;
+      --valo-font-size-m: 16px;
+      --valo-font-size-s: 14px;
+      --valo-font-size-xs: 13px;
+
       --valo-line-height: 1.625;
-
-      --valo-font-scale-up: 1.25;
-      --valo-font-scale-down: 1.14;
-
-      --valo-font-size-xxxl: calc(var(--valo-font-size) * var(--valo-font-scale-up) * var(--valo-font-scale-up) * var(--valo-font-scale-up) * var(--valo-font-scale-up));
-      --valo-font-size-xxl: calc(var(--valo-font-size) * var(--valo-font-scale-up) * var(--valo-font-scale-up) * var(--valo-font-scale-up));
-      --valo-font-size-xl: calc(var(--valo-font-size) * var(--valo-font-scale-up) * var(--valo-font-scale-up));
-      --valo-font-size-l: calc(var(--valo-font-size) * var(--valo-font-scale-up));
-      --valo-font-size-m: var(--valo-font-size);
-      --valo-font-size-s: calc(var(--valo-font-size) / var(--valo-font-scale-down));
-      --valo-font-size-xs: calc(var(--valo-font-size) / var(--valo-font-scale-down) / var(--valo-font-scale-down));
-
-      --valo-font-weight-strong: 600;
-      --valo-font-weight-light: 300;
-
-      --valo-caption-font-weight: 500;
-      --valo-caption-font-size: var(--valo-font-size-s);
+      --valo-line-height-s: 1.375;
+      --valo-line-height-xs: 1.25;
     }
   </style>
 </custom-style>
@@ -30,88 +23,41 @@
     <style>
       body {
         font-family: var(--valo-font-family);
-        font-size: var(--valo-font-size);
+        font-size: var(--valo-font-size, var(--valo-font-size-m));
         line-height: var(--valo-line-height);
         -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Needed to support IE11. The selector can’t be combined with the above because it doesn’t work in Firefox */
-      /* TODO: would be great to have this automatically generated */
-      :host {
-        font-family: var(--valo-font-family);
-        font-size: var(--valo-font-size);
-        line-height: var(--valo-line-height);
-        -webkit-text-size-adjust: 100%;
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--valo-contrast);
+        font-weight: 600;
+        line-height: var(--valo-line-height-xs);
       }
 
-      [theme~="xxxl-text"],
       h1 {
         font-size: var(--valo-font-size-xxxl);
       }
 
-      [theme~="xxl-text"],
       h2 {
         font-size: var(--valo-font-size-xxl);
       }
 
-      [theme~="xl-text"],
       h3 {
         font-size: var(--valo-font-size-xl);
       }
 
-      [theme~="l-text"],
       h4 {
         font-size: var(--valo-font-size-l);
       }
 
-      [theme~="m-text"],
       h5 {
         font-size: var(--valo-font-size-m);
       }
 
-      [theme~="s-text"],
       h6 {
         font-size: var(--valo-font-size-s);
-      }
-
-      [theme~="xs-text"] {
-        font-size: var(--valo-font-size-xs);
-      }
-
-      [theme~="strong-text"] {
-        font-weight: var(--valo-font-weight-strong);
-      }
-
-      [theme~="light-text"] {
-        font-weight: var(--valo-font-weight-light);
-      }
-
-      /* Remove margin from the first header element inside a padded container */
-      [theme*="space"] > h1:first-child,
-      [theme*="space"] > h2:first-child,
-      [theme*="space"] > h3:first-child,
-      [theme*="space"] > h4:first-child,
-      [theme*="space"] > h5:first-child,
-      [theme*="space"] > h6:first-child {
-        margin-top: 0;
-      }
-    </style>
-  </template>
-</dom-module>
-
-<dom-module id="valo-responsive-typography">
-  <template>
-    <style>
-      @media screen and (max-width: 500px) {
-        html {
-          --valo-font-scale-up: 1.2;
-        }
-      }
-
-      @media screen and (min-width: 1000px) {
-        html {
-          --valo-font-scale-up: 1.333;
-        }
       }
     </style>
   </template>

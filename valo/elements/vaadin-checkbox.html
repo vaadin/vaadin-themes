@@ -37,14 +37,14 @@
 
       [part="checkbox"] {
         display: inline-block;
-        width: var(--valo-checkbox-size, calc(1em + 2px));
-        height: var(--valo-checkbox-size, calc(1em + 2px));
+        width: calc(1em + 2px);
+        height: calc(1em + 2px);
         margin: 0.1875em;
         transition: transform 0.5s;
         will-change: transform;
         position: relative;
         border-radius: 4px;
-        background-color: var(--valo-checkbox-background-color, var(--valo-black-20pct));
+        background-color: var(--valo-contrast-20pct);
         transition: transform 0.2s cubic-bezier(.12,.32,.54,2), background-color 0.15s;
         pointer-events: none;
         will-change: transform;
@@ -102,7 +102,7 @@
       }
 
       :host(:not([checked]):not([indeterminate]):not([disabled]):hover) [part="checkbox"] {
-        background-color: var(--valo-checkbox-hover-background-color, var(--valo-black-30pct));
+        background-color: var(--valo-contrast-30pct);
       }
 
       :host([active]) [part="checkbox"] {
@@ -128,9 +128,10 @@
         transform: none;
         opacity: 1;
         top: 45%;
-        left: 20%;
-        width: 60%;
         height: 10%;
+        left: 22%;
+        right: 22%;
+        width: auto;
         border: 0;
         background-color: var(--valo-primary-contrast-color);
         transition: opacity 0.4s;
@@ -146,15 +147,15 @@
       }
 
       :host([disabled]) [part="checkbox"] {
-        background-color: var(--valo-checkbox-disabled-background-color, var(--valo-black-10pct));
+        background-color: var(--valo-contrast-10pct);
       }
 
       :host([disabled]) [part="checkbox"]::after {
-        border-color: var(--valo-checkbox-disabled-checkmark-color, var(--valo-black-40pct));
+        border-color: var(--valo-contrast-30pct);
       }
 
       :host([indeterminate][disabled]) [part="checkbox"]::after {
-        background-color: var(--valo-checkbox-disabled-checkmark-color, var(--valo-black-40pct));
+        background-color: var(--valo-contrast-30pct);
       }
     </style>
   </template>

@@ -13,11 +13,12 @@ addons:
 
 install:
   - npm install
-  - npm install -g bower
   - bower install
 
 before_script:
   - gulp lint
 
 script:
-  - ([ "$TRAVIS_EVENT_TYPE" = "pull_request" ] || wdio wdio.conf.js)
+  - if [[ "$TRAVIS_EVENT_TYPE" != "pull_request" && "$TRAVIS_BRANCH" != quick/* ]]; then
+      wdio wdio.conf.js;
+    fi

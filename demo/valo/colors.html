@@ -37,6 +37,8 @@
 
   <div class="vertical-section-container centered">
 
+    <valo-config></valo-config>
+
     <demo-navigation>
       <span slot="header">Valo</span>
     </demo-navigation>
@@ -320,7 +322,7 @@
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <div class="base">
-          <div class="body-text">Normal text</div>
+          <div class="base-text">Normal text</div>
           <div class="secondary-text">Secondary text</div>
           <div class="tertiary-text">Tertiary text</div>
           <div class="disabled-text">Disabled text</div>
@@ -334,8 +336,8 @@
             .base {
               background-color: var(--valo-base-color);
             }
-            .body-text {
-              color: var(--valo-body-text-color);
+            .base-text {
+              color: var(--valo-base-text-color);
             }
             .secondary-text {
               color: var(--valo-secondary-text-color);
@@ -432,7 +434,7 @@
     <h5>Text</h5>
     <dl class="custom-properties color">
       <dt>--valo-base-color</dt>
-      <dt>--valo-body-text-color</dt>
+      <dt>--valo-base-text-color</dt>
       <dt>--valo-secondary-text-color</dt>
       <dt>--valo-tertiary-text-color</dt>
       <dt>--valo-disabled-text-color</dt>

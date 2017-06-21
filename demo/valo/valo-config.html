@@ -1,0 +1,577 @@
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../../polymer/lib/elements/dom-repeat.html">
+<script src="../../../TinyColor/tinycolor.js"></script>
+
+<dom-module id="valo-config">
+  <template>
+    <style include="valo-colors">
+      :host {
+        display: block;
+        /*position: fixed;
+        z-index: 20;
+        background-color: var(--valo-base-color);
+        box-shadow: 0 4px 24px var(--valo-black-30pct);
+        font-size: 0.8em;*/
+      }
+
+      .color-pickers {
+        display: flex;
+      }
+
+      .color-pickers > div {
+        padding: 0 1em 1em;
+      }
+
+      .color-pickers h5 {
+        margin: 1em 0 0;
+      }
+
+      .light-controls {
+        background-color: var(--valo-base-color);
+      }
+
+      .color span {
+        font-size: 12px;
+      }
+
+      .color input {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        vertical-align: middle;
+      }
+
+      .color input::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      .color input::-webkit-color-swatch {
+        border-radius: 50%;
+        border-color: var(--valo-contrast);
+      }
+
+      .color button {
+        background: var(--valo-contrast-60pct, rgba(0,0,0,0.6));
+        color: var(--valo-base-color, #fff);
+        border: 0;
+        margin: 0;
+        padding: 0;
+        width: 16px;
+        height: 16px;
+        font: inherit;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 600;
+        overflow: hidden;
+        vertical-align: middle;
+        border-radius: 50%;
+      }
+
+      .color button[disabled] {
+        opacity: 0;
+      }
+
+      .color-swatch {
+        display: inline-block;
+        text-align: center;
+        line-height: 20px;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 1px var(--valo-contrast-20pct);
+        margin: 4px;
+      }
+
+      .light,
+      .dark {
+        padding: 0.5em;
+        display: inline-block;
+      }
+    </style>
+
+    <!-- <details> -->
+      <summary>Customize</summary>
+      <div>
+        <div class="color-pickers">
+          <div class="light-controls" theme="light">
+            <h5>Light</h5>
+            <dom-repeat items="[[light]]">
+              <template>
+                <div class="color">
+                  <!-- TODO: replace with something cross-browser supported, which also supports copy-paste string values -->
+                  <input type="color" path="light.[[index]]" value="[[item.value]]" on-change="_colorChanged">
+                  <span>[[_getColorPropertyName(item.name)]]</span>
+                  <button on-click="_clearColor" path="light.[[index]]" disabled$="[[!item.userDefined]]" title="Reset (use computed value)">↺</button>
+                </div>
+              </template>
+            </dom-repeat>
+            <div class="grayscale">
+              <h5>Grayscale</h5>
+              <div class="blacks">
+                <div class="color-swatch" style="background-color: var(--valo-black); color: var(--valo-white)">100</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-90pct); color: var(--valo-white)">90</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-80pct); color: var(--valo-white)">80</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-70pct); color: var(--valo-white)">70</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-60pct); color: var(--valo-white)">60</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-50pct); color: var(--valo-white)">50</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-40pct); color: var(--valo-contrast)">40</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-30pct); color: var(--valo-contrast)">30</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-20pct); color: var(--valo-contrast)">20</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-10pct); color: var(--valo-contrast)">10</div>
+                <div class="color-swatch" style="background-color: var(--valo-black-5pct); color: var(--valo-contrast)">5</div>
+              </div>
+              <div class="whites">
+                <div class="color-swatch" style="background-color: var(--valo-white); color: var(--valo-black)">100</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-90pct); color: var(--valo-black)">90</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-80pct); color: var(--valo-black)">80</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-70pct); color: var(--valo-black)">70</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-60pct); color: var(--valo-black)">60</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-50pct); color: var(--valo-black)">50</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-40pct); color: var(--valo-contrast)">40</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-30pct); color: var(--valo-contrast)">30</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-20pct); color: var(--valo-contrast)">20</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-10pct); color: var(--valo-contrast)">10</div>
+                <div class="color-swatch" style="background-color: var(--valo-white-5pct); color: var(--valo-contrast)">5</div>
+              </div>
+            </div>
+          </div>
+          <div class="dark-controls" theme="dark">
+            <h5>Dark</h5>
+            <dom-repeat items="[[dark]]">
+              <template>
+                <div class="color">
+                  <!-- TODO: replace with something cross-browser supported, which also supports copy-paste string values -->
+                  <input type="color" path="dark.[[index]]" value="[[item.value]]" on-change="_colorChanged">
+                  <span>[[_getColorPropertyName(item.name)]]</span>
+                  <button on-click="_clearColor" path="dark.[[index]]" disabled$="[[!item.userDefined]]" title="Reset (use computed value)">↺</button>
+                </div>
+              </template>
+            </dom-repeat>
+            <div class="grayscale"></div>
+          </div>
+        </div>
+
+        Contrast: <input type="range" value="{{contrast::change}}" min="40" max="100">
+      </div>
+    <!-- </details> -->
+  </template>
+  <script>
+    class ValoConfig extends Polymer.Element {
+      static get is() {
+        return 'valo-config';
+      }
+
+
+      static get properties() {
+        return {
+
+          // TODO: save/load settings to/from localStorage
+
+          light: {
+            type: Array,
+            value: [{
+                name: "baseColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "baseTextColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "primaryColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "primaryTextColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "errorColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "errorTextColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "successColor",
+                value: undefined,
+                userDefined: false
+              },
+              {
+                name: "successTextColor",
+                value: undefined,
+                userDefined: false
+              }
+            ]
+          },
+
+          dark: {
+            type: Array,
+            value: function() {
+              return JSON.parse(JSON.stringify(this.light));
+            }
+          },
+
+          contrast: {
+            type: Number,
+            value: 70,
+            observer: '_contrastChanged'
+          }
+        }
+      }
+
+      _getColorIndexByName(array, name) {
+        let index = -1;
+        array.forEach(function(color, i) {
+          if (color.name == name) {
+            index = i;
+          }
+        });
+        return index;
+      }
+
+      _colorChanged(e) {
+        this.set(e.target.path + ".userDefined", true);
+        this.set(e.target.path + ".value", e.target.value);
+        this._updateColors();
+      }
+
+      _clearColor(e) {
+        let color = e.target.path.split(".");
+        this.set(e.target.path + ".userDefined", false);
+        this._clearStyles();
+        this.set(e.target.path + ".value", this._getColorValue(this[color[0]][color[1]], color[0]));
+        this._updateColors();
+      }
+
+      _getColorValue(color, theme) {
+        if (color.userDefined) {
+          return color.value;
+        }
+
+        let propertyName = this._getColorPropertyName(color.name);
+        return tinycolor(getComputedStyle(this.root.querySelector(`[theme="${theme}"]`)).getPropertyValue(propertyName).trim()).toHexString();
+      }
+
+      _getColorPropertyName(name) {
+        return "--valo-" + name.replace(/([A-Z])/g, function($1) {
+          return "-" + $1.toLowerCase();
+        });
+      }
+
+      ready() {
+        super.ready();
+
+        // console.log(document.importNode(this.root.querySelector(".swatches").content, true));
+        // this.appendChild(document.importNode(this.root.querySelector(".swatches").content, true));
+        this.root.querySelector(".dark-controls .grayscale").innerHTML = this.root.querySelector(".light-controls .grayscale").innerHTML;
+
+        this._styles = document.createElement("style");
+        this._shadowStyles = document.createElement("style");
+
+        this.appendChild(this._styles);
+        this.root.appendChild(this._shadowStyles);
+
+        // Read stylesheet colors
+        requestAnimationFrame(function() {
+          this.light.forEach(function(color, i) {
+            let value = this._getColorValue(color, "light");
+
+            if (!color.userDefined && value) {
+              this.set("light." + i + ".value", value);
+            }
+          }.bind(this));
+
+          this.dark.forEach(function(color, i) {
+            let value = this._getColorValue(color, "dark");
+
+            if (!color.userDefined && value) {
+              this.set("dark." + i + ".value", value);
+            }
+          }.bind(this));
+        }.bind(this));
+      }
+
+      // For some reason the value come in as a string and is not converted to number
+      _contrastChanged(contrast) {
+        this.contrast = parseInt(contrast);
+        this._updateColors();
+      }
+
+      _updateThemeColors(theme) {
+        // Light or dark colors
+        let colors = this[theme];
+
+        // Primary color
+        let primaryColor = colors[this._getColorIndexByName(colors, "primaryColor")];
+        let primaryHue = parseInt(tinycolor(primaryColor.value).toHsl().h);
+
+        // Dark theme falls back to light value when user defined
+        if (theme == "dark") {
+          let index = this._getColorIndexByName(colors, "primaryColor");
+
+          if (!colors[index].userDefined) {
+            let lightPrimaryColor = this.light[this._getColorIndexByName(this.light, "primaryColor")];
+            if (lightPrimaryColor.userDefined) {
+              this.set(`dark.${index}.value`, lightPrimaryColor.value);
+            }
+          }
+        }
+
+        // Primary text color
+        let index = this._getColorIndexByName(colors, "primaryTextColor");
+        if (!colors[index].userDefined) {
+          this.set(`${theme}.${index}.value`, primaryColor.value);
+        }
+
+        // Base color (only computed for dark theme)
+        if (theme == "dark") {
+          // Use light theme hue as the default
+          let lightPrimaryColor = this.light[this._getColorIndexByName(this.light, "primaryColor")];
+          let lightPrimaryColorHue = parseInt(tinycolor(lightPrimaryColor.value).toHsl().h);
+          let index = this._getColorIndexByName(colors, "baseColor");
+          if (!colors[index].userDefined) {
+            let baseColor = tinycolor(`hsl(${lightPrimaryColorHue}, 30%, ${100-this.contrast}%)`);
+            this.set(`${theme}.${index}.value`, baseColor.toHexString());
+          }
+        }
+
+        // Base text color
+        index = this._getColorIndexByName(colors, "baseTextColor");
+        if (!colors[index].userDefined) {
+          let baseTextColor = tinycolor(`hsl(${primaryHue}, 30%, ${100-this.contrast}%)`);
+          if (theme == "dark") {
+            baseTextColor = tinycolor(`hsl(${primaryHue}, 30%, ${80 + 20*this.contrast/100}%)`);
+          }
+          this.set(`${theme}.${index}.value`, baseTextColor.toHexString());
+        }
+
+        // Error color (dark theme falls back to light value when user defined)
+        if (theme == "dark") {
+          let errorColor = colors[this._getColorIndexByName(colors, "errorColor")];
+          index = this._getColorIndexByName(colors, "errorColor");
+
+          if (!colors[index].userDefined) {
+            let lightErrorColor = this.light[this._getColorIndexByName(this.light, "errorColor")];
+            if (lightErrorColor.userDefined) {
+              this.set(`dark.${index}.value`, lightErrorColor.value);
+            }
+          }
+        }
+
+        // Error text color
+        let errorColor = colors[this._getColorIndexByName(colors, "errorColor")];
+        index = this._getColorIndexByName(colors, "errorTextColor");
+        if (!colors[index].userDefined) {
+          this.set(`${theme}.${index}.value`, errorColor.value);
+        }
+
+        // Success text color
+        let successColor = colors[this._getColorIndexByName(colors, "successColor")];
+        index = this._getColorIndexByName(colors, "successTextColor");
+        if (!colors[index].userDefined) {
+          this.set(`${theme}.${index}.value`, successColor.value);
+        }
+      }
+
+      _getCssString(theme) {
+        let str = "html {\n";
+        if (theme == "dark") {
+          str = "[theme~='dark'] {\n";
+        }
+
+        this[theme].forEach(function(color) {
+          if (color.value) {
+            str += `\t${this._getColorPropertyName(color.name)}: ${color.value};\n`;
+          }
+        }.bind(this));
+
+        str += "}";
+        return str;
+      }
+
+      _clearStyles() {
+        this._styles.innerHTML = this._shadowStyles.innerHTML = "";
+      }
+
+      _updateColors() {
+        this._updateThemeColors("light");
+        this._updateThemeColors("dark");
+
+        let lightTheme = this._getCssString("light");
+        let darkTheme = this._getCssString("dark");
+
+        // console.log(lightTheme, darkTheme);
+        if (this._styles && this._shadowStyles) {
+          this._styles.innerHTML = this._shadowStyles.innerHTML = lightTheme + "\n\n" + darkTheme;
+        }
+
+        return;
+
+        // Old prototype
+        return;
+        if (!this.primaryColor) {
+          // Read default value from the stylesheet
+          setTimeout(function() {
+            this.primaryColor = tinycolor(getComputedStyle(document.body).getPropertyValue("--valo-primary-color").trim()).toHexString();
+            this._updateColors();
+          }.bind(this), 100);
+          return;
+        }
+
+        let primaryColor = tinycolor(this.primaryColor);
+        // TODO: primary contrast color
+        let styleStr = "html {\n\t--valo-primary-color: " + primaryColor.toHexString() + ";\n";
+
+        // Hue
+        let hue = parseInt(primaryColor.toHsl().h);
+
+
+        //
+        // Light theme
+        //
+
+        // Blacks tints (5%-90%)
+        for (var i = 0; i <= 90; i = i + 10) {
+          if (i == 0) {
+            i = 5;
+          }
+
+          // Compute saturation
+          let diff = Math.min(100, this.saturation * 2) - this.saturation;
+          let sat = this.saturation + (diff * (100 - i) / 100);
+
+          // Compute lightness (based on desired contrast level)
+          let lightness = 100 - this.contrast - i / 10;
+
+          // Alpha
+          let alpha = i / 100 - (100 - i) / 5000 + (100 - i) * this.contrast * this.contrast / 10000000;
+
+          styleStr += `\t--valo-black-${i}pct: hsla(${hue}, ${parseInt(sat)}%, ${parseInt(lightness)}%, ${alpha});\n`;
+
+          if (i == 5) {
+            i = 0;
+          }
+        }
+
+        // Main black
+        let black = `hsla(${hue}, ${this.saturation}%, ${100 - this.contrast - 10}%, 1)`;
+        styleStr += "\t--valo-black:       " + black + ";\n\n";
+
+        // Contrast colors
+        styleStr +=
+          `
+        --valo-contrast-5pct:  var(--valo-black-5pct);
+        --valo-contrast-10pct: var(--valo-black-10pct);
+        --valo-contrast-20pct: var(--valo-black-20pct);
+        --valo-contrast-30pct: var(--valo-black-30pct);
+        --valo-contrast-40pct: var(--valo-black-40pct);
+        --valo-contrast-50pct: var(--valo-black-50pct);
+        --valo-contrast-60pct: var(--valo-black-60pct);
+        --valo-contrast-70pct: var(--valo-black-70pct);
+        --valo-contrast-80pct: var(--valo-black-80pct);
+        --valo-contrast-90pct: var(--valo-black-90pct);
+        --valo-contrast:       var(--valo-black);
+        }\n\n`;
+
+
+
+        //
+        // Dark theme
+        //
+
+        styleStr += "[theme~='dark'] {\n\t--valo-base-color: " + black + ";\n\n";
+        // TODO: allow customization of dark primary color
+        styleStr += "\n\t--valo-primary-color: " + primaryColor.toHexString() + ";\n";
+
+        // Blacks tints (5%-90%)
+        for (var i = 0; i <= 90; i = i + 10) {
+          if (i == 0) {
+            i = 5;
+          }
+
+          // Compute saturation
+          let diff = Math.min(100, this.saturation * 2) - this.saturation;
+          let sat = this.saturation + (diff * (100 - i) / 100);
+
+          // Compute lightness (based on desired contrast level)
+          let lightness = 50 - (this.contrast / 2);
+
+          // Alpha
+          let alpha = i / 100 + (100 - i) * this.contrast * this.contrast / 10000000;
+
+          styleStr += `\t--valo-black-${i}pct: hsla(${hue}, ${parseInt(sat)}%, ${parseInt(lightness)}%, ${alpha});\n`;
+
+          if (i == 5) {
+            i = 0;
+          }
+        }
+
+        // Full black
+        black = `hsla(${hue}, ${this.saturation}%, ${50 - this.contrast/2}%, 1)`;
+        styleStr += "\t--valo-black:       " + black + ";\n\n";
+
+
+        // White tints (5%-90%)
+        for (var i = 0; i <= 90; i = i + 10) {
+          if (i == 0) {
+            i = 5;
+          }
+
+          // Compute saturation
+          let diff = Math.min(100, this.saturation * 2.5) - this.saturation;
+          let sat = this.saturation + (diff * (100 - i) / 100);
+
+          // Compute lightness (based on desired contrast level)
+          let lightness = 90 + (this.contrast - i) / 10;
+
+          // Alpha
+          let alpha = i / 100 + (100 - i) * this.contrast * this.contrast / 10000000;
+
+          styleStr += `\t--valo-white-${i}pct: hsla(${hue}, ${parseInt(sat)}%, ${parseInt(lightness)}%, ${alpha});\n`;
+
+          if (i == 5) {
+            i = 0;
+          }
+        }
+
+        // Full white
+        let white = `hsla(${hue}, ${this.saturation}%, ${90 + this.contrast / 10}%, 1)`;
+        styleStr += "\t--valo-white:       " + white + ";\n\n";
+
+
+        // Contrast colors
+        styleStr +=
+          `
+        --valo-contrast-5pct:  var(--valo-white-5pct);
+        --valo-contrast-10pct: var(--valo-white-10pct);
+        --valo-contrast-20pct: var(--valo-white-20pct);
+        --valo-contrast-30pct: var(--valo-white-30pct);
+        --valo-contrast-40pct: var(--valo-white-40pct);
+        --valo-contrast-50pct: var(--valo-white-50pct);
+        --valo-contrast-60pct: var(--valo-white-60pct);
+        --valo-contrast-70pct: var(--valo-white-70pct);
+        --valo-contrast-80pct: var(--valo-white-80pct);
+        --valo-contrast-90pct: var(--valo-white-90pct);
+        --valo-contrast:       var(--valo-white);
+        }`;
+
+        // console.log(styleStr);
+        this._styles.innerHTML = this._shadowStyles.innerHTML = styleStr;
+      }
+    }
+
+    customElements.define(ValoConfig.is, ValoConfig);
+
+  </script>
+</dom-module>

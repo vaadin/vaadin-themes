@@ -30,6 +30,12 @@
 
 <custom-style>
   <style>
+    body {
+      margin: 0;
+      /* Prevent header margin from overflowing */
+      padding-top: 1px;
+    }
+
     demo-navigation [slot="header"] {
       display: flex;
       align-items: center;

@@ -16,10 +16,14 @@
 <link rel="import" href="../../../elements-demo-resources/demo-navigation.html">
 
 <!-- Import theme custom properties and common style modules -->
-<link rel="import" href="../../valo/valo.html">
+<link rel="import" href="../../valo/color.html">
+<link rel="import" href="../../valo/typography.html">
+<link rel="import" href="../../valo/sizing-and-spacing.html">
+<link rel="import" href="../../valo/style.html">
+<link rel="import" href="../../valo/icons.html">
 
 <!-- Import theme configurator -->
-<link rel="import" href="valo-config.html">
+<link rel="import" href="../../valo/valo-config.html">
 
 <!-- Include theme to global scope -->
 <custom-style>
@@ -67,8 +71,8 @@
 
     dl.custom-properties {
       font-size: var(--valo-font-size-s);
-      border-left: 4px solid var(--valo-black-10pct);
-      background-color: var(--valo-black-5pct);
+      border-left: 4px solid var(--valo-shade-10pct);
+      background-color: var(--valo-shade-5pct);
       padding: 1em 2em;
     }
 
@@ -90,12 +94,12 @@
       width: 0.75em;
       height: 0.75em;
       border-radius: 50%;
-      box-shadow: 0 0 0 1px var(--valo-black-20pct);
+      box-shadow: 0 0 0 1px var(--valo-shade-20pct);
       margin-right: 0.2em;
     }
 
     code {
-      background-color: var(--valo-black-5pct);
+      background-color: var(--valo-shade-5pct);
       font-family: Menlo, Consolas, monospace;
       font-size: 0.95em;
       border-radius: 3px;
@@ -105,8 +109,8 @@
     nice-demo-snippet {
       border-radius: var(--valo-border-radius);
       --nice-demo-snippet-code-font-family: Menlo, Consolas, monospace;
-      --nice-demo-snippet-code-background-color: var(--valo-black-5pct);
-      --nice-demo-snippet-border-color: var(--valo-black-10pct);
+      --nice-demo-snippet-code-background-color: var(--valo-shade-5pct);
+      --nice-demo-snippet-border-color: var(--valo-shade-10pct);
     }
 
     nice-demo-snippet > [theme="dark"] {
@@ -119,7 +123,7 @@
     }
 
     demo-navigation {
-      --demo-navigation-sidebar-background-color: var(--valo-black-5pct);
+      --demo-navigation-sidebar-background-color: var(--valo-shade-5pct);
     }
   </style>
 </custom-style>

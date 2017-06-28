@@ -26,9 +26,9 @@
     </demo-navigation>
 
     <h1>Material theme</h1>
-    <p theme="xl-text light-text">The Material theme for <a href="https://vaadin.com/elements">Vaadin Core Elements</a> is an implementation of Google’s <a href="https://material.io/spec">Material design specification</a> that adapts all Vaadin Core Elements to blend in with other Material design styles.</p>
+    <p>The Material theme for <a href="https://vaadin.com/elements">Vaadin Core Elements</a> is an implementation of Google’s <a href="https://material.io/spec">Material design specification</a> that adapts all Vaadin Core Elements to blend in with other Material design styles.</p>
 
-    <p theme="l-text light-text secondary-text">You can use Vaadin Core Elements and the Material theme on their own or mix it together with Polymer’s Paper elements or any other Material design styled elements.</p>
+    <p>You can use Vaadin Core Elements and the Material theme on their own or mix it together with Polymer’s Paper elements or any other Material design styled elements.</p>
 
     <h2>Getting Started</h2>
     <p>To start using the Material theme for Vaadin Core Elements, you need to install at least one Vaadin Core Element (such as <a href="https://github.com/vaadin/vaadin-text-field"><code>vaadin-text-field</code></a>) and the <code>vaadin-themes</code> package.</p>
@@ -39,26 +39,13 @@
       </script>
     </nice-demo-snippet>
 
-    <p>After installing, import the main theme file in your app, and any element specific theme files you need. Here, we are importing the theme for vaadin-text-field:</p>
+    <p>After installing, import any element specific theme files you need. Here, we are importing the theme for vaadin-text-field:</p>
 
     <nice-demo-snippet code-only>
       <script type="text/html" slot="source">
-        <link rel="import" href="path/to/bower_components/vaadin-themes/material/material.html">
-        <link rel="import" href="path/to/bower_components/vaadin-themes/material/elements/vaadin-text-field.html">
+        <link rel="import" href="path/to/bower_components/vaadin-themes/material/vaadin-text-field.html">
       </script>
     </nice-demo-snippet>
-
-    <h2 demo-section>Next steps</h2>
-
-    <h4>Global styles</h4>
-    <p>On top of element specific styles the theme offers consistent <a href="typography.html">typographic styles</a>, a set of <a href="colors.html">theme colors</a> you can use and a way to set consistent <a href="sizing-and-spacing.html">sizing and spacing</a> for different parts of your app.</p>
-
-    <h4>Customizing</h4>
-    <p>To adjust the theme, you can either:</p>
-    <ul>
-      <li><a href="customizing.html#global-properties">configure global properties</a> to quickly make adjustments across all elements or</li>
-      <li><a href="customizing.html#style-modules">create new element specific style modules</a> to do low-level adjustments to specific element themes.</li>
-    </ul>
 
   </div>
 </body>

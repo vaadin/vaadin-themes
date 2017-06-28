@@ -29,91 +29,106 @@
     <p theme="l-text">The theme defines font styles you can use in your app to achieve a consistent typographic style.</p>
 
     <div class="note">
-      <p>If you wish to use the Roboto font, you need to import that yourself. You can include the following snippet in your app to easily import it:</p>
+      <p>If you wish to use the Roboto font, you need to import that yourself. You can include the following snippet in your app to easily import it from <a href="https://fonts.google.com/specimen/Roboto">Google Fonts</a>:</p>
       <nice-demo-snippet code-only>
         <script type="text/html" slot="source">
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,500,500italic,700,700italic" crossorigin="anonymous">
         </script>
       </nice-demo-snippet>
     </div>
 
-    <h2 demo-section>Modular scale</h2>
-    <p>The font sizes follow a <a href="https://alistapart.com/article/more-meaningful-typography">modular scale</a>, which is controlled by the following custom properties.</p>
-    <dl>
-      <dt theme="strong-text">--material-font-scale-up</dt>
-      <dd theme="secondary-text">The scaling factor used for font sizes above M.</dd>
-      <dt theme="strong-text">--material-font-scale-down</dt>
-      <dd theme="secondary-text">The scaling factor used for font sizes below M.</dd>
-    </dl>
-
-    <h2 demo-section>Sizes</h2>
-    <p>To apply a certain font size, you can use the following CSS custom properties, which are available once you import the main <code>material.html</code> file to your app.</p>
-    <nice-demo-snippet>
-      <script type="text/html" slot="source">
-        <div style="font-size: var(--material-font-size-xxxl)">Font size XXXL</div>
-        <div style="font-size: var(--material-font-size-xxl)">Font size XXL</div>
-        <div style="font-size: var(--material-font-size-xl)">Font size XL</div>
-        <div style="font-size: var(--material-font-size-l)">Font size L</div>
-        <div style="font-size: var(--material-font-size-m)">Font size M</div>
-        <div style="font-size: var(--material-font-size-s)">Font size S</div>
-        <div style="font-size: var(--material-font-size-xs)">Font size XS</div>
-      </script>
-    </nice-demo-snippet>
-
-    <h2 demo-section>Emphasis</h2>
-    <p>To apply a different font weight to emphasize or de-emphasize some text, use the following CSS custom properties.</p>
+    <h2 demo-section>Font size</h2>
+    <p>The following font sizes are available to use. The default font size for most elements is <code>--material-body-font-size</code>.</p>
 
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <div style="font-weight: var(--material-font-weight-strong)">Strong text</div>
-        <div style="font-weight: var(--material-font-weight-light)">Light text</div>
+        <div class="font-size-display2">Display 2</div>
+        <div class="font-size-display1">Display 1</div>
+        <div class="font-size-headline">Headline</div>
+        <div class="font-size-title">Title</div>
+        <div class="font-size-subhead">Subheading</div>
+        <div class="font-size-body">Body</div>
+        <div class="font-size-small">Small</div>
+        <div class="font-size-caption">Caption</div>
+
+        <custom-style>
+          <style>
+            .font-size-display2 {
+              font-size: var(--material-display2-font-size);
+            }
+            .font-size-display1 {
+              font-size: var(--material-display1-font-size);
+            }
+            .font-size-headline {
+              font-size: var(--material-headline-font-size);
+            }
+            .font-size-title {
+              font-size: var(--material-title-font-size);
+            }
+            .font-size-subhead {
+              font-size: var(--material-subhead-font-size);
+            }
+            .font-size-body {
+              font-size: var(--material-body-font-size);
+            }
+            .font-size-small {
+              font-size: var(--material-small-font-size);
+            }
+            .font-size-caption {
+              font-size: var(--material-caption-font-size);
+            }
+          </style>
+        </custom-style>
       </script>
     </nice-demo-snippet>
 
 
-    <h2 demo-section>HTML attributes</h2>
-    <p>In addition to the CSS Custom Properties, you can use HTML attributes to easily apply the different font styles in your app.</p>
-
-    <div class="note warn">
-      <p>In order to use the HTML attributes, you need to include an additional style module. This style module also adds global body font styles and H1–H6 font styles.</p>
-      <nice-demo-snippet code-only>
-        <script type="text/html" slot="source">
-          <custom-style>
-            <style include="material-typography">
-              /* The <style> tag needs to be non-empty for IE11 */
-            </style>
-          </custom-style>
-        </script>
-      </nice-demo-snippet>
-    </div>
-
-    <nice-demo-snippet>
-      <script type="text/html" slot="source">
-        <div theme="xxxl-text">Font size XXXL</div>
-        <div theme="xxl-text">Font size XXL</div>
-        <div theme="xl-text">Font size XL</div>
-        <div theme="l-text">Font size L</div>
-        <div theme="m-text">Font size M</div>
-        <div theme="s-text">Font size S</div>
-        <div theme="xs-text">Font size XS</div>
-
-        <div theme="strong-text">Strong text</div>
-        <div theme="light-text">Light text</div>
-      </script>
-    </nice-demo-snippet>
-
-    <h2 demo-section>Responsive typography</h2>
-    <p>If you include an additional style module, you can make the modular scale responsive to the viewport size (smaller scale on smaller viewports). Include the following snippet in the global scope:</p>
+    <h2 demo-section>Global style modules</h2>
+    <p>To easily apply basic typographic styles for your app, include the following style module in the global scope. It will set the font family, font size and line height for the body element, as well as specify consistent header styles (it doesn’t override header margins).</p>
+    <p>If needed, you can include the style module in any other style scopes (i.e. shadow roots) as well.</p>
 
     <nice-demo-snippet code-only>
       <script type="text/html" slot="source">
+        <!-- Import and include the style module -->
+        <link rel="import" href="path/to/bower_components/vaadin-themes/material/typography.html">
         <custom-style>
-          <style include="material-responsive-typography">
+          <style include="material-typography">
             /* The <style> tag needs to be non-empty for IE11 */
           </style>
         </custom-style>
       </script>
     </nice-demo-snippet>
+
+    <nice-demo-snippet class="headers">
+      <script type="text/html" slot="source">
+        <h1>Header 1</h1>
+        <h2>Header 2</h2>
+        <h3>Header 3</h3>
+        <h4>Header 4</h4>
+        <h5>Header 5</h5>
+        <h6>Header 6</h6>
+      </script>
+    </nice-demo-snippet>
+
+    <h2 demo-section>Custom properties</h2>
+
+    <h5>Font family</h5>
+    <dl class="custom-properties">
+      <dt>--material-font-family</dt>
+    </dl>
+
+    <h5>Font size</h5>
+    <dl class="custom-properties">
+      <dt>--material-display2-font-size</dt>
+      <dt>--material-display1-font-size</dt>
+      <dt>--material-headline-font-size</dt>
+      <dt>--material-title-font-size</dt>
+      <dt>--material-subhead-font-size</dt>
+      <dt>--material-body-font-size</dt>
+      <dt>--material-small-font-size</dt>
+      <dt>--material-caption-font-size</dt>
+      <dt>--material-icon-font-size</dt>
+    </dl>
 
   </div>
 </body>

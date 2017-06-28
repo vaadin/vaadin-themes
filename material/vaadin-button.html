@@ -1,3 +1,6 @@
+<link rel="import" href="color.html">
+<link rel="import" href="typography.html">
+
 <dom-module id="material-button" theme-for="vaadin-button">
   <template>
     <style>
@@ -10,13 +13,13 @@
         color: var(--material-body-text-color);
         font-family: var(--material-font-family);
         text-transform: uppercase;
-        font-size: calc(var(--material-font-size) * 0.875);
+        font-size: var(--material-body-font-size);
         font-weight: 500;
         overflow: hidden;
         transition: background-color 0.3s, box-shadow 0.2s;
-        margin: calc(var(--material-base-grid) / 2) var(--material-base-grid);
-        min-width: calc(var(--material-base-grid) * 11);
-        min-height: calc(var(--material-base-grid) * 4.5);
+        margin: 4px 8px;
+        min-width: 88px;
+        min-height: 36px;
         -webkit-tap-highlight-color: transparent;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -25,7 +28,7 @@
       [part="button"] {
         border: 0;
         margin: 0;
-        padding: 0 var(--material-base-grid);
+        padding: 0 8px;
         background-color: transparent;
         color: inherit;
         font: inherit;
@@ -60,8 +63,8 @@
 
       :host::after {
         border-radius: 50%;
-        width: calc(var(--material-base-grid) * 40);
-        height: calc(var(--material-base-grid) * 40);
+        width: 320px;
+        height: 320px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -101,7 +104,7 @@
       /* Raised style */
 
       :host([theme~="raised"]) [part="button"]{
-        padding: 0 calc(var(--material-base-grid) * 2);
+        padding: 0 16px;
       }
 
       :host([theme~="raised"]:not([disabled])) {
@@ -142,21 +145,21 @@
       /* Dense style */
 
       :host([theme~="dense"]) {
-        font-size: calc(var(--material-font-size) * 0.8125);
-        min-width: calc(var(--material-base-grid) * 8);
-        min-height: calc(var(--material-base-grid) * 4);
+        font-size: var(--material-small-font-size);
+        min-width: 64px;
+        min-height: 32px;
       }
 
       /* Icon style */
 
       :host([theme~="icon"]) {
-        margin: calc(var(--material-base-grid) / 2);
+        margin: 4px;
         min-width: 0;
-        width: calc(var(--material-base-grid) * 4.5);
-        height: calc(var(--material-base-grid) * 4.5);
+        width: 36px;
+        height: 36px;
         min-height: 0;
         border-radius: 50%;
-        padding: var(--material-base-grid);
+        padding: 8px;
         --iron-icon-width: 100%;
         --iron-icon-height: 100%;
       }

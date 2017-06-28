@@ -2,25 +2,17 @@
   <style>
     html {
       --material-font-family: 'Roboto', 'Noto', sans-serif;
-      --material-font-size: 16px;
-      --material-line-height: 1.625;
 
-      /* TODO: should probably use Material design naming instead */
-      --material-font-scale-up: 1.25;
-      --material-font-scale-down: 1.14;
+      --material-display2-font-size: 45px;
+      --material-display1-font-size: 34px;
+      --material-headline-font-size: 24px;
+      --material-title-font-size: 20px;
+      --material-subhead-font-size: 16px;
+      --material-body-font-size: 14px;
+      --material-small-font-size: 13px;
+      --material-caption-font-size: 12px;
 
-      --material-font-size-xxxl: calc(var(--material-font-size) * var(--material-font-scale-up) * var(--material-font-scale-up) * var(--material-font-scale-up) * var(--material-font-scale-up));
-      --material-font-size-xxl: calc(var(--material-font-size) * var(--material-font-scale-up) * var(--material-font-scale-up) * var(--material-font-scale-up));
-      --material-font-size-xl: calc(var(--material-font-size) * var(--material-font-scale-up) * var(--material-font-scale-up));
-      --material-font-size-l: calc(var(--material-font-size) * var(--material-font-scale-up));
-      --material-font-size-m: var(--material-font-size);
-      --material-font-size-s: calc(var(--material-font-size) / var(--material-font-scale-down));
-      --material-font-size-xs: calc(var(--material-font-size) / var(--material-font-scale-down) / var(--material-font-scale-down));
-
-      --material-font-icon-size: calc(var(--material-font-size) * var(--material-font-scale-up));
-
-      --material-font-weight-strong: 500;
-      --material-font-weight-light: 300;
+      --material-icon-font-size: 24px;
     }
   </style>
 </custom-style>
@@ -30,88 +22,54 @@
     <style>
       body {
         font-family: var(--material-font-family);
-        font-size: var(--material-font-size);
-        line-height: var(--material-line-height);
+        font-size: var(--material-body-font-size);
+        line-height: calc(24 / 14);
         -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Needed to support IE11. The selector can’t be combined with the above because it doesn’t work in Firefox */
-      /* TODO: would be great to have this automatically generated */
-      :host {
-        font-family: var(--material-font-family);
-        font-size: var(--material-font-size);
-        line-height: var(--material-line-height);
-        -webkit-text-size-adjust: 100%;
+      h1, h2, h3, h4, h5, h6 {
+        color: inherit;
       }
 
-      [theme~="xxxl-text"],
       h1 {
-        font-size: var(--material-font-size-xxxl);
+        font-size: var(--material-display2-font-size);
+        font-weight: 400;
+        letter-spacing: -.018em;
+        line-height: 48px;
       }
 
-      [theme~="xxl-text"],
       h2 {
-        font-size: var(--material-font-size-xxl);
+        font-size: var(--material-display1-font-size);
+        font-weight: 400;
+        letter-spacing: -.01em;
+        line-height: 40px;
       }
 
-      [theme~="xl-text"],
       h3 {
-        font-size: var(--material-font-size-xl);
+        font-size: var(--material-headline-font-size);
+        font-weight: 400;
+        letter-spacing: -.012em;
+        line-height: 32px;
       }
 
-      [theme~="l-text"],
       h4 {
-        font-size: var(--material-font-size-l);
+        font-size: var(--material-title-font-size);
+        font-weight: 500;
+        line-height: 28px;
       }
 
-      [theme~="m-text"],
       h5 {
-        font-size: var(--material-font-size-m);
+        font-size: var(--material-subhead-font-size);
+        font-weight: 400;
+        line-height: 24px;
       }
 
-      [theme~="s-text"],
       h6 {
-        font-size: var(--material-font-size-s);
-      }
-
-      [theme~="xs-text"] {
-        font-size: var(--material-font-size-xs);
-      }
-
-      [theme~="strong-text"] {
-        font-weight: var(--material-font-weight-strong);
-      }
-
-      [theme~="light-text"] {
-        font-weight: var(--material-font-weight-light);
-      }
-
-      /* Remove margin from the first header element inside a padded container */
-      [theme*="space"] > h1:first-child,
-      [theme*="space"] > h2:first-child,
-      [theme*="space"] > h3:first-child,
-      [theme*="space"] > h4:first-child,
-      [theme*="space"] > h5:first-child,
-      [theme*="space"] > h6:first-child {
-        margin-top: 0;
-      }
-    </style>
-  </template>
-</dom-module>
-
-<dom-module id="material-responsive-typography">
-  <template>
-    <style>
-      @media screen and (max-width: 500px) {
-        html {
-          --material-font-scale-up: 1.2;
-        }
-      }
-
-      @media screen and (min-width: 1000px) {
-        html {
-          --material-font-scale-up: 1.333;
-        }
+        font-size: var(--material-body-font-size);
+        font-weight: 500;
+        line-height: 24px;
       }
     </style>
   </template>

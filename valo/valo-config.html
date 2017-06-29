@@ -19,6 +19,12 @@
         border-bottom-left-radius: 4px;
       }
 
+      @media screen and (max-width: 800px) {
+        :host {
+          display: none;
+        }
+      }
+
       summary {
         outline: none;
         cursor: pointer;
@@ -113,6 +119,7 @@
     <details>
       <summary>Customize</summary>
       <div>
+        <p>The color pickers only work in Chrome/Opera at the moment.</p>
         <div class="color-pickers">
           <div class="light-controls" theme="light">
             <h4>Light</h4>
@@ -376,10 +383,11 @@
         }
 
         let propertyName = this._getColorPropertyName(color.name);
+        let currentTheme = document.body.getAttribute("theme");
         document.body.setAttribute("theme", theme);
         let value = getComputedStyle(document.body).getPropertyValue(propertyName).trim();
-        document.body.removeAttribute("theme");
-        // let value = getComputedStyle(this.root.querySelector(`[theme="${theme}"]`)).getPropertyValue(propertyName).trim();
+        document.body.setAttribute("theme", currentTheme);
+
         if (value) {
           return tinycolor(value).toHslString();
         }

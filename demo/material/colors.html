@@ -36,8 +36,7 @@
     }
     </style>
 
-    <h2 demo-section>Theme colors</h2>
-    <p>To apply a certain color, you can use the following CSS custom properties, which are available once you add the main <code>material.html</code> HTML import to your app.</p>
+    <p>To apply a certain color, you can use the following CSS custom properties, which are available once you import <code>material/shared/color.html</code>. They are also automatically imported when you import individual element themes.</p>
 
     <nice-demo-snippet class="colors">
       <script type="text/html" slot="source">
@@ -52,52 +51,6 @@
       </script>
     </nice-demo-snippet>
 
-    <h2 demo-section>Dark theme</h2>
-    <p>The colors adapt automatically when you use the <code>theme="dark"</code> attribute.</p>
-
-    <div class="note warn">TODO: document how to make it work in IE11</div>
-
-    <nice-demo-snippet class="colors">
-      <script type="text/html" slot="source">
-        <div theme="dark background space-m">
-          <div style="background-color: var(--material-primary-color); color: var(--material-primary-contrast-color);">--material-primary-color</div>
-          <div style="background-color: var(--material-error-color); color: var(--material-primary-contrast-color);">--material-error-color</div>
-
-          <div style="color: var(--material-primary-text-color);">--material-primary-text-color</div>
-          <div style="color: var(--material-error-text-color);">--material-error-text-color</div>
-          <div style="color: var(--material-body-text-color);">--material-body-text-color</div>
-          <div style="color: var(--material-secondary-text-color);">--material-secondary-text-color</div>
-          <div style="color: var(--material-disabled-text-color);">--material-disabled-text-color</div>
-        </div>
-      </script>
-    </nice-demo-snippet>
-
-    <!-- <script>
-      // Duplicate copy for dark variations
-      var sections = document.querySelectorAll("section [theme~='background']");
-      for (var i = 0; i < sections.length; i++) {
-        var clone = sections[i].cloneNode(true);
-        clone.setAttribute("theme", clone.getAttribute("theme") + " dark");
-        if (sections[i].nextSibling) {
-          sections[i].parentNode.insertBefore(clone, sections[i].nextSibling);
-        } else {
-          sections[i].parentNode.appendChild(clone);
-        }
-      }
-    </script> -->
-
-
-    <!-- <nice-demo-snippet>
-      <script type="text/html" slot="source">
-        <color-swatch property="--material-primary-color"></color-swatch>
-        <color-swatch property="--material-error-color"></color-swatch>
-        <div style="background-color: var(--material);">--material-body-text-color</div>
-        <div style="background-color: var(--material);" theme="secondary-text">--material-secondary-text-color</div>
-        <div style="background-color: var(--material);" theme="disabled-text">--material-disabled-text-color</div>
-        <div style="background-color: var(--material);" theme="primary-text">--material-primary-text-color</div>
-        <div style="background-color: var(--material);" theme="error-text">--material-error-text-color</div>
-      </script>
-    </nice-demo-snippet> -->
   </div>
 </body>
 </html>

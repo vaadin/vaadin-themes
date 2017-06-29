@@ -1,0 +1,40 @@
+<!-- Common imports for all examples -->
+<link rel="import" href="../../elements-demo-resources/nice-demo-snippet.html">
+<link rel="import" href="../../elements-demo-resources/common.html">
+
+<script>
+  window.demos = [
+    {name: 'index', title: 'Getting started'},
+    {name: 'valo/index', title: 'Valo', group: "Built-in themes"},
+    {name: 'material/index', title: 'Material'},
+    {name: 'advanced-styling', title: 'Advanced styling', group: "Guides"},
+    {name: 'new-theme', title: 'Creating a new theme'},
+    {name: 'compatibility', title: 'Browser compatibility'}
+  ];
+</script>
+<link rel="import" href="../../elements-demo-resources/demo-navigation.html">
+
+<custom-style>
+  <style>
+    body {
+      margin: 0;
+      /* Prevent header margin from overflowing */
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
+
+    demo-navigation [slot="header"] {
+      display: flex;
+      align-items: center;
+    }
+
+    code {
+      background-color: rgba(0,0,0,0.05);
+      font-family: Menlo, Consolas, monospace;
+      font-size: 0.95em;
+      border-radius: 3px;
+      padding: 0 0.2em;
+    }
+
+  </style>
+</custom-style>

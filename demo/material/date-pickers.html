@@ -10,16 +10,8 @@
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
 
-  <link rel="import" href="../../material/elements/vaadin-date-picker.html">
+  <link rel="import" href="../../material/vaadin-date-picker.html">
   <link rel="import" href="../../../vaadin-date-picker/vaadin-date-picker.html">
-
-  <custom-style>
-    <style>
-      vaadin-text-field {
-        margin-right: 16px;
-      }
-    </style>
-  </custom-style>
 
   <style>
     [unresolved] {
@@ -41,7 +33,7 @@
       <span slot="header">Material</span>
     </demo-navigation>
 
-    <h1>Text fields</h1>
+    <h1>Date pickers</h1>
 
       <script>
       window.addEventListener('WebComponentsReady', function() {
@@ -67,7 +59,7 @@
 
     <nice-demo-snippet>
       <script type="text/html" slot="source">
-        <div theme="dark background">
+        <div theme="dark">
           <vaadin-date-picker label="Pick a date" show-week-numbers min="2017-06-01"></vaadin-date-picker>
         </div>
       </script>

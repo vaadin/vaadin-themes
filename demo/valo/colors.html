@@ -37,6 +37,8 @@
 
   <div class="vertical-section-container centered">
 
+    <valo-config></valo-config>
+
     <demo-navigation>
       <span slot="header">Valo</span>
     </demo-navigation>
@@ -60,6 +62,7 @@
           <style>
             .primary-10pct {
               background-color: var(--valo-primary-color-10pct);
+              color: var(--valo-primary-text-color);
             }
             .primary-50pct {
               background-color: var(--valo-primary-color-50pct);
@@ -79,7 +82,7 @@
     <p>These colors form the foundation for your application colors. The grayscale colors consist of 10 different shades of “black” and “white” (they are not necessarily pure grayscale, but tinted slightly with the theme primary color), each with a degree of transparency.</p>
 
     <h4>Contrast</h4>
-    <p>There are properties to easily specify contrast colors that work automatically for both light and dark variations. For the light theme the contrast colors use “blacks” and for the dark theme they use “whites”.</p>
+    <p>There are properties to easily specify contrast colors that work automatically for both light and dark variations. For the light theme the contrast colors use “shades” and for the dark theme they use “tints”.</p>
     <nice-demo-snippet>
       <script type="text/html" slot="source">
         <span class="contrast-5pct">5%</span>
@@ -139,67 +142,7 @@
       </script>
     </nice-demo-snippet>
 
-    <h4>Blacks</h4>
-    <nice-demo-snippet>
-      <script type="text/html" slot="source">
-        <span class="black-5pct">5%</span>
-        <span class="black-10pct">10%</span>
-        <span class="black-20pct">20%</span>
-        <span class="black-30pct">30%</span>
-        <span class="black-40pct">40%</span>
-        <span class="black-50pct">50%</span>
-        <span class="black-60pct">60%</span>
-        <span class="black-70pct">70%</span>
-        <span class="black-80pct">80%</span>
-        <span class="black-90pct">90%</span>
-        <span class="black">100%</span>
-
-        <custom-style>
-          <style>
-            .black-5pct {
-              background-color: var(--valo-black-5pct);
-            }
-            .black-10pct {
-              background-color: var(--valo-black-10pct);
-            }
-            .black-20pct {
-              background-color: var(--valo-black-20pct);
-            }
-            .black-30pct {
-              background-color: var(--valo-black-30pct);
-            }
-            .black-40pct {
-              background-color: var(--valo-black-40pct);
-            }
-            .black-50pct {
-              background-color: var(--valo-black-50pct);
-            }
-            .black-60pct {
-              background-color: var(--valo-black-60pct);
-              color: var(--valo-white-90pct);
-            }
-            .black-70pct {
-              background-color: var(--valo-black-70pct);
-              color: var(--valo-white-90pct);
-            }
-            .black-80pct {
-              background-color: var(--valo-black-80pct);
-              color: var(--valo-white-90pct);
-            }
-            .black-90pct {
-              background-color: var(--valo-black-90pct);
-              color: var(--valo-white-90pct);
-            }
-            .black {
-              background-color: var(--valo-black);
-              color: var(--valo-white-90pct);
-            }
-          </style>
-        </custom-style>
-      </script>
-    </nice-demo-snippet>
-
-    <h4>Whites</h4>
+    <h4>Tints</h4>
     <nice-demo-snippet class="black-5pct">
       <script type="text/html" slot="source">
         <span class="white-5pct">5%</span>
@@ -217,43 +160,103 @@
         <custom-style>
           <style>
             .white-5pct {
-              background-color: var(--valo-white-5pct);
+              background-color: var(--valo-tint-5pct);
             }
             .white-10pct {
-              background-color: var(--valo-white-10pct);
+              background-color: var(--valo-tint-10pct);
             }
             .white-20pct {
-              background-color: var(--valo-white-20pct);
+              background-color: var(--valo-tint-20pct);
             }
             .white-30pct {
-              background-color: var(--valo-white-30pct);
+              background-color: var(--valo-tint-30pct);
             }
             .white-40pct {
-              background-color: var(--valo-white-40pct);
+              background-color: var(--valo-tint-40pct);
             }
             .white-50pct {
-              background-color: var(--valo-white-50pct);
-              color: var(--valo-black-90pct);
+              background-color: var(--valo-tint-50pct);
+              color: var(--valo-shade-90pct);
             }
             .white-60pct {
-              background-color: var(--valo-white-60pct);
-              color: var(--valo-black-90pct);
+              background-color: var(--valo-tint-60pct);
+              color: var(--valo-shade-90pct);
             }
             .white-70pct {
-              background-color: var(--valo-white-70pct);
-              color: var(--valo-black-90pct);
+              background-color: var(--valo-tint-70pct);
+              color: var(--valo-shade-90pct);
             }
             .white-80pct {
-              background-color: var(--valo-white-80pct);
-              color: var(--valo-black-90pct);
+              background-color: var(--valo-tint-80pct);
+              color: var(--valo-shade-90pct);
             }
             .white-90pct {
-              background-color: var(--valo-white-90pct);
-              color: var(--valo-black-90pct);
+              background-color: var(--valo-tint-90pct);
+              color: var(--valo-shade-90pct);
             }
             .white {
-              background-color: var(--valo-white);
-              color: var(--valo-black-90pct);
+              background-color: var(--valo-tint);
+              color: var(--valo-shade-90pct);
+            }
+          </style>
+        </custom-style>
+      </script>
+    </nice-demo-snippet>
+
+    <h4>Shades</h4>
+    <nice-demo-snippet>
+      <script type="text/html" slot="source">
+        <span class="black-5pct">5%</span>
+        <span class="black-10pct">10%</span>
+        <span class="black-20pct">20%</span>
+        <span class="black-30pct">30%</span>
+        <span class="black-40pct">40%</span>
+        <span class="black-50pct">50%</span>
+        <span class="black-60pct">60%</span>
+        <span class="black-70pct">70%</span>
+        <span class="black-80pct">80%</span>
+        <span class="black-90pct">90%</span>
+        <span class="black">100%</span>
+
+        <custom-style>
+          <style>
+            .black-5pct {
+              background-color: var(--valo-shade-5pct);
+            }
+            .black-10pct {
+              background-color: var(--valo-shade-10pct);
+            }
+            .black-20pct {
+              background-color: var(--valo-shade-20pct);
+            }
+            .black-30pct {
+              background-color: var(--valo-shade-30pct);
+            }
+            .black-40pct {
+              background-color: var(--valo-shade-40pct);
+            }
+            .black-50pct {
+              background-color: var(--valo-shade-50pct);
+            }
+            .black-60pct {
+              background-color: var(--valo-shade-60pct);
+              color: var(--valo-tint-90pct);
+            }
+            .black-70pct {
+              background-color: var(--valo-shade-70pct);
+              color: var(--valo-tint-90pct);
+            }
+            .black-80pct {
+              background-color: var(--valo-shade-80pct);
+              color: var(--valo-tint-90pct);
+            }
+            .black-90pct {
+              background-color: var(--valo-shade-90pct);
+              color: var(--valo-tint-90pct);
+            }
+            .black {
+              background-color: var(--valo-shade);
+              color: var(--valo-tint-90pct);
             }
           </style>
         </custom-style>
@@ -273,6 +276,7 @@
           <style>
             .error-10pct {
               background-color: var(--valo-error-color-10pct);
+              color: var(--valo-error-text-color);
             }
             .error-50pct {
               background-color: var(--valo-error-color-50pct);
@@ -300,6 +304,7 @@
           <style>
             .success-10pct {
               background-color: var(--valo-success-color-10pct);
+              color: var(--valo-success-text-color);
             }
             .success-50pct {
               background-color: var(--valo-success-color-50pct);
@@ -371,32 +376,32 @@
       <dt>--valo-primary-contrast-color</dt>
     </dl>
 
-    <h5>Black</h5>
+    <h5>Tint</h5>
     <dl class="custom-properties color">
-      <dt>--valo-black-5pct</dt>
-      <dt>--valo-black-20pct</dt>
-      <dt>--valo-black-30pct</dt>
-      <dt>--valo-black-40pct</dt>
-      <dt>--valo-black-50pct</dt>
-      <dt>--valo-black-60pct</dt>
-      <dt>--valo-black-70pct</dt>
-      <dt>--valo-black-80pct</dt>
-      <dt>--valo-black-90pct</dt>
-      <dt>--valo-black</dt>
+      <dt>--valo-tint-5pct</dt>
+      <dt>--valo-tint-20pct</dt>
+      <dt>--valo-tint-30pct</dt>
+      <dt>--valo-tint-40pct</dt>
+      <dt>--valo-tint-50pct</dt>
+      <dt>--valo-tint-60pct</dt>
+      <dt>--valo-tint-70pct</dt>
+      <dt>--valo-tint-80pct</dt>
+      <dt>--valo-tint-90pct</dt>
+      <dt>--valo-tint</dt>
     </dl>
 
-    <h5>White</h5>
+    <h5>Shade</h5>
     <dl class="custom-properties color">
-      <dt>--valo-white-5pct</dt>
-      <dt>--valo-white-20pct</dt>
-      <dt>--valo-white-30pct</dt>
-      <dt>--valo-white-40pct</dt>
-      <dt>--valo-white-50pct</dt>
-      <dt>--valo-white-60pct</dt>
-      <dt>--valo-white-70pct</dt>
-      <dt>--valo-white-80pct</dt>
-      <dt>--valo-white-90pct</dt>
-      <dt>--valo-white</dt>
+      <dt>--valo-shade-5pct</dt>
+      <dt>--valo-shade-20pct</dt>
+      <dt>--valo-shade-30pct</dt>
+      <dt>--valo-shade-40pct</dt>
+      <dt>--valo-shade-50pct</dt>
+      <dt>--valo-shade-60pct</dt>
+      <dt>--valo-shade-70pct</dt>
+      <dt>--valo-shade-80pct</dt>
+      <dt>--valo-shade-90pct</dt>
+      <dt>--valo-shade</dt>
     </dl>
 
     <h5>Contrast</h5>

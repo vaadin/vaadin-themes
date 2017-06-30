@@ -10,10 +10,8 @@
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
 
-  <link rel="import" href="../../valo/elements/vaadin-button.html">
+  <link rel="import" href="../../valo/vaadin-button.html">
   <link rel="import" href="../../../vaadin-button/vaadin-button.html">
-
-  <link rel="import" href="../../valo/icons/valo-iconset-svg.html">
 
   <style>
     [unresolved] {
@@ -30,6 +28,8 @@
 
   <div class="vertical-section-container centered">
 
+    <valo-config></valo-config>
+
     <demo-navigation>
       <span slot="header">Valo</span>
     </demo-navigation>
@@ -43,29 +43,29 @@
     <h3 demo-section>Types</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-button theme="primary">Primary</vaadin-button>
         <vaadin-button>Secondary</vaadin-button>
         <vaadin-button theme="tertiary">Tertiary</vaadin-button>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Disabled</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-button disabled theme="primary">Primary</vaadin-button>
         <vaadin-button disabled>Secondary</vaadin-button>
         <vaadin-button disabled theme="tertiary">Tertiary</vaadin-button>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Icons</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <div class="flex">
 
           <vaadin-button theme="icon">
@@ -83,14 +83,14 @@
           </vaadin-button>
 
         </div>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Colors</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <h5>Contrast</h5>
 
         <vaadin-button theme="contrast primary">Primary</vaadin-button>
@@ -108,18 +108,18 @@
         <vaadin-button theme="danger primary">Primary</vaadin-button>
         <vaadin-button theme="danger">Secondary</vaadin-button>
         <vaadin-button theme="danger tertiary">Tertiary</vaadin-button>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Sizes</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-button theme="large">Large</vaadin-button>
         <vaadin-button>Medium</vaadin-button>
         <vaadin-button theme="small">Small</vaadin-button>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
@@ -127,7 +127,7 @@
 
     <dl class="custom-properties">
       <dt>--valo-button-border-radius: <code>var(--valo-border-radius)</code></dt>
-      <dt>--valo-button-background-color: <code>var(--valo-white-80pct)</code> for light, <code>var(--valo-white-5pct)</code> for dark</dt>
+      <dt>--valo-button-background-color: <code>var(--valo-tint-80pct)</code> for light, <code>var(--valo-tint-5pct)</code> for dark</dt>
     </dl>
 
 

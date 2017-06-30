@@ -15,6 +15,22 @@
       opacity: 0;
     }
   </style>
+
+  <custom-style>
+    <style>
+      nice-demo-snippet span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5em;
+        height: 3.5em;
+        margin: 0.25em;
+        font-size: var(--material-small-font-size);
+        font-weight: 600;
+        border-radius: 50%;
+      }
+    </style>
+  </custom-style>
 </head>
 
 <body unresolved>
@@ -27,77 +43,123 @@
 
     <h1>Colors</h1>
 
-    <style>
-    nice-demo-snippet.colors div:not([theme]):first-child,
-    nice-demo-snippet.colors div:not([theme]):first-child + div {
-      padding: 1em;
-      display: inline-block;
-      margin-bottom: 1em;
-    }
-    </style>
+    <p>The theme defines a set of CSS custom properties you can use to apply a consistent color palette across your application.</p>
 
-    <h2 demo-section>Theme colors</h2>
-    <p>To apply a certain color, you can use the following CSS custom properties, which are available once you add the main <code>material.html</code> HTML import to your app.</p>
-
-    <nice-demo-snippet class="colors">
-      <script type="text/html" slot="source">
-        <div style="background-color: var(--material-primary-color); color: var(--material-primary-contrast-color);">--material-primary-color</div>
-        <div style="background-color: var(--material-error-color); color: var(--material-primary-contrast-color);">--material-error-color</div>
-
-        <div style="color: var(--material-primary-text-color);">--material-primary-text-color</div>
-        <div style="color: var(--material-error-text-color);">--material-error-text-color</div>
-        <div style="color: var(--material-body-text-color);">--material-body-text-color</div>
-        <div style="color: var(--material-secondary-text-color);">--material-secondary-text-color</div>
-        <div style="color: var(--material-disabled-text-color);">--material-disabled-text-color</div>
-      </script>
+    <p>If you are not importing any element themes, and want to use these colors, you need to import them manually.</p>
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <link rel="import" href="path/to/bower_components/vaadin-themes/material/color.html">
+      </template>
     </nice-demo-snippet>
 
-    <h2 demo-section>Dark theme</h2>
-    <p>The colors adapt automatically when you use the <code>theme="dark"</code> attribute.</p>
-
-    <div class="note warn">TODO: document how to make it work in IE11</div>
-
-    <nice-demo-snippet class="colors">
-      <script type="text/html" slot="source">
-        <div theme="dark background space-m">
-          <div style="background-color: var(--material-primary-color); color: var(--material-primary-contrast-color);">--material-primary-color</div>
-          <div style="background-color: var(--material-error-color); color: var(--material-primary-contrast-color);">--material-error-color</div>
-
-          <div style="color: var(--material-primary-text-color);">--material-primary-text-color</div>
-          <div style="color: var(--material-error-text-color);">--material-error-text-color</div>
-          <div style="color: var(--material-body-text-color);">--material-body-text-color</div>
-          <div style="color: var(--material-secondary-text-color);">--material-secondary-text-color</div>
-          <div style="color: var(--material-disabled-text-color);">--material-disabled-text-color</div>
+    <h2 demo-section>Light and dark themes</h2>
+    <p>Each color has two variations: the default variation which is used for the light theme, and another variation used for the dark theme.</p>
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <div theme="dark">
+          <!-- Everything inside this div will get use the dark color theme -->
         </div>
-      </script>
+      </template>
+    </nice-demo-snippet>
+    <div class="note warn">
+      <h6>Browser compatibility</h6>
+      <p>The above example doesn’t work in IE11 or Edge 14. Read the <a href="../compatibility.html#dark-themes">compatibility instructions</a> how to make the dark colors work in all supported browsers.</p>
+    </div>
+
+
+    <h2 demo-section>Primary</h2>
+    <p>The most prominent color in the theme. It is used to bring attention to certain elements in the interface. An accompanying contrast color is also defined.</p>
+    <nice-demo-snippet>
+      <template slot="source">
+        <span class="primary">Text</span>
+
+        <custom-style>
+          <style>
+            .primary {
+              background-color: var(--material-primary-color);
+              color: var(--material-primary-contrast-color);
+            }
+          </style>
+        </custom-style>
+      </template>
     </nice-demo-snippet>
 
-    <!-- <script>
-      // Duplicate copy for dark variations
-      var sections = document.querySelectorAll("section [theme~='background']");
-      for (var i = 0; i < sections.length; i++) {
-        var clone = sections[i].cloneNode(true);
-        clone.setAttribute("theme", clone.getAttribute("theme") + " dark");
-        if (sections[i].nextSibling) {
-          sections[i].parentNode.insertBefore(clone, sections[i].nextSibling);
-        } else {
-          sections[i].parentNode.appendChild(clone);
-        }
-      }
-    </script> -->
 
 
-    <!-- <nice-demo-snippet>
-      <script type="text/html" slot="source">
-        <color-swatch property="--material-primary-color"></color-swatch>
-        <color-swatch property="--material-error-color"></color-swatch>
-        <div style="background-color: var(--material);">--material-body-text-color</div>
-        <div style="background-color: var(--material);" theme="secondary-text">--material-secondary-text-color</div>
-        <div style="background-color: var(--material);" theme="disabled-text">--material-disabled-text-color</div>
-        <div style="background-color: var(--material);" theme="primary-text">--material-primary-text-color</div>
-        <div style="background-color: var(--material);" theme="error-text">--material-error-text-color</div>
-      </script>
-    </nice-demo-snippet> -->
+    <h2 demo-section>Error/danger</h2>
+    <p>Usually a red color, used for things like error indicators, error messages and buttons that can cause permanent data loss.</p>
+    <nice-demo-snippet>
+      <template slot="source">
+        <span class="error"></span>
+
+        <custom-style>
+          <style>
+            .error {
+              background-color: var(--material-error-color);
+            }
+          </style>
+        </custom-style>
+      </template>
+    </nice-demo-snippet>
+
+
+    <h2 demo-section>Text</h2>
+    <nice-demo-snippet>
+      <template slot="source">
+        <div class="base">
+          <div class="body-text">Normal text</div>
+          <div class="secondary-text">Secondary text</div>
+          <div class="disabled-text">Disabled text</div>
+          <div class="primary-text">Primary text</div>
+          <div class="error-text">Error text</div>
+        </div>
+
+        <custom-style>
+          <style>
+            .body-text {
+              color: var(--material-body-text-color);
+            }
+            .secondary-text {
+              color: var(--material-secondary-text-color);
+            }
+            .disabled-text {
+              color: var(--material-disabled-text-color);
+            }
+            .primary-text {
+              color: var(--material-primary-text-color);
+            }
+            .error-text {
+              color: var(--material-error-text-color);
+            }
+          </style>
+        </custom-style>
+      </template>
+    </nice-demo-snippet>
+
+
+    <h2 demo-section>Custom properties</h2>
+
+    <h5>Primary</h5>
+    <dl class="custom-properties color">
+      <dt>--material-primary-color</dt>
+      <dt>--material-primary-contrast-color</dt>
+    </dl>
+
+    <h5>Error</h5>
+    <dl class="custom-properties color">
+      <dt>--material-error-color</dt>
+    </dl>
+
+
+    <h5>Text</h5>
+    <dl class="custom-properties color">
+      <dt>--material-body-text-color</dt>
+      <dt>--material-secondary-text-color</dt>
+      <dt>--material-disabled-text-color</dt>
+      <dt>--material-primary-text-color</dt>
+      <dt>--material-error-text-color</dt>
+    </dl>
+
   </div>
 </body>
 </html>

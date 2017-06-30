@@ -10,12 +10,8 @@
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
 
-  <link rel="import" href="../../valo/elements/vaadin-text-field.html">
-  <link rel="import" href="../../valo/elements/vaadin-button.html">
+  <link rel="import" href="../../valo/vaadin-text-field.html">
   <link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
-  <link rel="import" href="../../../vaadin-button/vaadin-button.html">
-
-  <link rel="import" href="../../valo/icons/valo-iconset-svg.html">
 
   <style>
     [unresolved] {
@@ -28,6 +24,8 @@
 
   <div class="vertical-section-container centered">
 
+    <valo-config></valo-config>
+
     <demo-navigation>
       <span slot="header">Valo</span>
     </demo-navigation>
@@ -38,28 +36,28 @@
     <h3 demo-section>Label, placeholder and value</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field label="Label" placeholder="Placeholder"></vaadin-text-field>
         <vaadin-text-field label="Label" value="Value"></vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>States</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field label="Enabled" value="Value"></vaadin-text-field>
         <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
         <vaadin-text-field label="Read only" value="Value" readonly></vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Validation</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field label="Required" placeholder="I need a value" required></vaadin-text-field>
 
         <vaadin-text-field
@@ -68,23 +66,23 @@
           pattern="[0-9]+"
           invalid error-message="Numbers only!">
         </vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Sizes</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field theme="small" label="Small" placeholder="Placeholder"></vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
     <h3 demo-section>Icons</h3>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field label="Prefix icon" placeholder="Search">
           <iron-icon icon="valo:magnifier" slot="prefix"></iron-icon>
         </vaadin-text-field>
@@ -92,7 +90,7 @@
         <vaadin-text-field label="Suffix icon" placeholder="Email" value="name@example.com" style="width: 15em;">
           <iron-icon icon="valo:checkmark" slot="suffix" style="color: var(--valo-success-color);"></iron-icon>
         </vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 

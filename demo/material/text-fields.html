@@ -10,7 +10,7 @@
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
 
-  <link rel="import" href="../../material/elements/vaadin-text-field.html">
+  <link rel="import" href="../../material/vaadin-text-field.html">
   <link rel="import" href="../../../vaadin-text-field/vaadin-text-field.html">
 
   <custom-style>
@@ -40,7 +40,7 @@
 
     <h3 demo-section>Label and placeholder</h3>
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field placeholder="Placeholder"></vaadin-text-field>
 
         <vaadin-text-field label="Label"></vaadin-text-field>
@@ -48,12 +48,12 @@
         <vaadin-text-field label="Label and placeholder" placeholder="Placeholder"></vaadin-text-field>
 
         <vaadin-text-field label="Label always floating" theme="always-float-label"></vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h3 demo-section>Prefix and suffix</h3>
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field placeholder="Search">
           <iron-icon slot="prefix" icon="vaadin:search"></iron-icon>
         </vaadin-text-field>
@@ -77,12 +77,12 @@
             }
           </style>
         </custom-style>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h3 demo-section>States</h3>
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field label="Focused" value="Value" focused></vaadin-text-field>
 
         <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
@@ -101,20 +101,20 @@
           pattern="[0-9]+"
           invalid error-message="Numbers only!">
         </vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h3 demo-section>Dense layout</h3>
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <vaadin-text-field theme="dense" label="Label" required error-message="Error message"></vaadin-text-field>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h3 demo-section>Dark theme</h3>
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
-        <div theme="dark background space-m">
+      <template slot="source">
+        <div theme="dark">
 
           <vaadin-text-field label="Label" placeholder="Placeholder"></vaadin-text-field>
 
@@ -131,7 +131,7 @@
           <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
 
         </div>
-      </script>
+      </template>
     </nice-demo-snippet>
 
   </div>

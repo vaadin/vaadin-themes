@@ -34,7 +34,14 @@
       --material-background-color: var(--dark-theme-background-color, #303030);
       --material-secondary-background-color: var(--dark-theme-secondary-background-color, #3b3b3b);
 
-      /* Text field tweaks (undocumented internal properties) */
+      --material-divider-color: rgba(255,255,255,0.12);
+
+      color: var(--material-body-text-color);
+      background-color: var(--material-background-color);
+
+      /* Undocumented internal properties (prefixed with three dashes) */
+
+      /* Text field tweaks */
       ---material-text-field-input-line-background-color: #FFF;
       ---material-text-field-input-line-opacity: 0.7;
       ---material-text-field-input-line-hover-opacity: 1;
@@ -44,8 +51,8 @@
       ---material-button-raised-background-color: rgba(255,255,255,0.08);
 
       /* Date picker tweaks */
-      ---material-date-picker-dark-background-color: var(--material-secondary-background-color);
-      ---material-date-picker-dark-secondary-background-color: var(--material-background-color);
+      ---material-date-picker-overlay-background-color: var(--material-secondary-background-color);
+      ---material-date-picker-overlay-toolbar-background-color: var(--material-background-color);
     }
   </style>
 </custom-style>
@@ -56,36 +63,6 @@
       body {
         color: var(--material-body-text-color);
         background-color: var(--material-background-color);
-      }
-
-      [theme~="background"] {
-        color: var(--material-body-text-color);
-        background-color: var(--material-background-color);
-      }
-
-      [theme~="secondary-text"] {
-        color: var(--material-secondary-text-color)
-      }
-
-      [theme~="disabled-text"] {
-        color: var(--material-disabled-text-color)
-      }
-
-      [theme~="primary-text"] {
-        color: var(--material-primary-text-color)
-      }
-
-      [theme~="error-text"] {
-        color: var(--material-error-text-color)
-      }
-
-      [theme] h1,
-      [theme] h2,
-      [theme] h3,
-      [theme] h4,
-      [theme] h5,
-      [theme] h6 {
-        color: inherit;
       }
     </style>
   </template>
@@ -101,22 +78,33 @@
       --material-disabled-text-color: var(--dark-theme-disabled-color, rgba(255,255,255,0.5));
 
       --material-primary-color: var(--light-primary-color, #448AFF);
+      --material-primary-text-color: var(--material-primary-color);
 
       --material-error-color: var(--error-color, #FF5252);
+      --material-error-text-color: var(--material-error-color);
 
       --material-background-color: var(--dark-theme-background-color, #303030);
+      --material-secondary-background-color: var(--dark-theme-secondary-background-color, #3b3b3b);
 
-      /* Text field tweaks (undocumented internal properties) */
+      --material-divider-color: rgba(255,255,255,0.12);
+
+      color: var(--material-body-text-color);
+      background-color: var(--material-background-color);
+
+      /* Undocumented internal properties (prefixed with three dashes) */
+
+      /* Text field tweaks */
       ---material-text-field-input-line-background-color: #FFF;
       ---material-text-field-input-line-opacity: 0.7;
       ---material-text-field-input-line-hover-opacity: 1;
       ---material-text-field-focused-label-opacity: 1;
 
-      /* Button tweaks (undocumented internal properties) */
+      /* Button tweaks */
       ---material-button-raised-background-color: rgba(255,255,255,0.08);
 
-      color: var(--material-body-text-color);
-      background-color: var(--material-background-color);
+      /* Date picker tweaks */
+      ---material-date-picker-overlay-background-color: var(--material-secondary-background-color);
+      ---material-date-picker-overlay-toolbar-background-color: var(--material-background-color);
     }
     </style>
   </template>

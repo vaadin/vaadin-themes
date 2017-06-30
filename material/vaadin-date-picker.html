@@ -1,3 +1,6 @@
+<link rel="import" href="color.html">
+<link rel="import" href="typography.html">
+
 <link rel="import" href="vaadin-button.html">
 <link rel="import" href="vaadin-text-field.html">
 
@@ -5,32 +8,44 @@
   <template>
     <style>
        :host {
-        width: calc(var(--material-base-grid) * 20);
+        width: 160px;
         max-width: 100%;
+        padding-top: 16px;
+        margin-bottom: 8px;
+        /* Align nicely with vaadin-text-field */
+        vertical-align: 3px;
       }
 
       [part="text-field"] {
-        font-size: var(--material-font-size-m);
         max-width: 100%;
-        color: var(--material-body-text-color);
+        /* Text field margin is moved to the host */
+        padding-top: 0;
         margin-bottom: 0;
       }
 
       [part="clear-button"],
       [part="toggle-button"] {
-        cursor: pointer;
-        color: var(--material-secondary-text-color);
-        font-size: var(--material-font-icon-size);
-        line-height: calc(var(--material-base-grid) * 3);
-        width: calc(var(--material-base-grid) * 3);
-        text-align: center;
-        margin-left: var(--material-space-xs);
+        width: 24px;
+        height: 24px;
+        box-sizing: border-box;
+        margin-left: 4px;
         margin-bottom: 2px;
+        color: var(--material-disabled-text-color);
+        font-size: var(--material-icon-font-size);
+        line-height: 24px;
+        text-align: center;
+        cursor: pointer;
       }
 
       [part="clear-button"]:hover,
       [part="toggle-button"]:hover {
-        color: var(--material-body-text-color);
+        color: inherit;
+      }
+
+      [part="clear-button"] {
+        border-radius: 50%;
+        background-color: var(--material-divider-color);
+        font-size: calc(var(--material-icon-font-size) - 8px);
       }
     </style>
   </template>
@@ -41,15 +56,15 @@
     <style include="vaadin-month-calendar-default-theme">
       [part="date"] {
         position: relative;
-        height: calc(var(--material-base-grid) * 5);
-        font-size: 0.9375em;
-
+        height: 40px;
+        font-size: var(--material-body-font-size);
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
-      [part="date"][focused]:not([disabled])::after {
+      :host(:not(:active)) [part="date"][focused]:not([disabled])::after,
+      [part="date"]:active:not([disabled])::after {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -58,14 +73,15 @@
         margin: auto;
         z-index: -1;
         content: '';
-        height: calc(var(--material-base-grid) * 5 - 2px);
-        width: calc(var(--material-base-grid) * 5 - 2px);
+        height: 38px;
+        width: 38px;
         border-radius: 100%;
         opacity: 0.5;
         background: var(--material-primary-color);
       }
 
-      :host([focused]) [part="date"][focused]:not([disabled])::after {
+      :host([focused]:not(:active)) [part="date"][focused]:not([disabled])::after,
+      [part="date"]:active:not([disabled])::after {
         opacity: 1;
       }
 
@@ -73,58 +89,41 @@
         color: var(--material-primary-text-color);
       }
 
-      [part="date"][selected] {
-        font-weight: bold;
-      }
-
       :host([focused]) [part="date"][focused]:not([disabled]) {
         background: transparent;
       }
 
-      [part="date"][focused]:not([disabled]) {
+      :host(:not(:active)) [part="date"][focused]:not([disabled]),
+      [part="date"]:active:not([disabled]) {
         color: var(--material-primary-contrast-color);
         background: transparent;
         box-sizing: border-box;
       }
 
       [part="date"][selected] {
-        font-weight: 600;
+        font-weight: 500;
       }
 
       [part="weekday"] {
         color: var(--material-disabled-text-color);
-        font-size: var(--material-font-size-xs);
-
-        /* TODO: set these in default theme? */
-        text-transform: capitalize;
-        font-weight: 400;
+        font-size: var(--material-caption-font-size);
         padding: 0;
+        opacity: 1;
       }
 
       [part="week-number"] {
-        height: calc(var(--material-base-grid) * 5);
-        font-size: var(--material-font-size-xs);
+        height: 40px;
+        font-size: var(--material-caption-font-size);
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--material-disabled-text-color);
-
-        /* TODO: set these in default theme? */
-        font-weight: 400;
-      }
-
-      [part="weekday"]:empty,
-      [part="week-numbers"] {
-        width: 2em;
+        opacity: 1;
       }
 
       [part="month-header"] {
-        font-size: var(--material-font-size-m);
-        font-weight: var(--material-font-weight-strong);
-        margin-bottom: var(--material-space-s);
-
-        /* TODO: set these in default theme? */
-        padding: 0;
+        font-size: var(--material-subhead-font-size);
+        font-weight: 500;
       }
     </style>
   </template>
@@ -133,8 +132,8 @@
   <template>
     <style include="vaadin-date-picker-overlay-default-theme">
        :host {
-        border-radius: 2px;
-        background: var(---material-date-picker-dark-background-color, var(--material-background-color));
+        border-radius: 0 0 3px 3px;
+        background: var(---material-date-picker-overlay-background-color, var(--material-background-color));
       }
 
       :host(:not([fullscreen])) {
@@ -147,12 +146,17 @@
       }
 
       [part="years"] {
-        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        background: var(---material-date-picker-overlay-toolbar-background-color, var(--material-secondary-background-color));
         z-index: 1;
       }
 
       [part="years"]::before {
-        border-left-color: var(---material-date-picker-dark-background-color, var(--material-background-color));
+        border: 0;
+        width: 12px;
+        height: 12px;
+        transform: translateX(-50%) rotate(-45deg);
+        background: var(---material-date-picker-overlay-background-color, var(--material-background-color));
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
       }
 
       [part="years"]::after {
@@ -166,41 +170,47 @@
       }
 
       [part="months"] {
-        --vaadin-infinite-scroller-item-height: 310px;
+        --vaadin-infinite-scroller-item-height: 300px;
       }
 
       [part="toolbar"] {
-        padding: var(--material-space-s);
+        padding: 8px;
         color: var(--material-body-text-color);
-        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        background: var(---material-date-picker-overlay-toolbar-background-color, var(--material-secondary-background-color));
         border-top: 1px solid var(--material-divider-color);
       }
 
       [part="overlay-header"] {
         color: var(--material-body-text-color);
-        font-size: var(--material-font-size-m);
-        background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
+        font-size: var(--material-subhead-font-size);
+        background: var(---material-date-picker-overlay-toolbar-background-color, var(--material-secondary-background-color));
         border-bottom: 2px solid var(--material-primary-color);
+        padding: 8px;
+      }
+
+      [part="overlay-header"]:not([desktop]) {
+        padding-bottom: 8px;
       }
 
       [part="clear-button"],
       [part="toggle-button"] {
-        color: var(--material-secondary-text-color);
-        line-height: calc(var(--material-base-grid) * 3);
-        width: calc(var(--material-base-grid) * 3);
-        height: calc(var(--material-base-grid) * 3);
+        color: var(--material-disabled-text-color);
+        line-height: 24px;
+        width: 24px;
+        height: 24px;
         text-align: center;
-        margin-left: var(--material-space-xs);
-        margin-bottom: 4px;
+        margin-left: 16px;
       }
 
       [part="clear-button"]:hover,
       [part="toggle-button"]:hover {
-        color: var(--material-body-text-color);
+        color: inherit;
       }
 
-      [part="overlay-header"]:not([desktop]) {
-        padding-bottom: 16px;
+      [part="clear-button"] {
+        border-radius: 50%;
+        background-color: var(--material-divider-color);
+        font-size: calc(var(--material-icon-font-size) - 8px);
       }
 
        :host([years-visible]) [part="years"]::after {
@@ -217,17 +227,19 @@
         position: absolute;
         height: 20px;
         line-height: 20px;
+        font-size: var(--material-body-font-size);
+        width: 60px;
         z-index: 1;
         top: calc(100% + 2px);
         right: 0;
         padding: 8px;
         background: var(---material-date-picker-dark-secondary-background-color, var(--material-secondary-background-color));
         box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
-        border-bottom-left-radius: var(--material-border-radius);
+        border-bottom-left-radius: 3px;
       }
 
       [part="year-number"] {
-        font-size: var(--material-font-size-s);
+        font-size: var(--material-small-font-size);
       }
 
       [part="year-number"] {

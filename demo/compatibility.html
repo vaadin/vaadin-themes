@@ -9,14 +9,17 @@
 
   <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
+  <link rel="import" href="../../elements-demo-resources/demo-navigation.html">
 
   <style>
     [unresolved] {
       opacity: 0;
     }
+
     .bad-example {
       opacity: 0.7;
     }
+
     .bad-example::after {
       border: 1px dashed #f43b2e;
     }
@@ -47,7 +50,7 @@
 
     <b>1. Define a new custom element, e.g. my-dark-ui.html</b>
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <!-- Import the color style module -->
         <link rel="import" href="path/to/bower_components/vaadin-themes/valo/color.html">
 
@@ -65,19 +68,19 @@
 
           <script>
             class MyDarkUI extends Polymer.Element {}
-            customElements.define("my-dark-ui", MyDarkUI);
-          </ script>
+            customElements.define('my-dark-ui', MyDarkUI);
+          </script>
         </dom-module>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <b>2. Use the new custom element</b>
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <link rel="import" href="my-dark-ui.html">
 
         <my-dark-ui></my-dark-ui>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
@@ -87,17 +90,13 @@
     <p>When including a style module using <code>&lt;custom-style&gt;</code>, you need to provide at least one white space character inside the nested &lt;style&gt; element. Otherwise it doesn’t work in Internet Explorer 11.</p>
 
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
-        <html>
-          <head>
-            <custom-style>
-              <style include="material-typography">
-                /* The <style> tag needs to be non-empty */
-              </style>
-            </custom-style>
-          </head>
-        </html>
-      </script>
+      <template slot="source">
+        <custom-style>
+          <style include="material-typography">
+            /* The <style> tag needs to be non-empty */
+          </style>
+        </custom-style>
+      </template>
     </nice-demo-snippet>
 
 
@@ -109,16 +108,16 @@
 
     <h4>This doesn’t work:</h4>
     <nice-demo-snippet code-only class="bad-example">
-      <script type="text/html" slot="source">
+      <template slot="source">
         <div style="width: var(--some-custom-property)"></div>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h4>These work:</h4>
 
     <h5>Using in a Polymer element:</h5>
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <dom-module id="my-component">
           <template>
             <style>
@@ -129,12 +128,12 @@
             ...
           </template>
         </dom-module>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h5>Using in global scope:</h5>
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <!-- Remember to import custom-style, which is included in the Polymer package -->
         <link rel="import" href="../path/to/polymer/lib/elements/custom-style.html">
 
@@ -145,7 +144,7 @@
             }
           </style>
         </custom-style>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <!-- TODO -->

@@ -1,14 +1,9 @@
-<!-- Common imports for all examples -->
-<link rel="import" href="../../../elements-demo-resources/nice-demo-snippet.html">
-<link rel="import" href="../../../elements-demo-resources/common.html">
-
-<!-- <link rel="import" href="common.html"> -->
-
+<link rel="import" href="../common.html">
 
 <script>
   window.demos = [
     {name: '../index', title: '‹ Back to Vaadin Themes'},
-    {name: 'index', title: 'Typography', group: "Style guide"},
+    {name: 'index', title: 'Typography', group: 'Style guide'},
     {name: 'colors', title: 'Colors'},
     {name: 'sizing-and-spacing', title: 'Sizing and spacing'},
     {name: 'buttons', title: 'Buttons', group: 'Components'},
@@ -104,10 +99,6 @@
 
     code {
       background-color: var(--valo-shade-5pct);
-      font-family: Menlo, Consolas, monospace;
-      font-size: 0.95em;
-      border-radius: 3px;
-      padding: 0 0.2em;
     }
 
     nice-demo-snippet {
@@ -137,32 +128,18 @@
 
 <script>
   window.addEventListener("WebComponentsReady", function() {
-
     // Insert light/dark theme selector
-    var themeSelect = document.createElement("div");
-    themeSelect.id = "theme-select";
-    themeSelect.innerHTML = "<select tooltip='Choose theme variant'><option>Light</option><option>Dark</option></select>";
-    document.querySelector("demo-navigation").firstElementChild.appendChild(themeSelect);
+    var themeSelect = document.createElement('div');
+    themeSelect.id = 'theme-select';
+    themeSelect.innerHTML = '<select tooltip="Choose theme variant"><option>Light</option><option>Dark</option></select>';
+    document.querySelector('demo-navigation').firstElementChild.appendChild(themeSelect);
 
-    var demos = Array.prototype.slice.call(document.querySelectorAll("nice-demo-snippet"));
+    var demos = Array.prototype.slice.call(document.querySelectorAll('nice-demo-snippet'));
 
-    themeSelect.addEventListener("change", function(e) {
+    themeSelect.addEventListener('change', function(e) {
       demos.forEach(function(demo) {
-        demo.querySelector("div").setAttribute("theme", e.target.value.toLowerCase());
+        demo.querySelector('div').setAttribute('theme', e.target.value.toLowerCase());
       });
-    });
-
-
-    // Insert default custom property values into definition lists
-    Array.prototype.forEach.call(document.querySelectorAll("dl.custom-properties dt"), function(dt) {
-      var value = ShadyCSS.getComputedStyleValue(dt, dt.textContent.trim());
-      if (value) {
-        dt.innerHTML += ": ";
-        if (dt.classList.contains("color") || dt.parentNode.classList.contains("color")) {
-          dt.innerHTML += "<span class='color-swatch' style='background-color: " + value + "'></span>";
-        }
-        dt.innerHTML += "<code>" + value + "</code>";
-      }
     });
   });
 </script>

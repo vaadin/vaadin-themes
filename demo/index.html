@@ -9,6 +9,7 @@
 
   <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
+  <link rel="import" href="../../elements-demo-resources/demo-navigation.html">
 
   <style>
     [unresolved] {
@@ -18,8 +19,8 @@
     .install-options {
       display: flex;
       flex-wrap: wrap;
-      background-color: rgba(0,0,0,0.02);
-      border: 1px solid rgba(0,0,0,0.05);
+      background-color: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.05);
       border-top: 0;
     }
 
@@ -27,7 +28,7 @@
       flex: 1;
       min-width: 20em;
       padding: 0 1em;
-      border-top: 1px solid rgba(0,0,0,0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .next-steps h4 {
@@ -66,18 +67,18 @@
       <div>
         <h5>Install individual elements…</h5>
         <nice-demo-snippet code-only>
-          <script type="text/html" slot="source">
+          <template slot="source">
             bower install --save vaadin-text-field
             bower install --save vaadin-themes
-          </script>
+          </template>
         </nice-demo-snippet>
       </div>
       <div>
         <h5>…or install the bundle</h5>
         <nice-demo-snippet code-only>
-          <script type="text/html" slot="source">
+          <template slot="source">
             bower install --save vaadin-core-elements#master
-          </script>
+          </template>
         </nice-demo-snippet>
         <div class="note warn">
           <p>Until there’s a stable release for vaadin-themes, you need to install the <code>master</code> branch of vaadin-core-elements.</p>
@@ -94,11 +95,11 @@
     </div>
 
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <link rel="import" href="path/to/bower_components/vaadin-themes/valo/vaadin-text-field.html">
         <!-- Import the actual element after its theme -->
         <link rel="import" href="path/to/bower_components/vaadin-text-field/vaadin-text-field.html">
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h2 demo-section>Next steps</h2>

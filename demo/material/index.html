@@ -26,22 +26,42 @@
     </demo-navigation>
 
     <h1>Typography</h1>
-    <p theme="l-text">The theme defines font styles you can use in your app to achieve a consistent typographic style.</p>
 
-    <div class="note">
-      <p>If you wish to use the Roboto font, you need to import that yourself. You can include the following snippet in your app to easily import it from <a href="https://fonts.google.com/specimen/Roboto">Google Fonts</a>:</p>
-      <nice-demo-snippet code-only>
-        <script type="text/html" slot="source">
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,500,500italic,700,700italic" crossorigin="anonymous">
-        </script>
-      </nice-demo-snippet>
-    </div>
+    <p>If you are not importing any element themes, and want to use the font properties, you need to import them manually.</p>
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <link rel="import" href="path/to/bower_components/vaadin-themes/material/typography.html">
+      </template>
+    </nice-demo-snippet>
+
+    <h2 demo-section>Font family</h2>
+    <p>The Roboto font is used by default. You can apply or change the font family using the <code>--material-font-family</code> custom property.</p>
+
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <custom-style>
+          <style>
+            html {
+              --material-font-family: "Open Sans", sans-serif;
+            }
+          </style>
+        </custom-style>
+      </template>
+    </nice-demo-snippet>
+
+    <h4>Roboto font</h4>
+    <p>The Roboto font is not imported by default, but only used if found from the users system. If you wish to use the Roboto font for all users, you need to import it manually. You can include the following snippet in your app to easily import it from <a href="https://fonts.google.com/specimen/Roboto">Google Fonts</a>:</p>
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,500,500italic,700,700italic" crossorigin="anonymous">
+      </template>
+    </nice-demo-snippet>
 
     <h2 demo-section>Font size</h2>
     <p>The following font sizes are available to use. The default font size for most elements is <code>--material-body-font-size</code>.</p>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <div class="font-size-display2">Display 2</div>
         <div class="font-size-display1">Display 1</div>
         <div class="font-size-headline">Headline</div>
@@ -79,7 +99,7 @@
             }
           </style>
         </custom-style>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
@@ -88,26 +108,24 @@
     <p>If needed, you can include the style module in any other style scopes (i.e. shadow roots) as well.</p>
 
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
-        <!-- Import and include the style module -->
-        <link rel="import" href="path/to/bower_components/vaadin-themes/material/typography.html">
+      <template slot="source">
         <custom-style>
           <style include="material-typography">
             /* The <style> tag needs to be non-empty for IE11 */
           </style>
         </custom-style>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <nice-demo-snippet class="headers">
-      <script type="text/html" slot="source">
+      <template slot="source">
         <h1>Header 1</h1>
         <h2>Header 2</h2>
         <h3>Header 3</h3>
         <h4>Header 4</h4>
         <h5>Header 5</h5>
         <h6>Header 6</h6>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h2 demo-section>Custom properties</h2>

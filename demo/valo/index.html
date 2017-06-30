@@ -32,14 +32,35 @@
     </demo-navigation>
 
     <h1>Typography</h1>
-    <p>The system font stack is used by default: Segoe UI on Windows; Roboto on Android and Chrome OS; San Francisco on macOS and iOS; Ubuntu on Ubuntu Linux. On other systems, Helvetica, Arial are used as fallbacks.</p>
 
+    <p>If you are not importing any element themes, and want to use the font properties, you need to import them manually.</p>
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <link rel="import" href="path/to/bower_components/vaadin-themes/material/typography.html">
+      </template>
+    </nice-demo-snippet>
+
+    <h2 demo-section>Font family</h2>
+    <p>The system font stack is used by default: Segoe UI on Windows; Roboto on Android and Chrome OS; San Francisco on macOS and iOS; Ubuntu on Ubuntu Linux. On other systems, Helvetica, Arial are used as fallbacks.</p>
+    <p>You can apply or change the font family using the <code>--valo-font-family</code> custom property.</p>
+
+    <nice-demo-snippet code-only>
+      <template slot="source">
+        <custom-style>
+          <style>
+            html {
+              --valo-font-family: "Open Sans", sans-serif;
+            }
+          </style>
+        </custom-style>
+      </template>
+    </nice-demo-snippet>
 
     <h2 demo-section>Font size</h2>
     <p>The following font sizes are available to use. The default font size for most elements is <code>--valo-font-size-m</code>.</p>
 
     <nice-demo-snippet>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <div class="font-size-xxxl">Font size XXXL</div>
         <div class="font-size-xxl">Font size XXL</div>
         <div class="font-size-xl">Font size XL</div>
@@ -73,7 +94,7 @@
             }
           </style>
         </custom-style>
-      </script>
+      </template>
     </nice-demo-snippet>
 
 
@@ -82,24 +103,24 @@
     <p>If needed, you can include the style module in any other style scopes (i.e. shadow roots) as well.</p>
 
     <nice-demo-snippet code-only>
-      <script type="text/html" slot="source">
+      <template slot="source">
         <custom-style>
           <style include="valo-typography">
             /* The <style> tag needs to be non-empty for IE11 */
           </style>
         </custom-style>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <nice-demo-snippet class="headers">
-      <script type="text/html" slot="source">
+      <template slot="source">
         <h1>Header 1</h1>
         <h2>Header 2</h2>
         <h3>Header 3</h3>
         <h4>Header 4</h4>
         <h5>Header 5</h5>
         <h6>Header 6</h6>
-      </script>
+      </template>
     </nice-demo-snippet>
 
     <h2 demo-section>Custom properties</h2>

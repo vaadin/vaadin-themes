@@ -5,14 +5,13 @@
 <script>
   window.demos = [
     {name: 'index', title: 'Getting started'},
-    {name: 'valo/index', title: 'Valo', group: "Built-in themes"},
+    {name: 'valo/index', title: 'Valo', group: 'Built-in themes'},
     {name: 'material/index', title: 'Material'},
-    {name: 'advanced-styling', title: 'Advanced styling', group: "Guides"},
+    {name: 'advanced-styling', title: 'Advanced styling', group: 'Guides'},
     {name: 'new-theme', title: 'Creating a new theme'},
     {name: 'compatibility', title: 'Browser compatibility'}
   ];
 </script>
-<link rel="import" href="../../elements-demo-resources/demo-navigation.html">
 
 <custom-style>
   <style>
@@ -29,12 +28,57 @@
     }
 
     code {
-      background-color: rgba(0,0,0,0.05);
+      background-color: rgba(0, 0, 0, 0.05);
       font-family: Menlo, Consolas, monospace;
       font-size: 0.95em;
       border-radius: 3px;
       padding: 0 0.2em;
     }
 
+    dl.custom-properties {
+      font-size: 14px;
+      border-left: 4px solid rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 1em 2em;
+    }
+
+    dl.custom-properties dt {
+      font-weight: 600;
+      font-family: Menlo, Consolas, monospace;
+    }
+
+    dl.custom-properties dd {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    dl.custom-properties dt code {
+      font-weight: 400;
+    }
+
+    dl.custom-properties dt .color-swatch {
+      display: inline-block;
+      width: 0.75em;
+      height: 0.75em;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+      margin-right: 0.2em;
+    }
+
   </style>
 </custom-style>
+
+<script>
+  window.addEventListener('WebComponentsReady', function() {
+    // Insert default custom property values into definition lists
+    Array.prototype.forEach.call(document.querySelectorAll('dl.custom-properties dt'), function(dt) {
+      var value = window.ShadyCSS.getComputedStyleValue(dt, dt.textContent.trim());
+      if (value) {
+        dt.innerHTML += ': ';
+        if (dt.classList.contains('color') || dt.parentNode.classList.contains('color')) {
+          dt.innerHTML += `<span class="color-swatch" style="background-color: ${value}"></span>`;
+        }
+        dt.innerHTML += `<code>${value}</code>`;
+      }
+    });
+  });
+</script>

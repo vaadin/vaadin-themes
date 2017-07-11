@@ -3,17 +3,20 @@
 <link rel="import" href="style.html">
 <link rel="import" href="typography.html">
 <link rel="import" href="vaadin-text-field.html">
-<!--<link rel="import" href="vaadin-button.html">-->
-<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+<link rel="import" href="vaadin-button.html">
 
 
-<dom-module id="date-picker-styles" theme-for="vaadin-date-picker">
+<dom-module id="valo-date-picker-styles" theme-for="vaadin-date-picker">
   <template>
-    <style include="vaadin-date-picker-default-theme">
+    <style>
       :host {
-        font-family: 'Cabin', sans-serif;
-        width: 250px;
         max-width: 100%;
+        width: var(--valo-date-picker-default-width, calc(var(--valo-size-m) * 5));
+      }
+
+      [part~="overlay"] {
+        border-radius: 6px;
+        box-shadow: 0 1px 4px 0 rgba(31, 70, 120, 0.3);
       }
 
       [part="text-field"] {
@@ -23,14 +26,26 @@
   </template>
 </dom-module>
 
-<dom-module id="month-calendar-styles" theme-for="vaadin-month-calendar">
+<dom-module id="valo-month-calendar-styles" theme-for="vaadin-month-calendar">
   <template>
-    <style include="vaadin-month-calendar-default-theme">
+    <style>
+      :host {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        --valo-month-calendar-date-font-size: 16px;
+        --valo-month-calendar-date-border-size: 4px;
+      }
+
       [part~="date"] {
-        padding: 10px 0;
-        font-size: 16px;
-        height: 42px;
-        width: 42px;
+        border-radius: 2px;
+        box-sizing: border-box;
+        color: var(--valo-body-text-color);
+        font-size: var(--valo-month-calendar-date-font-size);
+        padding: calc(var(--valo-month-calendar-date-font-size)/2) 0;
+        height: calc(2*var(--valo-month-calendar-date-font-size) + 2*var(--valo-month-calendar-date-border-size) + 2px);
+        width: calc(2*var(--valo-month-calendar-date-font-size) + 2*var(--valo-month-calendar-date-border-size) + 2px);
       }
 
       [part~="date"][today]:not([focused]) {
@@ -38,83 +53,124 @@
       }
 
       [part~="date"][today]:not([focused])::before {
-        content: '';
-        position: absolute;
-        background: #1877f3;
-        opacity: .3;
-        width: 26px;
-        height: 26px;
+        background: var(--valo-primary-color);
         border-radius: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
         bottom: 0;
+        content: '';
+        height: 26px;
+        left: 0;
         margin: auto;
+        opacity: .3;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 26px;
       }
 
       [part~="date"][selected] {
-        background: #1877f3;
-        color: #fff;
+        background: var(--valo-primary-color);
         border-radius: 6px;
-        border: 4px solid #fff;
-        padding-top: 6px;
+        border: var(--valo-month-calendar-date-border-size) solid var(--valo-base-color);
+        color: #fff;
+        font-weight: 600;
+        padding-top: calc(var(--valo-month-calendar-date-font-size)/2 - var(--valo-month-calendar-date-border-size));
+        height: calc(2*var(--valo-month-calendar-date-font-size) + 2*var(--valo-month-calendar-date-border-size) + 2px);
+        width: calc(2*var(--valo-month-calendar-date-font-size) + 2*var(--valo-month-calendar-date-border-size) + 2px);
+      }
+
+      [part~="date"][disabled] {
+        cursor: default;
+        opacity: 0.9;
       }
 
       [part~="date"][today]:not([focused]):hover::before {
         opacity: 0; 
       }
 
+      [part~="date"]:not(:empty):not([disabled]) {
+        cursor: pointer;
+      }
+
+      [part~="weekday"],
+      [part~="date"],
+      [part~="week-number"] {
+        box-sizing: border-box;
+        text-align: center;
+      }
+
       [part~="date"]:not([disabled]):hover,
       [part~="date"][focused]:not([disabled]) {
-        background: #1877f3;
-        color: #fff;
+        background: var(--valo-primary-color);
         border-radius: 6px;
-        border: 4px solid #fff;
-        padding-top: 6px;
+        border: var(--valo-month-calendar-date-border-size) solid var(--valo-base-color);
+        color: #fff;
+        padding-top: calc(var(--valo-month-calendar-date-font-size)/2 - var(--valo-month-calendar-date-border-size));
+        height: calc(2*var(--valo-month-calendar-date-font-size) + 2*var(--valo-month-calendar-date-border-size) + 2px);
+        width: calc(2*var(--valo-month-calendar-date-font-size) + 2*var(--valo-month-calendar-date-border-size) + 2px);
       }
 
       [part~="weekdays"] {
-        background: #fff;
-        font-size: 13px;
         border-radius: 6px;
+        font-size: 13px;
       }
 
       [part~="weekday"] {
+        color: var(--valo-disabled-text-color);
+        cursor: default;
+        font-weight: 100;
+        padding: 8px 0;
         text-transform: none;
-        color: rgba(39, 72, 115, 0.5);
         width: 42px;
       }
 
+      [part~="weekday"]:not(:empty):not([disabled]):active {
+        border-radius: 2px;
+      }
+
       [part~="week-numbers"] {
-        transform: translateY(5px);
         font-size: 13px;
+        position: relative;
       }
 
       [part~="week-number"] {
+        color: var(--valo-disabled-text-color);
+        cursor: default;
+        font-weight: 100;
         position: relative;
-        color: rgba(0, 0, 0, 0.1);
+        transform: translateY(50%);
       }
 
       [part~="month-header"] {
+        color: var(--valo-body-text-color);
+        cursor: default;
         font-size: 18px;
         font-weight: 500;
-        color: #353f4c;
+        padding: 6px 0;
+        text-align: center;
       }
     </style>
   </template>
 </dom-module>
-<dom-module id="overlay-styles" theme-for="vaadin-date-picker-overlay">
+<dom-module id="valo-date-picker-overlay-styles" theme-for="vaadin-date-picker-overlay">
   <template>
-    <style include="vaadin-date-picker-overlay-default-theme">
+    <style>
       :host {
-        border-radius: 6px;
+        background-color: var(--valo-date-picker-overlay-background-color, var(--valo-base-color));
+        border-radius: 0 0 6px 6px;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2);
       }
 
       [part~="years"] {
-        background: #ddd;
-        color: rgba(39, 72, 115, 0.5);
+        --vaadin-infinite-scroller-buffer-width: 90px;
+        background-color: var(--valo-contrast-20pct);
+        border-top-right-radius: 6px;
+        color:  var(--valo-contrast-50pct);
+        cursor: pointer;
+      }
+
+      [part~="years"]::before {
+        border-left-color: var(--valo-base-color);
+        z-index: 1;
       }
 
       [part~="months"] {
@@ -122,51 +178,46 @@
       }
 
       [part~="toolbar"] {
-        background-color: #ffffff;
+        background-color: var(--valo-date-picker-overlay-toolbar-background-color, var(--valo-contrast-10pct));
+        border-radius: 0 0 6px 6px;
         box-shadow: 0 -1px 0 0 rgba(23, 68, 128, 0.1);
+        padding: 14px 20px;
       }
 
       [part~="overlay-header"] {
         background: #f7f6f2;
+        padding: 16px;
+        position: relative;
       }
 
       [part~="years-toggle-button"] {
         background: transparent;
       }
 
+      [part~="year-number"],
+      [part~="year-separator"] {
+        align-items: center;
+        display: flex;
+        height: 50%;
+        justify-content: center;
+        transform: translateY(-50%);
+      }
+
       [part~="years"] [part~="year-number"][current] {
-        color: #1877f3;
+        color: var(--valo-primary-color);
       }
 
       [part~="years"] [part~="year-separator"]::after {
-        color: rgba(31, 70, 120, 0.3);
+        color: var(--valo-contrast-50pct);
+        content: "\e903";
+        font-family: 'vaadin-date-picker-icons';
+        font-size: 4px;
       }
 
       [part~="month"][disabled] {
         opacity: 0.3;
       }
+
     </style>
   </template>
 </dom-module>
-<dom-module id="button-styles" theme-for="vaadin-button">
-  <template>
-    <style>
-      :host([focus-ring]) [part~="button"] {
-      }
-
-      [part~="button"] {
-        font-family: inherit;
-        border: none;
-        background: #fff;
-        font-size: medium;
-        cursor: pointer;
-        color: #1877f3;
-      }
-
-      [part~="button"]:focus {
-        outline: none;
-      }
-    </style>
-  </template>
-</dom-module>
-

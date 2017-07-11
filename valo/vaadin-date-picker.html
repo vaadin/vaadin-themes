@@ -16,7 +16,7 @@
 
       [part~="overlay"] {
         border-radius: 6px;
-        box-shadow: 0 1px 4px 0 rgba(31, 70, 120, 0.3);
+        box-shadow: 0 1px 4px 0 var(--valo-shade-30pct);
       }
 
       [part="text-field"] {
@@ -34,7 +34,7 @@
         -ms-user-select: none;
         -webkit-user-select: none;
         user-select: none;
-        --valo-month-calendar-date-font-size: 16px;
+        --valo-month-calendar-date-font-size: var(--valo-font-size-m);
         --valo-month-calendar-date-border-size: 4px;
       }
 
@@ -111,7 +111,7 @@
 
       [part~="weekdays"] {
         border-radius: 6px;
-        font-size: 13px;
+        font-size: var(--valo-font-size-xs);
       }
 
       [part~="weekday"] {
@@ -128,7 +128,7 @@
       }
 
       [part~="week-numbers"] {
-        font-size: 13px;
+        font-size: var(--valo-font-size-xs);
         position: relative;
       }
 
@@ -143,7 +143,7 @@
       [part~="month-header"] {
         color: var(--valo-body-text-color);
         cursor: default;
-        font-size: 18px;
+        font-size: var(--valo-font-size-l);
         font-weight: 500;
         padding: 6px 0;
         text-align: center;
@@ -180,7 +180,7 @@
       [part~="toolbar"] {
         background-color: var(--valo-date-picker-overlay-toolbar-background-color, var(--valo-contrast-10pct));
         border-radius: 0 0 6px 6px;
-        box-shadow: 0 -1px 0 0 rgba(23, 68, 128, 0.1);
+        box-shadow: 0 -1px 0 0 var(--valo-shade-10pct);
         padding: 14px 20px;
       }
 

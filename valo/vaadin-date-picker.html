@@ -22,6 +22,10 @@
       [part="text-field"] {
         max-width: 100%;
       }
+
+      [part="clear-button"] {
+        cursor: pointer;
+      }
     </style>
   </template>
 </dom-module>
@@ -218,6 +222,20 @@
         opacity: 0.3;
       }
 
+      [part="today-button"], [part="cancel-button"] {
+        cursor: pointer;
+      }
+
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="valo-date-picker-buttons-styles" theme-for="vaadin-button">
+  <template>
+    <style>
+      [part="button"] {
+        cursor: inherit;
+      }
     </style>
   </template>
 </dom-module>

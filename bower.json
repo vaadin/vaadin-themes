@@ -30,6 +30,7 @@
     "vaadin-button": "vaadin/vaadin-button#^1.0.0-beta1",
     "vaadin-checkbox": "vaadin/vaadin-checkbox#^1.0.0-alpha1",
     "vaadin-date-picker": "vaadin/vaadin-date-picker#^2.0.0-alpha2",
+    "vaadin-form-layout": "^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "elements-demo-resources": "vaadin/elements-demo-resources#new-menu-and-styles",
     "TinyColor": "bgrins/TinyColor#^1.4.1"

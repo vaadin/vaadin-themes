@@ -10,6 +10,8 @@
   <template>
     <style>
       :host {
+        display: inline-flex;
+        margin-top: 0;
         max-width: 100%;
         width: var(--valo-date-picker-default-width, calc(var(--valo-size-m) * 5));
       }
@@ -20,11 +22,34 @@
       }
 
       [part="text-field"] {
+        flex: 1;
         max-width: 100%;
       }
 
       [part="clear-button"] {
         cursor: pointer;
+      }
+
+      [part="clear-button"]::before {
+        content: "";
+      }
+
+      [part="toggle-button"] {
+        color: var(--valo-body-text-color);
+        cursor: pointer;
+        opacity: 0.5;
+      }
+
+      /* Will be implemented after adding this icon to vaadin-date-picker-icons */
+      /*
+        [part="toggle-button"]::before {
+          font-family: 'vaadin-combo-box-icons';
+          content: "\e900";
+        }
+      */
+
+      [part="text-field"] ::slotted([slot=prefix]) {
+        opacity: 0.4;
       }
     </style>
   </template>
@@ -88,7 +113,7 @@
       }
 
       [part~="date"][today]:not([focused]):hover::before {
-        opacity: 0; 
+        opacity: 0;
       }
 
       [part~="date"]:not(:empty):not([disabled]) {

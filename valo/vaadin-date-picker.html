@@ -1,4 +1,5 @@
 <link rel="import" href="color.html">
+<link rel="import" href="font-icons.html">
 <link rel="import" href="sizing-and-spacing.html">
 <link rel="import" href="style.html">
 <link rel="import" href="typography.html">
@@ -40,13 +41,9 @@
         opacity: 0.5;
       }
 
-      /* Will be implemented after adding this icon to vaadin-date-picker-icons */
-      /*
-        [part="toggle-button"]::before {
-          font-family: 'vaadin-combo-box-icons';
-          content: "\e900";
-        }
-      */
+      [part="toggle-button"]::before {
+        font-family: 'valo-icons';
+      }
 
       [part="text-field"] ::slotted([slot=prefix]) {
         opacity: 0.4;

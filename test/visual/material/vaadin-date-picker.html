@@ -41,11 +41,11 @@
 
 
   <script>
-    document.addEventListener('WebComponentsReady', function () {
+    document.addEventListener('WebComponentsReady', function() {
       document.querySelector('vaadin-date-picker').set('i18n.firstDayOfWeek', 1);
 
       // wait until focus underline animation has finished.
-      setTimeout(function () {
+      setTimeout(function() {
         document.querySelector('body').setAttribute('ready', true);
       }, 2000);
     });

@@ -14,6 +14,8 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-tap-highlight-color: transparent;
+
+        --vaadin-text-field-vertical-align: bottom;
       }
 
       [part="label"] {
@@ -28,7 +30,7 @@
 
       :host([label]) {
         margin-top: var(--valo-space-m);
-        vertical-align: 2em;
+        vertical-align: var(--vaadin-text-field-vertical-align);
       }
 
       :host([focused]:not([readonly])) [part="label"] {

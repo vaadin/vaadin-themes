@@ -1,15 +1,10 @@
 ![Bower version](https://img.shields.io/bower/v/vaadin-themes.svg)
-<!-- [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://beta.webcomponents.org/element/vaadin/vaadin-themes) -->
 [![Build Status](https://travis-ci.org/vaadin/vaadin-themes.svg?branch=master)](https://travis-ci.org/vaadin/vaadin-themes)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/vaadin-core-elements?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 # vaadin-themes
 
-<!-- hide link until demo is online.
-[Live Demo ↗](https://cdn.vaadin.com/vaadin-core-elements/master/vaadin-themes/demo/)
--->
-
-[vaadin-themes](https://vaadin.com/elements/-/element/vaadin-themes) is a set of customizable themes for the [Vaadin Core Elements](https://vaadin.com/elements).
+`vaadin-themes` is a set of customizable themes for the [Vaadin Core Elements](https://vaadin.com/elements).
 
 <!--
 ```
@@ -21,9 +16,6 @@
 </custom-element-demo>
 ```
 -->
-```html
-Nothing to show yet
-```
 
 <!-- [<img src="https://raw.githubusercontent.com/vaadin/vaadin-themes/master/screenshot.png" width="200" alt="Screenshot of vaadin-themes">](https://vaadin.com/elements/-/element/vaadin-themes) -->
 

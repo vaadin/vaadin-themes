@@ -17,27 +17,27 @@
 ```
 -->
 
-<!-- [<img src="https://raw.githubusercontent.com/vaadin/vaadin-themes/master/screenshot.png" width="200" alt="Screenshot of vaadin-themes">](https://vaadin.com/elements/-/element/vaadin-themes) -->
 
-
-## Contributing
+## Running demos and tests in browser
 
 1. Fork the `vaadin-themes` repository and clone it locally.
 
 1. Make sure you have [npm](https://www.npmjs.com/) installed.
 
-1. When in the `vaadin-themes` directory, run `npm install` to install dependencies.
+1. When in the `vaadin-themes` directory, run `npm install` and then `bower install` to install dependencies.
+
+1. Run `polymer serve --open`, browser will automatically open the component API documentation.
+
+1. You can also open demo or in-browser tests by adding **demo** or **test** to the URL, for example:
+
+  - http://127.0.0.1:8080/components/vaadin-themes/demo
+  - http://127.0.0.1:8080/components/vaadin-themes/test
 
 
-## Running demos and tests in browser
+## Running tests from the command line
 
-1. Install [polyserve](https://www.npmjs.com/package/polyserve): `npm install -g polyserve`
+1. When in the `vaadin-element` directory, run `polymer test`
 
-1. When in the `vaadin-themes` directory, run `polyserve --open`, browser will automatically open the component API documentation.
-
-1. You can also open demo or in-browser tests by adding **demo** to the URL, for example:
-
-  - http://127.0.0.1:8080/components/vaadin-themes/demo/index.html
 
 ## Following the coding style
 
@@ -47,7 +47,7 @@ We are using [ESLint](http://eslint.org/) for linting JavaScript code. You can c
 ## Creating a pull request
 
   - Make sure your code is compliant with our code linters: `gulp lint`
-  - Check that tests are passing: `npm test`
+  - Check that tests are passing: `polymer test`
   - [Submit a pull request](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github) with detailed title and description
   - Wait for response from one of Vaadin Elements team members
 

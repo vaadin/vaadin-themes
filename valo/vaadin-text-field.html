@@ -61,6 +61,7 @@
         font-weight: 500;
         color: inherit;
         background-color: transparent;
+        align-self: baseline;
 
         /* Disable default invalid style in Firefox */
         box-shadow: none;
@@ -224,6 +225,11 @@
 
       [part="input-field"] ::slotted(iron-icon[icon^="valo"]) {
         color: var(--valo-contrast-50pct);
+      }
+
+      ::slotted([slot=prefix]),
+      ::slotted([slot=suffix]) {
+        opacity: 0.4;
       }
     </style>
   </template>

@@ -1,22 +1,27 @@
 <dom-module id="valo-combo-box" theme-for="vaadin-combo-box">
   <template>
-    <style include="vaadin-combo-box-default-theme">
+    <style>
       :host {
         display: inline-flex;
-        margin-top: 0;
         padding: 0;
+      }
+
+      [part="clear-button"],
+      [part="toggle-button"] {
+        cursor: pointer;
       }
     </style>
   </template>
 </dom-module>
 
-<dom-module id="valo-date-picker-overlay-styles" theme-for="vaadin-overlay">
+<dom-module id="valo-vaadin-overlay-styles" theme-for="vaadin-overlay">
   <template>
     <style>
       :host {
-        background-color: var(--valo-date-picker-overlay-background-color, var(--valo-base-color));
-        border-radius: 0 0 6px 6px;
+        background-color: var(--valo-vaadin-overlay-background-color, var(--valo-base-color));
+        border-radius: 6px 6px;
         border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
       }
     </style>
   </template>

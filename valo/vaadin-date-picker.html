@@ -15,6 +15,8 @@
         margin-top: 0;
         max-width: 100%;
         width: var(--valo-date-picker-default-width, calc(var(--valo-size-m) * 5));
+        display: inline-flex;
+        margin-top: 0;
       }
 
       [part~="overlay"] {
@@ -25,6 +27,11 @@
       [part="text-field"] {
         flex: 1;
         max-width: 100%;
+        flex: 1;
+      }
+
+      [part="text-field"] ::slotted([slot=prefix]) {
+        opacity: 0.4;
       }
 
       [part="clear-button"] {

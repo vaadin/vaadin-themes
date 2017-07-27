@@ -27,22 +27,6 @@
     }
   </style>
 
-  <script>
-    var genderJson = [
-      {name: 'Any'},
-      {name: 'Male', symbol: 'M'},
-      {name: 'Female', symbol: 'F'},
-    ];
-
-    var gender = genderJson.map(function(e) {
-      return e.name;
-    });
-
-    window.addEventListener('WebComponentsReady', function() {
-      var combobox = document.querySelector('#gender');
-      combobox.items = gender;
-    });
-  </script>
 </head>
 
 <body unresolved>
@@ -95,7 +79,7 @@
 
           <vaadin-text-field label="Surname" value="Doe"></vaadin-text-field>
 
-          <vaadin-combo-box id="gender" label="Gender"></vaadin-combo-box>
+          <vaadin-combo-box items='["Any", "Male", "Female"]' label="Gender"></vaadin-combo-box>
 
           <vaadin-date-picker label="Date of Birth"></vaadin-date-picker>
 

@@ -1,18 +1,27 @@
 <dom-module id="valo-combo-box" theme-for="vaadin-combo-box">
   <template>
-    <style include="vaadin-combo-box-default-theme">
+    <style>
       :host {
         display: inline-flex;
-        margin-top: 0;
         padding: 0;
       }
 
-      [part="value"] {
-        flex: 1;
+      [part="clear-button"],
+      [part="toggle-button"] {
+        cursor: pointer;
       }
+    </style>
+  </template>
+</dom-module>
 
-      [part="clear-button"] {
-        display: none;
+<dom-module id="valo-vaadin-overlay" theme-for="vaadin-overlay">
+  <template>
+    <style>
+      :host {
+        background-color: var(--valo-vaadin-overlay-background-color, var(--valo-base-color));
+        border-radius: 6px 6px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
       }
     </style>
   </template>

@@ -45,7 +45,7 @@
       window.addEventListener('WebComponentsReady', function() {
         // Async call needed here for IE11 compatibility.
         Polymer.Base.async(function() {
-          var datepicker = document.querySelector('vaadin-date-picker#weeks');
+          var datepicker = document.querySelector('vaadin-date-picker');
           datepicker.set('i18n.firstDayOfWeek', 1);
         });
       });

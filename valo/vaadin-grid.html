@@ -1,0 +1,49 @@
+<link rel="import" href="color.html">
+<link rel="import" href="sizing-and-spacing.html">
+<link rel="import" href="style.html">
+<link rel="import" href="typography.html">
+
+<dom-module id="valo-grid" theme-for="vaadin-grid">
+  <template>
+    <style>
+      :host {
+        border: 1px solid var(--valo-shade-10pct);
+      }
+
+      [part~="cell"] {
+        padding: var(--valo-space-m) 0;
+      }
+
+      [part~="cell"]:first-child {
+        padding-left: var(--valo-space-m);
+      }
+
+      [part~="header-cell"],
+      [part~="footer-cell"] {
+        background: var(--valo-base-color);
+        font-family: var(--valo-font-family);
+        font-size: var(--valo-font-size, var(--valo-font-size-xs));
+        line-height: var(--valo-line-height);
+        color: var(--valo-shade-80pct);
+      }
+
+      [part~="row"]:last-child [part~="header-cell"] {
+        border-bottom: 1px solid var(--valo-shade-10pct);
+        box-shadow: 4px 4px 8px 1px var(--valo-shade-5pct);
+      }
+
+      [part~="body-cell"] {
+        border-bottom: 1px solid var(--valo-shade-10pct);
+      }
+
+      [part~="row"]:first-child [part~="footer-cell"] {
+        border-top: 1px solid var(--valo-shade-10pct);
+        box-shadow: 4px -4px 8px 1px var(--valo-shade-5pct);
+      }
+
+      [part~="row"][selected] [part~="body-cell"] {
+        background: var(--valo-shade-10pct);
+      }
+    </style>
+  </template>
+</dom-module>

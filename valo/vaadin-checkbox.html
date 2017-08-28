@@ -162,6 +162,11 @@
       :host([indeterminate][disabled]) [part="checkbox"]::after {
         background-color: var(--valo-contrast-30pct);
       }
+
+      /* Workaround for vaadin-checkbox issue: https://github.com/vaadin/vaadin-checkbox/issues/16 */
+      [part="native-checkbox"]:checked ~ [part="checkbox"] {
+        opacity: 1;
+      }
     </style>
   </template>
 </dom-module>

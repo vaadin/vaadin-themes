@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0",
-    "vaadin-grid": "vaadin/vaadin-grid#valo-grid",
+    "vaadin-grid": "vaadin/vaadin-grid#4.0-preview",
     "vaadin-text-field": "vaadin/vaadin-text-field#>=1.1.0-alpha3",
     "vaadin-button": "vaadin/vaadin-button#>=1.0.0-beta1",
     "vaadin-checkbox": "vaadin/vaadin-checkbox#>=1.0.0-alpha1",

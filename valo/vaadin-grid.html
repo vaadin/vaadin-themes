@@ -12,28 +12,28 @@
 
       [part~="cell"] {
         padding: var(--valo-space-m);
+        background: var(--valo-base-color);
       }
 
       [part~="header-cell"],
       [part~="footer-cell"] {
-        background: var(--valo-base-color);
         font-family: var(--valo-font-family);
         font-size: var(--valo-font-size, var(--valo-font-size-xs));
         line-height: var(--valo-line-height);
-        color: var(--valo-shade-80pct);
+        color: var(--valo-body-text-color);
       }
 
       [part~="row"]:last-child [part~="header-cell"] {
-        border-bottom: 1px solid var(--valo-shade-10pct);
+        border-bottom: 1px solid var(--valo-contrast-10pct);
         box-shadow: 4px 4px 8px 1px var(--valo-shade-5pct);
       }
 
       [part~="body-cell"] {
-        border-bottom: 1px solid var(--valo-shade-10pct);
+        border-bottom: 1px solid var(--valo-contrast-10pct);
       }
 
       [part~="row"]:first-child [part~="footer-cell"] {
-        border-top: 1px solid var(--valo-shade-10pct);
+        border-top: 1px solid var(--valo-contrast-10pct);
         box-shadow: 4px -4px 8px 1px var(--valo-shade-5pct);
       }
 

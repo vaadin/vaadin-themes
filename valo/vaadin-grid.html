@@ -7,20 +7,21 @@
   <template>
     <style>
       :host {
-        border: 1px solid var(--valo-shade-10pct);
+        border: 1px solid var(--valo-contrast-10pct);
       }
 
       [part~="cell"] {
         padding: var(--valo-space-m);
         background: var(--valo-base-color);
+        font-family: var(--valo-font-family);
+        color: var(--valo-secondary-text-color);
+        font-size: var(--valo-font-size, var(--valo-font-size-m));
+        line-height: var(--valo-line-height);
       }
 
       [part~="header-cell"],
       [part~="footer-cell"] {
-        font-family: var(--valo-font-family);
         font-size: var(--valo-font-size, var(--valo-font-size-xs));
-        line-height: var(--valo-line-height);
-        color: var(--valo-body-text-color);
       }
 
       [part~="row"]:last-child [part~="header-cell"] {
@@ -38,7 +39,7 @@
       }
 
       [part~="row"][selected] [part~="body-cell"] {
-        background: var(--valo-shade-10pct);
+        background: var(--valo-contrast-10pct);
       }
     </style>
   </template>

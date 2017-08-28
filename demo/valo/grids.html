@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Valo Theme Text Field</title>
+  <title>Valo Theme Grid</title>
 
   <script src="../../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="common.html">
@@ -102,18 +102,9 @@
 
             <vaadin-grid aria-label="Column Grouping Example" data-provider="[[dataProvider]]" size="200">
 
-              <vaadin-grid-column width="30px" flex-grow="0">
+              <vaadin-grid-column width="50px" flex-grow="0">
                 <template class="header">#</template>
                 <template>[[index]]</template>
-              </vaadin-grid-column>
-
-              <vaadin-grid-column width="50px" flex-grow="0">
-                <template class="header">
-                  <div aria-label="Picture"></div>
-                </template>
-                <template>
-                  <iron-image width="30" height="30" sizing="cover" alt="[[item.name.first]] [[item.name.last]]" src="[[item.picture.thumbnail]]"></iron-image>
-                </template>
               </vaadin-grid-column>
 
               <vaadin-grid-column-group>

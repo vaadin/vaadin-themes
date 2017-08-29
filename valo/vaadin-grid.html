@@ -25,12 +25,10 @@
         min-height: var(--valo-size-xl);
         color: var(--valo-secondary-text-color);
         font-size: var(--valo-font-size, var(--valo-font-size-xs));
-        line-height: var(--valo-line-height);
       }
 
       [part~="row"]:last-child [part~="header-cell"] {
         border-bottom: 1px solid var(--valo-contrast-10pct);
-        box-shadow: 4px 4px 8px 1px var(--valo-shade-5pct);
       }
 
       [part~="body-cell"] {
@@ -39,11 +37,39 @@
 
       [part~="row"]:first-child [part~="footer-cell"] {
         border-top: 1px solid var(--valo-contrast-10pct);
-        box-shadow: 4px -4px 8px 1px var(--valo-shade-5pct);
       }
 
       [part~="row"][selected] [part~="body-cell"] {
         background: var(--valo-contrast-10pct);
+      }
+
+      [part~="cell"][last-frozen] {
+        border-right: 1px solid var(--valo-contrast-10pct);
+      }
+
+      :host([reordering]) [part~="cell"] {
+        background: var(--valo-shade-10pct);
+      }
+
+      :host([reordering]) [part~="cell"][reorder-status="allowed"] {
+        background: var(--valo-base-color);
+      }
+
+      :host([reordering]) [part~="cell"][reorder-status="dragging"] {
+        background: var(--valo-contrast-20pct);
+      }
+
+      [part="resize-handle"] {
+        border-right: 1px solid var(--valo-contrast-10pct);
+        right: -1px;
+      }
+
+      [part~="cell"]:focus {
+        outline: none;
+      }
+
+      :host([navigating]) [part~="cell"]:focus {
+        box-shadow: inset 0 0 0 3px var(--valo-shade-70pct);
       }
     </style>
   </template>

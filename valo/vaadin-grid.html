@@ -11,17 +11,19 @@
       }
 
       [part~="cell"] {
-        padding: calc(var(--valo-size-l)/4) var(--valo-space-m);
+        min-height: var(--valo-size-l);
+        padding: var(--valo-space-xs) var(--valo-space-m);
         background: var(--valo-base-color);
         font-family: var(--valo-font-family);
-        color: var(--valo-secondary-text-color);
+        color: var(--valo-body-text-color);
         font-size: var(--valo-font-size, var(--valo-font-size-m));
         line-height: var(--valo-line-height);
       }
 
       [part~="header-cell"],
       [part~="footer-cell"] {
-        padding: calc(var(--valo-size-l)/2 - var(--valo-space-xs)/4) var(--valo-space-m);
+        min-height: var(--valo-size-xl);
+        color: var(--valo-secondary-text-color);
         font-size: var(--valo-font-size, var(--valo-font-size-xs));
         line-height: var(--valo-line-height);
       }

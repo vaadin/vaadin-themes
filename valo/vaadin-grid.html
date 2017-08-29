@@ -11,7 +11,7 @@
       }
 
       [part~="cell"] {
-        padding: var(--valo-space-m);
+        padding: calc(var(--valo-size-l)/4) var(--valo-space-m);
         background: var(--valo-base-color);
         font-family: var(--valo-font-family);
         color: var(--valo-secondary-text-color);
@@ -21,7 +21,9 @@
 
       [part~="header-cell"],
       [part~="footer-cell"] {
+        padding: calc(var(--valo-size-l)/2 - var(--valo-space-xs)/4) var(--valo-space-m);
         font-size: var(--valo-font-size, var(--valo-font-size-xs));
+        line-height: var(--valo-line-height);
       }
 
       [part~="row"]:last-child [part~="header-cell"] {

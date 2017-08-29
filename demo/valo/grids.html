@@ -22,6 +22,10 @@
     [unresolved] {
       opacity: 0;
     }
+
+    vaadin-grid {
+      margin-top: var(--valo-space-l);
+    }
   </style>
 
 </head>
@@ -50,7 +54,7 @@
             <!-- The array is set as the <vaadin-grid>'s "items" property -->
             <vaadin-grid aria-label="Basic Binding Example" items="[[users.result]]">
 
-              <vaadin-grid-column width="50px" flex-grow="0">
+              <vaadin-grid-column width="60px" flex-grow="0">
                 <template class="header">#</template>
                 <template>[[index]]</template>
                 <!-- If necessary, the footer could be set using <template class="footer"> -->
@@ -59,12 +63,12 @@
 
               <vaadin-grid-column>
                 <template class="header">
-                  <span draggable="true">
+                  <span>
                     First Name
                   </span>
                 </template>
                 <template>
-                  <span draggable="true">
+                  <span>
                     [[item.firstName]]
                   </span>
                 </template>
@@ -80,7 +84,7 @@
               <vaadin-grid-column width="150px">
                 <template class="header">Address</template>
                 <template>
-                  <p style="white-space: normal">[[item.address.street]], [[item.address.city]]</p>
+                  <div>[[item.address.street]], [[item.address.city]]</div>
                 </template>
                 <template class="footer">Address</template>
               </vaadin-grid-column>
@@ -102,7 +106,7 @@
 
             <vaadin-grid aria-label="Column Grouping Example" data-provider="[[dataProvider]]" size="200">
 
-              <vaadin-grid-column width="50px" flex-grow="0">
+              <vaadin-grid-column width="60px" flex-grow="0">
                 <template class="header">#</template>
                 <template>[[index]]</template>
               </vaadin-grid-column>
@@ -137,7 +141,7 @@
 
                 <vaadin-grid-column width="200px">
                   <template class="header">Street</template>
-                  <template><p style="white-space: normal">[[item.location.street]]</p></template>
+                  <template><div>[[item.location.street]]</div></template>
                 </vaadin-grid-column>
               </vaadin-grid-column-group>
 

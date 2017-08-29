@@ -48,7 +48,7 @@
       }
 
       :host([reordering]) [part~="cell"] {
-        background: var(--valo-shade-10pct);
+        background: linear-gradient(var(--valo-shade-10pct), var(--valo-shade-10pct)) var(--valo-base-color);
       }
 
       :host([reordering]) [part~="cell"][reorder-status="allowed"] {
@@ -56,7 +56,7 @@
       }
 
       :host([reordering]) [part~="cell"][reorder-status="dragging"] {
-        background: var(--valo-contrast-20pct);
+        background: linear-gradient(var(--valo-contrast-20pct), var(--valo-contrast-20pct)) var(--valo-base-color);
       }
 
       [part="resize-handle"] {

@@ -18,7 +18,7 @@
     "bower_components"
   ],
   "dependencies": {
-    "valo": "vaadin/valo#master",
-    "material": "vaadin/material#master"
+    "vaadin-valo-theme": "vaadin/vaadin-valo-theme#v0.2.5",
+    "vaadin-material-theme": "vaadin/vaadin-material-theme#v0.2.5"
   }
 }
